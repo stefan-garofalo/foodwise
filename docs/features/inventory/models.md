@@ -1,7 +1,5 @@
 # Inventory Management
 
-## Overview
-
 The inventory management system tracks food items (ingredients) and their organization through categories. It enables tracking quantities, expiration dates, and alerts for low stock or expiring items.
 
 ## Data Models
