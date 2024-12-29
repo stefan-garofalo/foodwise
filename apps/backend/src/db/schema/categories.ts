@@ -5,7 +5,7 @@ import { ingredients } from './ingredients'
 
 export const categories = sqliteTable('categories', {
 	...baseTableColumns,
-	uid: text('name').notNull().unique()
+	uid: text('uid').notNull().unique()
 })
 
 export const categoriesRelations = relations(categories, ({ many }) => ({
