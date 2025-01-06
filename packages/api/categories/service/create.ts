@@ -1,4 +1,4 @@
-import { upsertById } from '../../utils/queries'
+import { upsertById } from '../../lib/queries'
 import { authedProcedure } from '../../trpc'
 
 import { categories } from '@repo/db/schema/categories'
