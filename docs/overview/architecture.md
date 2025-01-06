@@ -9,14 +9,15 @@
   │   ├── backend/    # Hono.js backend
   │   └── frontend/   # Next.js frontend
   └── packages/
-      └── api/        # Shared tRPC definitions
+      └── api/        # Shared tRPC routers and procedures
+      └── db/         # Shared database client
   ```
 
 ## Backend Architecture
 
 - **Runtime**: Bun
 - **Framework**: Hono.js
-- **API Layer**: tRPC for type-safe API communication
+- **API Layer**: tRPC for type-safe API communication with neverthrow error handling
 - **Database**: Turso (libSQL)
 - **Push Notifications**: OneSignal integration
 
