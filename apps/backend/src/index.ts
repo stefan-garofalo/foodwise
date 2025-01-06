@@ -1,12 +1,18 @@
-import { Hono } from "hono";
+import { Hono } from 'hono'
+import { trpcServer } from '@hono/trpc-server'
+import { appRouter, createContext } from '@repo/api'
 
-const app = new Hono();
+const app = new Hono()
 
-app.get("/", async c => {
-  return c.json([]);
-});
+app.use(
+	'/trpc/*',
+	trpcServer({
+		router: appRouter,
+		createContext
+	})
+)
 
 export default {
-  port: 3080,
-  fetch: app.fetch,
-};
+	port: 3080,
+	fetch: app.fetch
+}
