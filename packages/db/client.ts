@@ -7,3 +7,5 @@ const turso = createClient({
 });
 
 export const db = drizzle(turso);
+export type LibSqlDB = typeof db;
+export { type SQLiteTableWithColumns } from "drizzle-orm/sqlite-core";
