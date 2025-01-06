@@ -1,18 +1,19 @@
-import { LibSqlDB, SQLiteTableWithColumns } from "@repo/db";
+import { err, ok } from 'neverthrow'
+import { MutationParams } from './types'
 
-export const upsertById = async (
-  db: LibSqlDB,
-  table: SQLiteTableWithColumns<any>,
-  input: SQLiteTableWithColumns<any>["_"]["columns"]
-) => {
-  const query = await db
-    .insert(table)
-    .values(input)
-    .onConflictDoUpdate({
-      target: table.id,
-      set: input,
-    })
-    .returning();
+export const upsertById = async ({ db, table, input }: MutationParams) => {
+	try {
+		const query = await db
+			.insert(table)
+			.values(input)
+			.onConflictDoUpdate({
+				target: table.id,
+				set: input
+			})
+			.returning()
 
-  return Array.isArray(input) ? query : query[0];
-};
+		return ok(Array.isArray(input) ? query : query[0])
+	} catch (error) {
+		return err(error)
+	}
+}
