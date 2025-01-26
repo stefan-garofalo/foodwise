@@ -4,7 +4,7 @@ import { useState } from 'react'
 import useOptimisticParams from '../hooks/useOptimisticParams'
 import { SearchParams } from '../types'
 
-import { merge, ClassValue } from '@/lib/tailwind'
+import { merge, ClassValue } from '@/ui/utils/tailwind'
 import IconSearch from '@/ui/icons/Search'
 
 type SearchBarProps = {

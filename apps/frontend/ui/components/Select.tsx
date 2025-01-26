@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import * as SelectPrimitive from '@radix-ui/react-select'
-import { merge } from '@/lib/tailwind'
+import { merge } from '@/ui/utils/tailwind'
 import IconChevronDown from '../icons/Chevron'
 import IconCheck from '../icons/Check'
 

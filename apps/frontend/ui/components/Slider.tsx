@@ -1,6 +1,6 @@
 'use client'
 import { CSSProperties, useCallback, useEffect, useRef, useState } from 'react'
-import { ClassValue, merge } from '@/lib/tailwind'
+import { ClassValue, merge } from '@/ui/utils/tailwind'
 import IconArrow from '../icons/Arrow'
 
 type SliderProps = {

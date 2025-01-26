@@ -1,4 +1,4 @@
-import { merge, ClassValue } from '@/lib/tailwind'
+import { merge, ClassValue } from '@/ui/utils/tailwind'
 
 type AnchorProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
 	href: string

@@ -1,5 +1,5 @@
 import { getImageProps, ImageProps } from 'next/image'
-import { merge, ClassValue } from '@/lib/tailwind'
+import { merge, ClassValue } from '@/ui/utils/tailwind'
 import { Prettify } from '@/utils/types'
 
 type Picture = { asset?: unknown; alt?: string }

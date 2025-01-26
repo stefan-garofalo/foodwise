@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, use, createContext, Dispatch, SetStateAction } from 'react'
-import { merge, ClassValue } from '@/lib/tailwind'
+import { merge, ClassValue } from '@/ui/utils/tailwind'
 
 type TAccordioGroupContext = {
 	openIndex: number | null

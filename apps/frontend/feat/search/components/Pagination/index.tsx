@@ -1,5 +1,5 @@
 import { getData } from '@/lib/api'
-import { merge, ClassValue } from '@/lib/tailwind'
+import { merge, ClassValue } from '@/ui/utils/tailwind'
 
 import { SearchParams } from '@/feat/search/types'
 import { LIMIT } from '@/feat/search/config'
