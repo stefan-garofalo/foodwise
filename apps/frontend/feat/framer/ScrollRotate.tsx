@@ -10,7 +10,7 @@ import {
 	useVelocity,
 	useMotionValue,
 	useAnimationFrame
-} from 'framer-motion'
+} from 'motion/react'
 import { ClassValue, merge } from '@/ui/utils/tailwind'
 
 type ScrollRotateProps = {

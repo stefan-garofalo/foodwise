@@ -1,5 +1,5 @@
 'use client'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'motion/react'
 
 export const MotionLi = motion.li
 export const MotionUl = motion.ul

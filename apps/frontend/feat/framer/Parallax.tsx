@@ -7,7 +7,7 @@ import {
 	motion,
 	ForwardRefComponent,
 	HTMLMotionProps
-} from 'framer-motion'
+} from 'motion/react'
 import { useEffect, useRef, useState, HTMLElementType } from 'react'
 
 type ParallaxProps = {
