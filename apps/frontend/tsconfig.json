@@ -28,7 +28,7 @@
 		"**/*.tsx",
 		".next/types/**/*.ts",
 		"next.config.ts",
-		"feat/framer/page-transition.tsx"
+		"ui/framer/page-transition.tsx"
 	],
 	"exclude": ["node_modules"]
 }
