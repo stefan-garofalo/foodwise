@@ -1,15 +1,14 @@
-import { relations } from "drizzle-orm";
-import { sqliteTable, text } from "drizzle-orm/sqlite-core";
+import { relations } from 'drizzle-orm'
+import { sqliteTable, text } from 'drizzle-orm/sqlite-core'
 
-import { ingredients } from "./ingredients";
-import { baseTableColumns } from "../utils";
+import { ingredients } from './ingredients'
+import { baseTableColumns } from '../utils'
 
-export const categories = sqliteTable("categories", {
-  ...baseTableColumns,
-  uid: text("uid").notNull().unique(),
-});
-export type CategoriesTable = typeof categories;
+export const categories = sqliteTable('categories', {
+	...baseTableColumns,
+	uid: text('uid').notNull().unique()
+})
 
 export const categoriesRelations = relations(categories, ({ many }) => ({
-  items: many(ingredients),
-}));
+	items: many(ingredients)
+}))

@@ -1,6 +1,10 @@
-import { router } from "../trpc";
-import { create } from "./service";
+import { router } from '../trpc'
+import { create, get, getAll, remove, update } from './service'
 
 export const categoriesRouter = router({
-  create,
-});
+	create,
+	update,
+	remove,
+	get,
+	getAll
+})

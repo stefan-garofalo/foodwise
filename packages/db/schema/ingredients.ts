@@ -17,7 +17,6 @@ export const ingredients = sqliteTable('ingredients', {
 	lowQuantityThreshold: real('low_quantity_threshold')
 })
 
-// Define relations for type safety and querying
 export const ingredientsRelations = relations(ingredients, ({ one }) => ({
 	category: one(categories, {
 		fields: [ingredients.categoryId],
