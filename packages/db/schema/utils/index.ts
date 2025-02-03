@@ -24,8 +24,13 @@ export const createSelectSchema = <T extends Table>(table: T) => {
 
 export const toSelectFields = (fields?: Record<string, any>) =>
 	fields
-		? Object.keys(fields).reduce((acc, key) => {
-				if (fields[key]) acc[key] = true
-				return acc
-			}, {})
+		? Object.keys(fields).reduce(
+				(acc, key) => {
+					if (fields[key]) acc[key] = true
+					return acc
+				},
+				{} as Record<string, true>
+			)
 		: {}
+
+export type Tables = 'categories' | 'ingredients'

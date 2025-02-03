@@ -1,4 +1,5 @@
 import { integer, sqliteTable, text } from 'drizzle-orm/sqlite-core'
+import { Tables } from '../schema/utils'
 
 export const baseTableColumns = {
 	id: text('id')
@@ -13,4 +14,4 @@ export const baseTableColumns = {
 } as const
 
 export type BaseSQLiteTable = typeof baseType
-const baseType = sqliteTable('base' as string, baseTableColumns)
+const baseType = sqliteTable('base' as Tables, baseTableColumns)

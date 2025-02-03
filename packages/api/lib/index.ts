@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { err, ok } from 'neverthrow'
-import { eq, inArray, Table } from 'drizzle-orm'
+import { eq, inArray } from 'drizzle-orm'
 
 import {
 	createInsertSchema,
