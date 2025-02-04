@@ -12,5 +12,5 @@ export async function generateMetadata({ params }: generateMetadataParams) {
 }
 
 export default async function HomePage() {
-	return <main className="grow px-container pb-12"></main>
+	return <main className="px-container grow pb-12"></main>
 }

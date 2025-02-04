@@ -1,8 +1,8 @@
 import '../globals.css'
-import { Analytics } from '@vercel/analytics/react'
 import { inter } from '@/lib/font'
 import { LOCALE_LIST } from '@/feat/i18n/config'
 import { LangPageParams } from '@/feat/i18n/types'
+import { TRPCReactProvider } from '@/lib/trpc/react'
 
 export const experimental_ppr = true
 
@@ -20,8 +20,7 @@ export default async function RootLayout({ params, children }: LayoutProps) {
 	return (
 		<html lang={lang}>
 			<body className={inter.className}>
-				<Analytics />
-				{children}
+				<TRPCReactProvider>{children}</TRPCReactProvider>
 			</body>
 		</html>
 	)
