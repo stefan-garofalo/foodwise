@@ -9,8 +9,8 @@ export const env = createEnv({
 		NEXT_PUBLIC_SITE_URL: z.string()
 	},
 	runtimeEnv: {
-		NEXT_PUBLIC_BACKEND_URL: process.env.BACKEND_URL,
-		BACKEND_PORT: +process.env.BACKEND_PORT,
+		NEXT_PUBLIC_BACKEND_URL: process.env.NEXT_PUBLIC_BACKEND_URL,
+		NEXT_PUBLIC_LOCAL_BACKEND_PORT: +process.env.NEXT_PUBLIC_LOCAL_BACKEND_PORT,
 		NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL
 	}
 })
