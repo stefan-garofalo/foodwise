@@ -1,4 +1,4 @@
-import { generate, generateMetadataParams } from '@/lib/metadata'
+import { generate, generateMetadataParams } from '@/modules/metadata'
 
 export async function generateMetadata({ params }: generateMetadataParams) {
 	const { lang } = await params

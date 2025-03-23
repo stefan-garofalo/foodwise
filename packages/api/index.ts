@@ -1,4 +1,5 @@
 import { db } from '@repo/db/client'
+import { type AuthContext } from '@repo/frontend'
 import { router } from './trpc'
 import { categoriesRouter } from './categories/router'
 import { createCallerFactory } from './trpc'
@@ -11,8 +12,20 @@ export { type inferRouterInputs, type inferRouterOutputs } from '@trpc/server'
 
 export const createCaller = createCallerFactory(appRouter)
 
-export const createTRPCContext = async (opts?: {}) => ({
-	...opts,
+export type Context = {
+	db: typeof db
+} & Partial<RuntimeContext>
+
+type RuntimeContext = {
+	headers: Headers
+	auth: AuthContext
+}
+
+export const createTRPCContext = async ({
+	headers,
+	auth
+}: RuntimeContext): Promise<Context> => ({
+	headers,
+	auth,
 	db
 })
-export type Context = Awaited<ReturnType<typeof createTRPCContext>>

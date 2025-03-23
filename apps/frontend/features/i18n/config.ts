@@ -1,7 +1,7 @@
 import { Lang } from './types'
 
-import en from '@/feat/i18n/dict/en'
-import it from '@/feat/i18n/dict/it'
+import en from '@/features/i18n/dict/en'
+import it from '@/features/i18n/dict/it'
 
 export const LANGS: Record<'it' | 'en', { [key: string]: string }> = {
 	it,

@@ -1,5 +1,5 @@
 {
-	"name": "optimistic-search",
+	"name": "@repo/frontend",
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
@@ -8,7 +8,11 @@
 		"start": "next start",
 		"lint": "next lint"
 	},
+	"exports": {
+		".": "./export.ts"
+	},
 	"dependencies": {
+		"@clerk/nextjs": "^6.11.1",
 		"@radix-ui/react-select": "^2.1.6",
 		"@t3-oss/env-nextjs": "^0.12.0",
 		"@tanstack/react-query": "^5.66.0",

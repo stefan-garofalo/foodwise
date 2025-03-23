@@ -1,11 +1,13 @@
 import { Suspense } from 'react'
-import { generate, generateMetadataParams } from '@/lib/metadata'
+import { generate, generateMetadataParams } from '@/modules/metadata'
 
-import type { SearchParams } from '@/feat/search/types'
-import SearchBar from '@/feat/search/components/Searchbar'
-import Results, { ResultsSkeleton } from '@/feat/search/components/Results'
-import Pagination, { PaginationSkeleton } from '@/feat/search/components/Pagination'
-import Sort from '@/feat/search/components/Sort'
+import type { SearchParams } from '@/features/search/types'
+import SearchBar from '@/features/search/components/Searchbar'
+import Results, { ResultsSkeleton } from '@/features/search/components/Results'
+import Pagination, {
+	PaginationSkeleton
+} from '@/features/search/components/Pagination'
+import Sort from '@/features/search/components/Sort'
 
 export async function generateMetadata({ params }: generateMetadataParams) {
 	const { lang } = await params

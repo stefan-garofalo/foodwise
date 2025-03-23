@@ -1,8 +1,8 @@
 import { getData } from '@/lib/api'
 import { merge, ClassValue } from '@/ui/utils/tailwind'
 
-import { SearchParams } from '@/feat/search/types'
-import { LIMIT } from '@/feat/search/config'
+import { SearchParams } from '@/features/search/types'
+import { LIMIT } from '@/features/search/config'
 
 import Controls from './Controls'
 import SkeletonPagination from '../Skeletons/Pagination'

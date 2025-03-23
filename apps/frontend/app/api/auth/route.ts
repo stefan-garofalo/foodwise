@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation'
 import { type NextRequest } from 'next/server'
-import { setSessionCookie } from '@/lib/auth'
+import { setSessionCookie } from '@/modules/auth'
 
 export async function GET({ nextUrl: { searchParams } }: NextRequest) {
 	if (searchParams.get('state')) return redirect('/')

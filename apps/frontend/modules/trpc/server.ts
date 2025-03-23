@@ -6,6 +6,7 @@ import { cache } from 'react'
 
 import { createTRPCContext, type AppRouter, createCaller } from '@repo/api'
 import { createQueryClient } from './query-client'
+import { auth } from '@clerk/nextjs/server'
 
 /**
  * This wraps the `createTRPCContext` helper and provides the required context for the tRPC API when
@@ -16,7 +17,8 @@ const createContext = cache(async () => {
 	heads.set('x-trpc-source', 'rsc')
 
 	return createTRPCContext({
-		headers: heads
+		headers: heads,
+		auth: await auth()
 	})
 })
 

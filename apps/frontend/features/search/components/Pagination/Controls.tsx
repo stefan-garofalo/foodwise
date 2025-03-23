@@ -1,7 +1,7 @@
 'use client'
 
-import useOptimisticParams from '@/feat/search/hooks/useOptimisticParams'
-import { LIMIT } from '@/feat/search/config'
+import useOptimisticParams from '@/features/search/hooks/useOptimisticParams'
+import { LIMIT } from '@/features/search/config'
 import { PrimaryButtonLink } from '@/ui/components/ButtonLink'
 import IconArrow from '@/ui/icons/Arrow'
 

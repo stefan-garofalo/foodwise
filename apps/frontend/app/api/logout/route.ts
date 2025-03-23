@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation'
-import { setSessionCookie } from '@/lib/auth'
+import { setSessionCookie } from '@/modules/auth'
 
 export async function GET() {
 	await setSessionCookie({

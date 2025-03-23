@@ -1,5 +1,5 @@
-import { LOCALES } from '@/feat/i18n/config'
-import { Lang, LangPageParams } from '@/feat/i18n/types'
+import { LOCALES } from '@/features/i18n/config'
+import { Lang, LangPageParams } from '@/features/i18n/types'
 
 type Metadata = {
 	title: string

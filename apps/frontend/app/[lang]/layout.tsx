@@ -1,8 +1,8 @@
 import '../globals.css'
-import { inter } from '@/lib/font'
-import { LOCALE_LIST } from '@/feat/i18n/config'
-import { LangPageParams } from '@/feat/i18n/types'
-import { TRPCReactProvider } from '@/lib/trpc/react'
+import { inter } from '@/modules/font'
+import { LOCALE_LIST } from '@/features/i18n/config'
+import { LangPageParams } from '@/features/i18n/types'
+import Providers from '@/features/providers'
 
 export const experimental_ppr = true
 
@@ -20,7 +20,7 @@ export default async function RootLayout({ params, children }: LayoutProps) {
 	return (
 		<html lang={lang}>
 			<body className={inter.className}>
-				<TRPCReactProvider>{children}</TRPCReactProvider>
+				<Providers>{children}</Providers>
 			</body>
 		</html>
 	)

@@ -1,4 +1,4 @@
-import { LANGS } from '@/feat/i18n/config'
+import { LANGS } from '@/features/i18n/config'
 import { Route } from 'next'
 
 export function path(url: string, lang: keyof typeof LANGS) {

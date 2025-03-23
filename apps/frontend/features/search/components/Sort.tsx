@@ -1,7 +1,7 @@
 'use client'
 
-import useOptimisticParams from '@/feat/search/hooks/useOptimisticParams'
-import { SORTS, DEFAULT_SORT } from '@/feat/search/config'
+import useOptimisticParams from '@/features/search/hooks/useOptimisticParams'
+import { SORTS, DEFAULT_SORT } from '@/features/search/config'
 import {
 	Select,
 	SelectContent,
@@ -35,7 +35,7 @@ export default function Sort() {
 					<SelectItem
 						key={e.id}
 						value={e.id}
-						className="capitalize hover:bg-border"
+						className="hover:bg-border capitalize"
 					>
 						{e.label}
 					</SelectItem>

@@ -1,4 +1,4 @@
-import { SearchParams } from '@/feat/search/types'
+import { SearchParams } from '@/features/search/types'
 import Error from './Error'
 import SkeletonResults from './Skeletons/Results'
 
