@@ -1,16 +1,14 @@
 import { Hono } from 'hono'
-import { trpcServer } from '@hono/trpc-server'
-import { appRouter, createTRPCContext } from '@repo/api'
+
+import { trpcMiddleware } from './middleware/trpc'
+import { corsMiddleware } from './middleware/cors'
+import { authMiddleware } from './middleware/auth'
 
 const app = new Hono()
 
-app.use(
-	'/trpc/*',
-	trpcServer({
-		router: appRouter,
-		createContext: createTRPCContext
-	})
-)
+app.use('*', corsMiddleware)
+app.use('/trpc/*', trpcMiddleware)
+app.use('/auth/*', authMiddleware)
 
 export default {
 	port: 3080,
