@@ -14,7 +14,9 @@
 		"build": "turbo build",
 		"dev": "turbo dev",
 		"lint": "turbo lint",
-		"format": "prettier --write \"**/*.{ts,tsx,md}\""
+		"format": "prettier --write \"**/*.{ts,tsx,md}\"",
+		"better-auth:generate": "bunx @better-auth/cli generate --config packages/auth/src/index.ts",
+		"better-auth:migrate": "bunx @better-auth/cli migrate --config packages/auth/src/index.ts"
 	},
 	"workspaces": [
 		"apps/*",

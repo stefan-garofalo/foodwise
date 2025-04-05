@@ -1,8 +1,9 @@
 import { db } from '@repo/db/client'
-import { type AuthContext } from '@repo/frontend'
+
 import { router } from './trpc'
 import { categoriesRouter } from './categories/router'
 import { createCallerFactory } from './trpc'
+import { AuthContext } from '@/export'
 
 export const appRouter = router({
 	categories: categoriesRouter
@@ -18,7 +19,7 @@ export type Context = {
 
 type RuntimeContext = {
 	headers: Headers
-	auth: AuthContext
+	auth: any
 }
 
 export const createTRPCContext = async ({
