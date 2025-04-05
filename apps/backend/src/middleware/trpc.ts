@@ -3,5 +3,5 @@ import { appRouter, createTRPCContext } from '@repo/api'
 
 export const trpcMiddleware = trpcServer({
 	router: appRouter,
-	createContext: createTRPCContext
+	createContext: ({ req }) => createTRPCContext({ headers: req.headers })
 })

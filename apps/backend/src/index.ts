@@ -7,8 +7,8 @@ import { authMiddleware } from './middleware/auth'
 const app = new Hono()
 
 app.use('*', corsMiddleware)
-app.use('/trpc/*', trpcMiddleware)
-app.use('/auth/*', authMiddleware)
+app.use('api/trpc/*', trpcMiddleware)
+app.use('api/auth/*', authMiddleware)
 
 export default {
 	port: 3080,
