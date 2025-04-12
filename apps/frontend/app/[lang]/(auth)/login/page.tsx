@@ -1,9 +1,9 @@
 import { generate, generateMetadataParams } from '@/modules/metadata'
-import { getDictionary } from './dictionary'
+import { getLoginDictionary } from './dictionary'
 
 export async function generateMetadata({ params }: generateMetadataParams) {
 	const { lang } = await params
-	const { seo } = getDictionary(lang)
+	const { seo } = getLoginDictionary(lang)
 
 	return generate({
 		title: seo.title,

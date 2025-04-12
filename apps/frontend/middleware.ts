@@ -26,10 +26,13 @@ export function middleware(request: NextRequest) {
 	return response
 }
 
+/*
+ * Match all request paths except for the ones starting with:
+ * - api (API routes)
+ * - trpc (TRPC routes)
+ * - _next (all Next.js internal files)
+ * - favicon.ico (favicon file)
+ */
 export const config = {
-	matcher: [
-		'/((?!_next).*)',
-		'/((?!_next|[^?]*\\.(html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
-		'/(api|trpc)(.*)'
-	]
+	matcher: ['/((?!api|trpc|_next|favicon.ico).*)']
 }
