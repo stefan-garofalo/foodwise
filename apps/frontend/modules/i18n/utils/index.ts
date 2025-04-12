@@ -1,4 +1,4 @@
-import { LANGS } from '@/features/i18n/config'
+import { LANGS } from '@/modules/i18n/config'
 import { accessNestedObject } from '@/utils/objects'
 import { Route } from 'next'
 

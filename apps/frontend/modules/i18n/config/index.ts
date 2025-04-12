@@ -1,7 +1,7 @@
 import { Lang } from '../types'
 
-import en from '@/features/i18n/dict/en'
-import it from '@/features/i18n/dict/it'
+import en from '@/modules/i18n/dict/en'
+import it from '@/modules/i18n/dict/it'
 
 export type NestedStringRecord = {
 	[key: string]: string | NestedStringRecord

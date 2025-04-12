@@ -4,7 +4,7 @@ import type { NextRequest } from 'next/server'
 import {
 	createLocaleRedirectUrl,
 	getLocaleFromPathname
-} from './features/i18n/middleware'
+} from './modules/i18n/middleware'
 import { isStaticFile } from './utils/middleware'
 
 export function middleware(request: NextRequest) {

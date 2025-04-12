@@ -1,8 +1,8 @@
 import '../globals.css'
 import { inter } from '@/modules/font'
-import { LOCALE_LIST } from '@/features/i18n/config'
-import { LangPageParams } from '@/features/i18n/types'
-import Providers from '@/features/providers'
+import { LOCALE_LIST } from '@/modules/i18n/config'
+import { LangPageParams } from '@/modules/i18n/types'
+import Providers from '@/modules/providers'
 
 export const experimental_ppr = true
 
