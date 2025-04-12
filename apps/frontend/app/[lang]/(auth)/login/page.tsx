@@ -1,4 +1,3 @@
-import { getPageDictionary } from '@/features/i18n/utils'
 import { generate, generateMetadataParams } from '@/modules/metadata'
 import { getDictionary } from './dictionary'
 

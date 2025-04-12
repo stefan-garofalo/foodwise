@@ -1,0 +1,20 @@
+import { LOCALE_LIST } from '../config'
+
+// Helper function to create locale redirect URL
+export function createLocaleRedirectUrl(
+	pathname: string,
+	search: string,
+	baseUrl: string
+) {
+	return new URL(`/${LOCALE_LIST[0]}/${pathname}${search}`, baseUrl)
+}
+
+// Helper function to get locale from pathname
+export function getLocaleFromPathname(pathname: string): string | undefined {
+	for (const locale of LOCALE_LIST) {
+		if (pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`) {
+			return locale
+		}
+	}
+	return undefined
+}
