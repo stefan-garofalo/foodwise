@@ -2,7 +2,7 @@
 
 import type { Route } from 'next'
 import Link, { LinkProps } from 'next/link'
-import useLocalePath from './hooks/useLocalePath'
+import { useLocalizePath } from '../hooks/path'
 
 type LocalizedLinkProps = LinkProps<string> &
 	React.AnchorHTMLAttributes<HTMLAnchorElement> & {
@@ -15,7 +15,7 @@ export default function LocalizedLink({
 	href,
 	...props
 }: LocalizedLinkProps) {
-	const url = useLocalePath(href)
+	const url = useLocalizePath(href)
 	return (
 		<Link {...props} href={url}>
 			{children}

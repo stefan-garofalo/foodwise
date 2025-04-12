@@ -1,22 +1,16 @@
 @import 'tailwindcss';
 
 @theme {
-  --background-image-gradient-radial: radial-gradient(var(--tw-gradient-stops));
-  --background-image-gradient-conic: conic-gradient(
-    from 180deg at 50% 50%,
-    var(--tw-gradient-stops)
-  );
+	--spacing-container: var(--container);
 
-  --spacing-container: var(--container);
+	--color-background: var(--background);
+	--color-background-secondary: var(--background-secondary);
 
-  --color-background: var(--background);
-  --color-background-secondary: var(--background-secondary);
+	--color-foreground: var(--foreground);
+	--color-error: var(--error);
 
-  --color-foreground: var(--foreground);
-  --color-error: var(--error);
-
-  --color-border: var(--border);
-  --color-border-active: var(--border-active);
+	--color-border: var(--border);
+	--color-border-active: var(--border-active);
 }
 
 /*
@@ -28,13 +22,13 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
-  }
+	*,
+	::after,
+	::before,
+	::backdrop,
+	::file-selector-button {
+		border-color: var(--color-gray-200, currentColor);
+	}
 }
 
 :root {
