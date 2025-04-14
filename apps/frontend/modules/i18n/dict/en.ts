@@ -6,7 +6,7 @@ const dictionary = {
 		},
 		title: 'The Pantry Companion',
 		subtitle:
-			'Your kitchen, organized. Track ingredients, get expiration alerts, and discover recipes based on what you have on hand.'
+			'Your kitchen, organized. Track ingredients, get expiration alerts and discover recipes based on what you have on hand.'
 	}
 }
 

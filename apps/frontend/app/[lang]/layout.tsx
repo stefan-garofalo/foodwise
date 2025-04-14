@@ -1,5 +1,5 @@
 import '../globals.css'
-import { inter } from '@/modules/font'
+import { instrument, geist } from '@/modules/font'
 import { LOCALE_LIST } from '@/modules/i18n/config'
 import { LangPageParams } from '@/modules/i18n/types'
 import Providers from '@/modules/providers'
@@ -19,7 +19,7 @@ export default async function RootLayout({ params, children }: LayoutProps) {
 
 	return (
 		<html lang={lang}>
-			<body className={inter.className}>
+			<body className={`${geist.variable} ${instrument.variable}`}>
 				<Providers>{children}</Providers>
 			</body>
 		</html>

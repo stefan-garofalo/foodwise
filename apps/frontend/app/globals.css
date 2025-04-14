@@ -1,6 +1,15 @@
 @import 'tailwindcss';
 
 @theme {
+	/* fonts */
+	--font-instrument: var(--font-instrument);
+	--font-geist: var(--font-geist);
+
+	/* typography */
+	--text-title: 3rem; /* 48px */
+	--text-title-sm: 1.75rem; /* 28px */
+	--text-title-xs: 1.5rem; /* 24px */
+
 	/* spacing */
 	--spacing-container: var(--container);
 
@@ -59,17 +68,11 @@
 	}
 }
 
-@media (min-width: 1024px) {
-	:root {
-		--container: 2.5rem;
-	}
-}
-
 :root {
 	color-scheme: light dark;
 }
 
 body {
-	@apply bg-background text-foreground;
+	@apply bg-background text-foreground font-geist text-sm lg:text-base;
 	@apply transition-colors duration-300;
 }
