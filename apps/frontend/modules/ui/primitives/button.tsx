@@ -7,7 +7,7 @@ const variants = cva(
 	{
 		variants: {
 			variant: {
-				default: 'bg-primary text-foreground shadow hover:bg-primary/80',
+				default: 'bg-primary text-primary-foreground shadow hover:bg-primary/80',
 				danger: 'bg-danger text-foreground shadow-sm hover:bg-danger/80',
 				outline: 'border border-border bg-background shadow-sm hover:bg-primary',
 				link: 'underline-offset-4 hover:underline'

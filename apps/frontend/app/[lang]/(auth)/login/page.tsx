@@ -30,7 +30,7 @@ export default async function LoginPage({ params }: PageParams) {
 				{labels.subtitle}
 			</p>
 			<Button className="mt-5 max-w-sm" variant="default" size="full">
-				<GoogleIcon color="var(--color-pale-yellow)" /> {labels.actions.google}
+				<GoogleIcon color="currentColor" /> {labels.actions.google}
 			</Button>
 		</main>
 	)
