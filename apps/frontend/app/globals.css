@@ -14,13 +14,13 @@
 	--spacing-container: var(--container);
 
 	/* palette */
-	--color-apple-green: oklch(0.67 0.12 123.82);
+	--color-apple-green: oklch(0.55 0.12 123.82);
 	--color-deep-teal-darkest: oklch(0.22 0.04 185.8);
 	--color-deep-teal-darker: oklch(0.26 0.04 187.09);
 	--color-deep-teal-lighter: oklch(0.33 0.05 187.17);
 
 	--color-terracotta: oklch(0.69 0.14 48.86);
-	--color-pale-yellow: oklch(0.96 0.05 93.33);
+	--color-pale-yellow: oklch(0.975 0.05 93.33);
 	--color-pale-yellow-darker: oklch(0.92 0.06 92);
 	--color-pale-yellow-darkest: oklch(0.88 0.07 90);
 

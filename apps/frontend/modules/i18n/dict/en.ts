@@ -6,7 +6,10 @@ const dictionary = {
 		},
 		title: 'The Pantry Companion',
 		subtitle:
-			'Your kitchen, organized. Track ingredients, get expiration alerts and discover recipes based on what you have on hand.'
+			'Your kitchen, enhanced.\nKeep track of ingredients, get expiration alerts and discover new recipes based on what you have on hand.',
+		actions: {
+			google: 'Sign in with Google'
+		}
 	}
 }
 
