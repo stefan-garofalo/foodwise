@@ -1,9 +1,13 @@
 import { LangPageParams } from '@/modules/i18n/types'
 import { ClassValue } from 'clsx'
 
-export type Prettify<T> = {
-	[K in keyof T]: T[K]
-} & {}
+export type Prettify<T> = T extends object
+	? T extends Function | Array<any> | Date
+		? T
+		: {
+				[K in keyof T]: Prettify<T[K]>
+			} & {}
+	: T
 
 export type ComponentProps = {
 	children?: React.ReactNode
@@ -11,5 +15,5 @@ export type ComponentProps = {
 }
 
 export type PageParams = {
-  params: LangPageParams
+	params: LangPageParams
 }
