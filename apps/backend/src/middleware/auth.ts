@@ -1,6 +1,23 @@
 import { auth } from '@repo/auth'
 import { Context } from 'hono'
-import { BlankEnv } from 'hono/types'
+import { BlankEnv, Next } from 'hono/types'
 
-export const authMiddleware = async (c: Context<BlankEnv, '/auth/*', {}>) =>
+export const authHandler = async (c: Context<BlankEnv, '/auth/*', {}>) =>
 	await auth.handler(c.req.raw)
+
+// export const authMiddleware = async (
+// 	c: Context<BlankEnv, '/auth/*', {}>,
+// 	next: Next
+// ) => {
+// 	const session = await auth.api.getSession({ headers: c.req.raw.headers })
+
+// 	if (!session) {
+// 		c.set('user', null)
+// 		c.set('session', null)
+// 		return next()
+// 	}
+
+// 	c.set('user', session.user)
+// 	c.set('session', session.session)
+// 	return next()
+// }

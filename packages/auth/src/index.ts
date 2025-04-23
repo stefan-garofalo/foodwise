@@ -19,4 +19,5 @@ export const auth = betterAuth({
 	}
 })
 
+export { createAuthClient } from 'better-auth/client'
 export type { Session }

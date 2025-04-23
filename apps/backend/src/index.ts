@@ -2,13 +2,13 @@ import { Hono } from 'hono'
 
 import { trpcMiddleware } from './middleware/trpc'
 import { corsMiddleware } from './middleware/cors'
-import { authMiddleware } from './middleware/auth'
+import { authHandler } from './middleware/auth'
 
 const app = new Hono()
 
 app.use('*', corsMiddleware)
 app.use('api/trpc/*', trpcMiddleware)
-app.use('api/auth/*', authMiddleware)
+app.on(['POST', 'GET'], 'api/auth/*', authHandler)
 
 export default {
 	port: 3080,
