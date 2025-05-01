@@ -1,4 +1,5 @@
 import { betterAuth, Session } from 'better-auth'
+import { createAuthClient } from 'better-auth/client'
 import { LibsqlDialect } from '@libsql/kysely-libsql'
 
 const dialect = new LibsqlDialect({
@@ -19,5 +20,5 @@ export const auth = betterAuth({
 	}
 })
 
-export { createAuthClient } from 'better-auth/client'
+export const authClient = createAuthClient()
 export type { Session }
