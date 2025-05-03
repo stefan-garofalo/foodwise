@@ -1,7 +1,7 @@
 'use client'
 
 import { QueryClientProvider, type QueryClient } from '@tanstack/react-query'
-import { loggerLink, unstable_httpBatchStreamLink } from '@trpc/client'
+import { loggerLink, httpBatchStreamLink } from '@trpc/client'
 import { createTRPCReact } from '@trpc/react-query'
 import { useState } from 'react'
 import {
@@ -49,7 +49,7 @@ export function TRPCReactProvider(props: { children: React.ReactNode }) {
 						process.env.NODE_ENV === 'development' ||
 						(op.direction === 'down' && op.result instanceof Error)
 				}),
-				unstable_httpBatchStreamLink({
+				httpBatchStreamLink({
 					url: env.NEXT_PUBLIC_BACKEND_URL + '/api/trpc'
 				})
 			]

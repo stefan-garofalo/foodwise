@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import {
 	createLocaleRedirectUrl,
+	getLocaleFromCookie,
 	getLocaleFromPathname
 } from './modules/i18n/middleware'
 import { isStaticFile } from './utils/middleware'
@@ -14,11 +15,11 @@ export function middleware(request: NextRequest) {
 	const pathLocale = getLocaleFromPathname(pathname)
 	if (!pathLocale) {
 		return NextResponse.redirect(
-			createLocaleRedirectUrl(pathname, search, request.url)
+			createLocaleRedirectUrl(request, pathname, search, request.url)
 		)
 	}
 
-	const cookieLocale = request.cookies.get('x-locale')?.value
+	const cookieLocale = getLocaleFromCookie(request)
 	if (cookieLocale === pathLocale) return NextResponse.next()
 
 	const response = NextResponse.next()

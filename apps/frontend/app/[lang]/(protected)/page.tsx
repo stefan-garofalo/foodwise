@@ -1,4 +1,7 @@
+import { getUser } from '@/modules/auth/lib/server/session'
 import { generate, generateMetadataParams } from '@/modules/metadata'
+import { auth } from '@repo/auth/server'
+import { headers } from 'next/headers'
 
 export async function generateMetadata({ params }: generateMetadataParams) {
 	const { lang } = await params
@@ -12,5 +15,9 @@ export async function generateMetadata({ params }: generateMetadataParams) {
 }
 
 export default async function HomePage() {
-	return <main className="px-container grow pb-12"></main>
+	return (
+		<main className="px-container grow pb-12">
+			home page protected {(await getUser()).name}
+		</main>
+	)
 }
