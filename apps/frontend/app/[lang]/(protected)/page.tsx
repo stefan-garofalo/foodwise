@@ -1,8 +1,6 @@
 import { LogoutButton } from '@/modules/auth/components/logout'
 import { getUser } from '@/modules/auth/lib/server/session'
 import { generate, generateMetadataParams } from '@/modules/metadata'
-import { auth } from '@repo/auth/server'
-import { headers } from 'next/headers'
 
 export async function generateMetadata({ params }: generateMetadataParams) {
 	const { lang } = await params
