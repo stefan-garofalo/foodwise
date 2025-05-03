@@ -1,5 +1,5 @@
-import { getData } from '@/lib/api'
-import { merge, ClassValue } from '@/ui/utils/tailwind'
+// import { getData } from '@/lib/api'
+import { merge, ClassValue } from '@/modules/ui/utils/tailwind'
 
 import { SearchParams } from '@/features/search/types'
 import { LIMIT } from '@/features/search/config'
@@ -18,8 +18,8 @@ export default async function Pagination({
 	page,
 	className
 }: PaginationProps) {
-	const data = await getData(searchParams)
-	if (data.isErr()) return null
+	// const data = await getData(searchParams)
+	// if (data.isErr()) return null
 
 	// const { total_count: total, items } = data.value
 	// const currentCount = items.length >= 11 ? LIMIT * page : items.length

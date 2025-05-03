@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useParams, usePathname } from 'next/navigation'
 
-import { merge } from '@/ui/utils/tailwind'
+import { merge } from '@/modules/ui/utils/tailwind'
 
 import { Route } from 'next'
 import { LangParams } from '../types'

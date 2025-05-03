@@ -2,9 +2,9 @@
 
 import * as React from 'react'
 import * as SelectPrimitive from '@radix-ui/react-select'
-import { merge } from '@/ui/utils/tailwind'
-import IconChevronDown from '../icons/Chevron'
-import IconCheck from '../icons/Check'
+import { merge } from '@/modules/ui/utils/tailwind'
+// import IconChevronDown from '../icons/Chevron'
+// import IconCheck from '../icons/Check'
 
 const Select = SelectPrimitive.Root
 const SelectGroup = SelectPrimitive.Group
@@ -24,7 +24,7 @@ const SelectTrigger = React.forwardRef<
 	>
 		{children}
 		<SelectPrimitive.Icon asChild>
-			<IconChevronDown className="h-4 w-4 opacity-50" />
+			{/* <IconChevronDown className="h-4 w-4 opacity-50" /> */}
 		</SelectPrimitive.Icon>
 	</SelectPrimitive.Trigger>
 ))
@@ -42,7 +42,7 @@ const SelectScrollDownButton = React.forwardRef<
 		)}
 		{...props}
 	>
-		<IconChevronDown className="h-4 w-4" />
+		{/* <IconChevronDown className="h-4 w-4" /> */}
 	</SelectPrimitive.ScrollDownButton>
 ))
 SelectScrollDownButton.displayName = SelectPrimitive.ScrollDownButton.displayName
@@ -104,7 +104,7 @@ const SelectItem = React.forwardRef<
 	>
 		<span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
 			<SelectPrimitive.ItemIndicator>
-				<IconCheck className="h-4 w-4" />
+				{/* <IconCheck className="h-4 w-4" /> */}
 			</SelectPrimitive.ItemIndicator>
 		</span>
 

@@ -1,22 +1,22 @@
-import { PrimaryButtonLink } from '@/ui/components/ButtonLink'
-import IconArrow from '@/ui/icons/Arrow'
+// import { PrimaryButtonLink } from '@/modules/ui/primitives/ButtonLink'
+// import IconArrow from '@/modules/ui/icons/Arrow'
 
 export default function SkeletonPagination() {
 	return (
-		<div className="shrink-0 h-full flex items-center gap-x-3">
-			<div className="h-full flex flex-col lg:items-end justify-center gap-y-2 w-28 opacity-50">
-				<span className="bg-foreground rounded-sm h-1 lg:h-1.5 animate-pulse w-1/2"></span>
-				<span className="bg-foreground rounded-sm h-1 lg:h-1.5 animate-pulse w-full"></span>
+		<div className="flex h-full shrink-0 items-center gap-x-3">
+			<div className="flex h-full w-28 flex-col justify-center gap-y-2 opacity-50 lg:items-end">
+				<span className="bg-foreground h-1 w-1/2 animate-pulse rounded-sm lg:h-1.5"></span>
+				<span className="bg-foreground h-1 w-full animate-pulse rounded-sm lg:h-1.5"></span>
 			</div>
-			<div className="h-full flex items-center gap-x-2">
-				<PrimaryButtonLink className="pointer-events-none animate-pulse">
+			<div className="flex h-full items-center gap-x-2">
+				{/* <PrimaryButtonLink className="pointer-events-none animate-pulse">
 					<IconArrow className="size-5 rotate-180" />
 					<span className="sr-only">Prev</span>
 				</PrimaryButtonLink>
 				<PrimaryButtonLink className="pointer-events-none animate-pulse">
 					<IconArrow className="size-5" />
 					<span className="sr-only">Next</span>
-				</PrimaryButtonLink>
+				</PrimaryButtonLink> */}
 			</div>
 		</div>
 	)

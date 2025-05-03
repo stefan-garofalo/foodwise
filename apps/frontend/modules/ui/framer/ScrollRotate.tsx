@@ -11,7 +11,7 @@ import {
 	useMotionValue,
 	useAnimationFrame
 } from 'motion/react'
-import { ClassValue, merge } from '@/ui/utils/tailwind'
+import { ClassValue, merge } from '@/modules/ui/utils/tailwind'
 
 type ScrollRotateProps = {
 	children: React.ReactNode

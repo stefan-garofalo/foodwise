@@ -5,7 +5,8 @@ const nextConfig: NextConfig = {
 		ppr: 'incremental',
 		reactCompiler: true,
 		typedRoutes: true
-	}
+	},
+	serverExternalPackages: ['@libsql/client', '@libsql/kysely-libsql']
 }
 
 export default nextConfig

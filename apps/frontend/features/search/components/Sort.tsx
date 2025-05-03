@@ -8,8 +8,8 @@ import {
 	SelectItem,
 	SelectTrigger,
 	SelectValue
-} from '@/ui/components/Select'
-import IconSort from '@/ui/icons/Sort'
+} from '@/modules/ui/primitives/select'
+// import IconSort from '@/modules/ui/icons/Sort'
 
 export default function Sort() {
 	const { setOptimisticState, isPending } = useOptimisticParams(
@@ -26,7 +26,7 @@ export default function Sort() {
 				data-pending={isPending ? '' : undefined}
 				className="gap-x-2 disabled:cursor-not-allowed disabled:opacity-50"
 			>
-				<IconSort className="size-5" />
+				{/* <IconSort className="size-5" /> */}
 				<SelectValue placeholder="Select a verified email to display" />
 			</SelectTrigger>
 

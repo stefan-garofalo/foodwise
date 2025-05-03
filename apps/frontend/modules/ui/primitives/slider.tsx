@@ -1,7 +1,7 @@
 'use client'
 import { CSSProperties, useCallback, useEffect, useRef, useState } from 'react'
-import { ClassValue, merge } from '@/ui/utils/tailwind'
-import IconArrow from '../icons/Arrow'
+import { ClassValue, merge } from '@/modules/ui/utils/tailwind'
+// import IconArrow from '../icons/Arrow'
 
 type SliderProps = {
 	children: React.ReactNode
@@ -88,7 +88,7 @@ export default function Slider({
 				{children}
 			</div>
 			{showControls && (
-				<div className="contain absolute right-0 top-0 flex items-center gap-2.5">
+				<div className="contain absolute top-0 right-0 flex items-center gap-2.5">
 					<button
 						className={merge(
 							'pointer-events-auto',
@@ -97,7 +97,7 @@ export default function Slider({
 						disabled={!enablePrev || isNavigating}
 						onClick={() => navigate('prev')}
 					>
-						<IconArrow className="h-2.5 w-2.5 -rotate-180 lg:h-5 lg:w-5" />
+						{/* <IconArrow className="h-2.5 w-2.5 -rotate-180 lg:h-5 lg:w-5" /> */}
 						<span className="sr-only">Back</span>
 					</button>
 					<button
@@ -108,7 +108,7 @@ export default function Slider({
 						disabled={!enableNext || isNavigating}
 						onClick={() => navigate('next')}
 					>
-						<IconArrow className="h-2.5 w-2.5 lg:h-5 lg:w-5" />
+						{/* <IconArrow className="h-2.5 w-2.5 lg:h-5 lg:w-5" /> */}
 						<span className="sr-only">Forward</span>
 					</button>
 				</div>

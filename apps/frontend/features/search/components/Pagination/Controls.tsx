@@ -2,8 +2,8 @@
 
 import useOptimisticParams from '@/features/search/hooks/useOptimisticParams'
 import { LIMIT } from '@/features/search/config'
-import { PrimaryButtonLink } from '@/ui/components/ButtonLink'
-import IconArrow from '@/ui/icons/Arrow'
+// import { PrimaryButtonLink } from '@/modules/ui/primitives/ButtonLink'
+// import IconArrow from '@/modules/ui/icons/Arrow'
 
 export default function Controls({
 	currentPage,
@@ -27,7 +27,7 @@ export default function Controls({
 				</span>
 			</div>
 			<div className="flex items-center gap-x-2">
-				<PrimaryButtonLink
+				{/* <PrimaryButtonLink
 					onClick={() => setOptimisticState(currentPage - 1)}
 					disabled={isPending || currentPage === 1}
 					data-pending={isPending ? '' : undefined}
@@ -42,7 +42,7 @@ export default function Controls({
 				>
 					<IconArrow className="size-5" />
 					<span className="sr-only">Next</span>
-				</PrimaryButtonLink>
+				</PrimaryButtonLink> */}
 			</div>
 		</>
 	)
