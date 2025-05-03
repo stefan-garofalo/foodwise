@@ -3,7 +3,7 @@ import { db } from '@repo/db/client'
 import { router } from './trpc'
 import { categoriesRouter } from './features/categories/router'
 import { createCallerFactory } from './trpc'
-import { auth } from '@repo/auth'
+import { auth } from '@repo/auth/server'
 
 export const appRouter = router({
 	categories: categoriesRouter

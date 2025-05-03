@@ -5,14 +5,14 @@ import { Button } from '@/modules/ui/primitives/button'
 import { usePageDictionary } from '@/modules/i18n/hooks/dictionaries'
 import { ClassProps } from '@/modules/ui/utils/types'
 import { merge } from '@/modules/ui/utils/tailwind'
-import { authClient } from '@repo/auth'
+import { signInWithGoogle } from '@/modules/auth/lib/client'
 
 export function LoginButton({ className }: ClassProps) {
 	const labels = usePageDictionary<'login'>()
 
 	return (
 		<Button
-			onClick={() => authClient.signIn.social({ provider: 'google' })}
+			onClick={signInWithGoogle}
 			className={merge(className)}
 			variant="default"
 			size="full"

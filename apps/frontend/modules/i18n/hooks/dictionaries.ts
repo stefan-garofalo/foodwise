@@ -12,6 +12,6 @@ export function useGlobalDictionary() {
 
 export function usePageDictionary<P extends string>() {
 	const { lang } = useParams<LangParams>()
-	const paths = useCleanedPath() as P
-	return getPageDictionary<P>(lang, paths)
+	const paths = useCleanedPath()
+	return getPageDictionary<P>(lang, paths.split('/').filter(Boolean).join('.') as P)
 }

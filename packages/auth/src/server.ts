@@ -1,6 +1,7 @@
-import { betterAuth, Session } from 'better-auth'
-import { createAuthClient } from 'better-auth/client'
+import { betterAuth } from 'better-auth'
 import { LibsqlDialect } from '@libsql/kysely-libsql'
+
+export type { Session } from 'better-auth'
 
 const dialect = new LibsqlDialect({
 	url: process.env.TURSO_DB_URL!,
@@ -19,6 +20,3 @@ export const auth = betterAuth({
 		}
 	}
 })
-
-export const authClient = createAuthClient()
-export type { Session }

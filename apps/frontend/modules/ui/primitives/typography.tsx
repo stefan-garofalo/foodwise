@@ -1,5 +1,5 @@
-import { ComponentProps } from '@/utils/types'
 import { merge } from '../utils/tailwind'
+import { BaseComponentProps } from '../utils/types'
 
 const tags = {
 	title: 'h1',
@@ -10,7 +10,7 @@ const classes = {
 	subtitle: 'text-xl lg:text-title-sm'
 }
 
-type TypographyProps = ComponentProps & {
+type TypographyProps = BaseComponentProps & {
 	variant: keyof typeof tags
 	heading?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 }

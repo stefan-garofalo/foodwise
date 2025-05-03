@@ -9,11 +9,6 @@ export type Prettify<T> = T extends object
 			} & {}
 	: T
 
-export type ComponentProps = {
-	children?: React.ReactNode
-	className?: ClassValue
-}
-
 export type PageParams = {
 	params: LangPageParams
 }
