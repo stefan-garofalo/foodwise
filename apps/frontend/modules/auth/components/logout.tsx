@@ -1,6 +1,6 @@
 'use client'
 
-import { signOut } from '@/modules/auth/lib/client/actions'
+import { signOut } from '@/modules/auth/lib/client/signin'
 
 import { Button } from '@/modules/ui/primitives/button'
 import { ClassProps } from '@/modules/ui/utils/types'
@@ -13,8 +13,8 @@ export function LogoutButton({ className }: ClassProps) {
 		<Button
 			onClick={signOut}
 			className={merge(className)}
-			variant="danger"
-			size="icon"
+			variant="default"
+			size="full"
 		>
 			<LogOut />
 		</Button>
