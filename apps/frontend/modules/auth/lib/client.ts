@@ -7,5 +7,8 @@ const authClient = createAuthClient({
 })
 
 export async function signInWithGoogle() {
-	return await authClient.signIn.social({ provider: 'google' })
+	return await authClient.signIn.social({
+		provider: 'google',
+		callbackURL: process.env.NEXT_PUBLIC_FRONTEND_URL!
+	})
 }

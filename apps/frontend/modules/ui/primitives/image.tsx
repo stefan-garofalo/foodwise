@@ -27,7 +27,10 @@ export default function Image({
 					})}
 			src={item.url}
 			alt={
-				item?.alt ?? alt ?? process?.env?.NEXT_PUBLIC_SITE_URL?.split('//')[1] ?? ''
+				item?.alt ??
+				alt ??
+				process?.env?.NEXT_PUBLIC_FRONTEND_URL?.split('//')[1] ??
+				''
 			}
 			sizes={sizes}
 			{...props}

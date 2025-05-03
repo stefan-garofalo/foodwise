@@ -9,10 +9,15 @@ const dialect = new LibsqlDialect({
 })
 
 export const auth = betterAuth({
+	authUrl: process.env.BETTER_AUTH_URL!,
 	database: {
 		dialect,
 		type: 'sqlite'
 	},
+	trustedOrigins: [
+		process.env.NEXT_PUBLIC_BACKEND_URL!,
+		process.env.NEXT_PUBLIC_FRONTEND_URL!
+	],
 	socialProviders: {
 		google: {
 			clientId: process.env.GOOGLE_CLIENT_ID!,
