@@ -13,8 +13,8 @@ export function LogoutButton({ className }: ClassProps) {
 		<Button
 			onClick={signOut}
 			className={merge(className)}
-			variant="default"
-			size="full"
+			variant="danger"
+			size="icon"
 		>
 			<LogOut />
 		</Button>
