@@ -50,7 +50,7 @@ export function TRPCReactProvider(props: { children: React.ReactNode }) {
 						(op.direction === 'down' && op.result instanceof Error)
 				}),
 				unstable_httpBatchStreamLink({
-					url: getBaseUrl() + '/api/trpc'
+					url: env.NEXT_PUBLIC_BACKEND_URL + '/api/trpc'
 				})
 			]
 		})
@@ -63,10 +63,4 @@ export function TRPCReactProvider(props: { children: React.ReactNode }) {
 			</api.Provider>
 		</QueryClientProvider>
 	)
-}
-
-function getBaseUrl() {
-	if (process.env.NODE_ENV === 'development')
-		return `http://localhost:${env.NEXT_PUBLIC_LOCAL_BACKEND_PORT}`
-	if (env.NEXT_PUBLIC_BACKEND_URL) return `https://${env.NEXT_PUBLIC_BACKEND_URL}`
 }
