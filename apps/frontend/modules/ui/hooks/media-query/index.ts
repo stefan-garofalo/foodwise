@@ -25,9 +25,5 @@ function useMediaQuery(query: string) {
 		return window.matchMedia(query).matches
 	}
 
-	const getServerSnapshot = () => {
-		throw Error('useMediaQuery is a client-only hook')
-	}
-
-	return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
+	return useSyncExternalStore(subscribe, getSnapshot)
 }
