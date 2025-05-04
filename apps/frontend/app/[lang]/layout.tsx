@@ -1,8 +1,8 @@
 import '../globals.css'
-import { inter } from '@/lib/font'
-import { LOCALE_LIST } from '@/feat/i18n/config'
-import { LangPageParams } from '@/feat/i18n/types'
-import { TRPCReactProvider } from '@/lib/trpc/react'
+import { instrument, geist } from '@/modules/font'
+import { LOCALE_LIST } from '@/modules/i18n/config'
+import { LangPageParams } from '@/modules/i18n/types'
+import Providers from '@/modules/providers'
 
 export const experimental_ppr = true
 
@@ -19,8 +19,8 @@ export default async function RootLayout({ params, children }: LayoutProps) {
 
 	return (
 		<html lang={lang}>
-			<body className={inter.className}>
-				<TRPCReactProvider>{children}</TRPCReactProvider>
+			<body className={`${geist.variable} ${instrument.variable}`}>
+				<Providers>{children}</Providers>
 			</body>
 		</html>
 	)

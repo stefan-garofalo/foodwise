@@ -1,22 +1,39 @@
-import { NextRequest, NextResponse } from "next/server"
-import { LOCALE_LIST } from "./feat/i18n/config"
+import { NextResponse } from 'next/server'
+
+import type { NextRequest } from 'next/server'
+import {
+	createLocaleRedirectUrl,
+	getLocaleFromCookie,
+	getLocaleFromPathname
+} from './modules/i18n/middleware'
+import { isStaticFile } from './utils/middleware'
 
 export function middleware(request: NextRequest) {
-  const { pathname, search } = request.nextUrl
+	const { pathname, search } = request.nextUrl
+	if (isStaticFile(pathname)) return NextResponse.next()
 
-  if (pathname.match(/\.[^/]+$/)) {
-    return NextResponse.next()
-  }
-  const pathnameIsMissingLocale = LOCALE_LIST.every(
-    (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
-  )
-  if (pathnameIsMissingLocale) {
-    return NextResponse.redirect(
-      new URL(`/${LOCALE_LIST[0]}/${pathname}${search}`, request.url)
-    )
-  }
+	const pathLocale = getLocaleFromPathname(pathname)
+	if (!pathLocale) {
+		return NextResponse.redirect(
+			createLocaleRedirectUrl(request, pathname, search, request.url)
+		)
+	}
+
+	const cookieLocale = getLocaleFromCookie(request)
+	if (cookieLocale === pathLocale) return NextResponse.next()
+
+	const response = NextResponse.next()
+	response.cookies.set('x-locale', pathLocale)
+	return response
 }
 
+/*
+ * Match all request paths except for the ones starting with:
+ * - api (API routes)
+ * - trpc (TRPC routes)
+ * - _next (all Next.js internal files)
+ * - favicon.ico (favicon file)
+ */
 export const config = {
-  matcher: ["/((?!_next).*)"],
+	matcher: ['/((?!api|trpc|_next|favicon.ico).*)']
 }

@@ -9,7 +9,8 @@
   │   ├── backend/    # Hono.js backend
   │   └── frontend/   # Next.js frontend
   └── packages/
-      └── api/        # Shared tRPC routers and procedures
+      ├── api/        # Shared tRPC routers and procedures
+      ├── auth/       # Better Auth configuration
       └── db/         # Shared database client
   ```
 
