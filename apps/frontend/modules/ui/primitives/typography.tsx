@@ -1,4 +1,4 @@
-import { merge } from '../utils/tailwind'
+import { merge } from '@/modules/ui/utils/tailwind'
 import { BaseComponentProps } from '../utils/types'
 
 const tags = {

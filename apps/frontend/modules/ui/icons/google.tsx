@@ -1,5 +1,5 @@
 import { IconProps } from '.'
-import { merge } from '../utils/tailwind'
+import { merge } from '@/modules/ui/utils/tailwind'
 
 export const GoogleIcon = ({ className = 'size-4', color }: IconProps) => (
 	<svg

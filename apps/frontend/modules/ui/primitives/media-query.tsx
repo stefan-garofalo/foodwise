@@ -1,5 +1,5 @@
 'use client'
-import useMediaQuery from '../hooks/useMediaQuery'
+import useMediaQuery from '../hooks/media-query'
 
 export function MediaQueryMobile({ children }: { children: React.ReactNode }) {
 	const isDesktop = useMediaQuery()

@@ -1,6 +1,6 @@
 'use client'
 
-import { signOut } from '@/modules/auth/lib/client/signin'
+import { signOut } from '@/modules/auth/lib/client/actions'
 
 import { Button } from '@/modules/ui/primitives/button'
 import { ClassProps } from '@/modules/ui/utils/types'

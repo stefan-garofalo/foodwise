@@ -35,7 +35,7 @@
 		var(--color-deep-teal-darkest)
 	);
 	--color-foreground: light-dark(
-		var(--color-deep-teal-darker),
+		var(--color-deep-teal-darkest),
 		var(--color-subtle-cream)
 	);
 
