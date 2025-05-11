@@ -5,7 +5,7 @@
 		"build": {
 			"dependsOn": ["^build"],
 			"inputs": ["$TURBO_DEFAULT$", ".env*", "$NODE_ENV"],
-			"outputs": [".next/**", "!.next/cache/**"]
+			"outputs": [".next/**", "!.next/cache/**", "apps/backend/dist/**"]
 		},
 		"lint": {
 			"dependsOn": ["^lint"]

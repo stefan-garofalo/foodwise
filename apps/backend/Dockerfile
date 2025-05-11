@@ -1,55 +1,60 @@
 FROM oven/bun:alpine as builder
-
 WORKDIR /app
 
-# Accept build arguments
-ARG BETTER_AUTH_SECRET
-ARG BETTER_AUTH_URL
-ARG GOOGLE_CLIENT_ID
-ARG GOOGLE_CLIENT_SECRET
-ARG TURSO_DB_URL
-ARG TURSO_AUTH_TOKEN
-ARG NEXT_PUBLIC_BACKEND_URL
-ARG NEXT_PUBLIC_FRONTEND_URL
-
-# Copy workspace files first
+# Copy essential root configuration files
 COPY package.json ./
-COPY bun.lock ./
+COPY bun.lockb ./
+COPY turbo.json ./
+# COPY tsconfig.json ./ # Uncomment if you have a root tsconfig.json relevant to the build
 
-# Copy workspace packages
+# Copy all applications and packages
+COPY apps/ ./apps/
 COPY packages/ ./packages/
 
-# Copy the backend app
-COPY apps/backend/ ./apps/backend/
+# Install all monorepo dependencies
+# Using --frozen-lockfile is good practice for CI/CD
+RUN bun install --frozen-lockfile
 
-# Install all dependencies from root
-RUN bun install
+# Build only the backend application using Turborepo
+# This relies on apps/backend/package.json having a "build" script
+# that outputs to apps/backend/dist/
 RUN bunx turbo build --filter=@apps/backend
 
-# Production stage
+# Production Stage: Prepares a lean image with only the built backend and its runtime needs
 FROM oven/bun:alpine
-
 WORKDIR /app
 
-# Copy the necessary files from builder
-COPY --from=builder /app/apps/backend ./apps/backend
-COPY --from=builder /app/packages ./packages
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/package.json ./package.json
+# Set NODE_ENV to production
+ENV NODE_ENV=production
 
-# Set working directory to backend
-WORKDIR /app/apps/backend
+# Copy the compiled backend output from the builder stage
+COPY --from=builder /app/apps/backend/dist ./dist
 
+# Copy the backend's package.json to run its 'start' script and install its specific prod dependencies
+COPY --from=builder /app/apps/backend/package.json ./package.json
+
+# Copy the root lockfile to ensure consistent prod dependency installation for the backend
+COPY --from=builder /app/bun.lockb ./bun.lockb
+
+# Install only production dependencies defined in the backend's package.json
+# This uses the backend's package.json (now in /app/package.json) and the root bun.lockb
+RUN bun install --production --frozen-lockfile
+
+# Expose the port the backend will run on
 EXPOSE 3080
 
-# Set environment variables
-ENV BETTER_AUTH_SECRET=$BETTER_AUTH_SECRET
-ENV BETTER_AUTH_URL=$BETTER_AUTH_URL
-ENV GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID
-ENV GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET
-ENV TURSO_DB_URL=$TURSO_DB_URL
-ENV TURSO_AUTH_TOKEN=$TURSO_AUTH_TOKEN
-ENV NEXT_PUBLIC_BACKEND_URL=$NEXT_PUBLIC_BACKEND_URL
-ENV NEXT_PUBLIC_FRONTEND_URL=$NEXT_PUBLIC_FRONTEND_URL
+# Copy .env file or manage environment variables through Coolify's service configuration
+# For Coolify, it's generally better to set environment variables in the Coolify UI
+# ARG BETTER_AUTH_SECRET
+# ARG BETTER_AUTH_URL
+# ARG GOOGLE_CLIENT_ID
+# ARG GOOGLE_CLIENT_SECRET
+# ARG TURSO_DB_URL
+# ARG TURSO_AUTH_TOKEN
+# ARG NEXT_PUBLIC_BACKEND_URL
+# ARG NEXT_PUBLIC_FRONTEND_URL
 
+# Command to run the backend application
+# This should use the "start" script from apps/backend/package.json,
+# which should point to the compiled output, e.g., "bun ./dist/index.js"
 CMD ["bun", "run", "start"]
