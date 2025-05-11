@@ -35,5 +35,5 @@ function useMediaQuery(query: string) {
 		return window.matchMedia(query).matches
 	}
 
-	return useSyncExternalStore(subscribe, getSnapshot)
+	return useSyncExternalStore(subscribe, getSnapshot, () => false)
 }
