@@ -4,10 +4,14 @@
 		"dev": "bun run --hot src/index.ts",
 		"start": "bun run src/index.ts"
 	},
+	"workspaces": [
+		"packages/*"
+	],
 	"dependencies": {
 		"@hono/trpc-server": "^0.3.4",
 		"hono": "^4.7.6",
-		"@repo/auth": "workspace:*"
+		"@repo/auth": "workspace:*",
+		"@repo/api": "workspace:*"
 	},
 	"devDependencies": {
 		"@types/bun": "latest"
