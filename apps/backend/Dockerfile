@@ -2,21 +2,35 @@ FROM oven/bun:alpine as builder
 
 WORKDIR /app
 
-# Copy the entire workspace first
-COPY . .
+# Accept build arguments
+ARG BETTER_AUTH_SECRET
+ARG BETTER_AUTH_URL
+ARG GOOGLE_CLIENT_ID
+ARG GOOGLE_CLIENT_SECRET
+ARG TURSO_DB_URL
+ARG TURSO_AUTH_TOKEN
+ARG NEXT_PUBLIC_BACKEND_URL
+ARG NEXT_PUBLIC_FRONTEND_URL
 
-# Install all workspace dependencies from root
+# Copy workspace files first
+COPY package.json ./
+COPY bun.lock ./
+
+# Copy workspace packages
+COPY packages/ ./packages/
+
+# Copy the backend app
+COPY apps/backend/ ./apps/backend/
+
+# Install all dependencies from root
 RUN bun install
-
-# Build if needed
-RUN cd apps/backend && bun run build || true
 
 # Production stage
 FROM oven/bun:alpine
 
 WORKDIR /app
 
-# Copy the built app and workspace dependencies
+# Copy the necessary files from builder
 COPY --from=builder /app/apps/backend ./apps/backend
 COPY --from=builder /app/packages ./packages
 COPY --from=builder /app/node_modules ./node_modules
@@ -27,7 +41,7 @@ WORKDIR /app/apps/backend
 
 EXPOSE 3080
 
-# Pass environment variables as ENV instead of ARG
+# Set environment variables
 ENV BETTER_AUTH_SECRET=$BETTER_AUTH_SECRET
 ENV BETTER_AUTH_URL=$BETTER_AUTH_URL
 ENV GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID

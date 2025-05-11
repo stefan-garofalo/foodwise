@@ -10,6 +10,10 @@ app.use('*', corsMiddleware)
 app.use('api/trpc/*', trpcMiddleware)
 app.on(['POST', 'GET'], 'api/auth/*', authHandler)
 
+app.get('/health', (c) => {
+	return c.json({ status: 'ok', timestamp: new Date().toISOString() })
+})
+
 export default {
 	port: 3080,
 	fetch: app.fetch
