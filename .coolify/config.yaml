@@ -1,0 +1,22 @@
+version: 1
+
+applications:
+  - name: hono-backend
+    port: 3080
+    dockerfile: apps/backend/Dockerfile
+    buildArgs:
+      BETTER_AUTH_SECRET: "{{ BETTER_AUTH_SECRET }}"
+      BETTER_AUTH_URL: "{{ BETTER_AUTH_URL }}"
+      GOOGLE_CLIENT_ID: "{{ GOOGLE_CLIENT_ID }}"
+      GOOGLE_CLIENT_SECRET: "{{ GOOGLE_CLIENT_SECRET }}"
+      TURSO_DB_URL: "{{ TURSO_DB_URL }}"
+      TURSO_AUTH_TOKEN: "{{ TURSO_AUTH_TOKEN }}"
+      NEXT_PUBLIC_BACKEND_URL: "{{ NEXT_PUBLIC_BACKEND_URL }}"
+      NEXT_PUBLIC_FRONTEND_URL: "{{ NEXT_PUBLIC_FRONTEND_URL }}"
+    
+    healthcheck:
+      path: /health
+      port: 3080
+      interval: 30s
+      timeout: 10s
+      retries: 3
