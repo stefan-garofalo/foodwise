@@ -12,15 +12,8 @@ ARG TURSO_AUTH_TOKEN
 ARG NEXT_PUBLIC_BACKEND_URL
 ARG NEXT_PUBLIC_FRONTEND_URL
 
-# Copy workspace files first
-COPY package.json ./
-COPY bun.lock ./
-
-# Copy workspace packages
-COPY packages/ ./packages/
-
-# Copy the backend app
-COPY apps/backend/ ./apps/backend/
+# Copy monorepo root into builder for Turbo
+COPY . .
 
 # Install all dependencies from root
 RUN bun install
@@ -28,7 +21,7 @@ RUN bunx turbo build --filter=@apps/backend
 
 # Production stage
 FROM oven/bun:alpine
-
+  
 WORKDIR /app
 
 # Copy the necessary files from builder
