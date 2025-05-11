@@ -24,6 +24,7 @@ COPY apps/backend/ ./apps/backend/
 
 # Install all dependencies from root
 RUN bun install
+RUN bunx turbo build --filter=@apps/backend
 
 # Production stage
 FROM oven/bun:alpine

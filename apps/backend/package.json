@@ -1,8 +1,8 @@
 {
-	"name": "backend",
+	"name": "@apps/backend",
 	"scripts": {
 		"dev": "bun run --hot src/index.ts",
-		"start": "bun run src/index.ts"
+		"build": "bun run src/index.ts"
 	},
 	"dependencies": {
 		"@hono/trpc-server": "^0.3.4",
