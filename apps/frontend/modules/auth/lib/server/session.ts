@@ -1,6 +1,6 @@
 'server-only'
 
-import { auth } from '@repo/auth/server'
+import { auth } from '@foodwise/auth/server'
 import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
 

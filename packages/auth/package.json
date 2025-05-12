@@ -1,20 +1,23 @@
 {
-	"name": "@repo/auth",
-	"version": "0.0.1",
-	"dependencies": {
-		"@libsql/kysely-libsql": "^0.4.1",
-		"better-auth": "^1.2.5"
+	"name": "@foodwise/auth",
+	"scripts": {
+		"build": "bunx tsc"
 	},
 	"exports": {
 		"./server": {
 			"types": "./src/server.ts",
-			"import": "./src/server.ts",
-			"require": "./src/server.ts"
+			"default": "./server.ts"
 		},
 		"./client": {
 			"types": "./src/client.ts",
-			"import": "./src/client.ts",
-			"require": "./src/client.ts"
+			"default": "./client.ts"
 		}
+	},
+	"dependencies": {
+		"@libsql/kysely-libsql": "^0.4.1",
+		"better-auth": "^1.2.5"
+	},
+	"devDependencies": {
+		"@foodwise/tsconfig": "workspace:*"
 	}
 }

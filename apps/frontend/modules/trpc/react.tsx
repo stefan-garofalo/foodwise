@@ -8,7 +8,7 @@ import {
 	type AppRouter,
 	type inferRouterInputs,
 	type inferRouterOutputs
-} from '@repo/api'
+} from '@foodwise/api'
 import { env } from '@/env'
 import { createQueryClient } from './query-client'
 

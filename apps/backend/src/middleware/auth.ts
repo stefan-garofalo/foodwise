@@ -1,4 +1,4 @@
-import { auth } from '@repo/auth/server'
+import { auth } from '@foodwise/auth/server'
 import { Context } from 'hono'
 import { BlankEnv, Next } from 'hono/types'
 

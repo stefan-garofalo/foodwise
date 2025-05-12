@@ -1,5 +1,5 @@
 import { trpcServer } from '@hono/trpc-server'
-import { appRouter, createTRPCContext } from '@repo/api'
+import { appRouter, createTRPCContext } from '@foodwise/api'
 
 export const trpcMiddleware = trpcServer({
 	router: appRouter,

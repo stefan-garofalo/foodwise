@@ -1,20 +1,25 @@
 {
-  "name": "@repo/db",
-  "version": "0.1.0",
-  "main": "./client.ts",
-  "types": "./client.ts",
-  "scripts": {
-    "db:generate": "drizzle-kit generate",
-    "db:migrate": "drizzle-kit migrate",
-    "db:studio": "drizzle-kit studio"
-  },
-  "dependencies": {
-    "@libsql/client": "^0.14.0",
-    "drizzle-orm": "^0.38.4",
-    "drizzle-zod": "^0.6.1"
-  },
-  "devDependencies": {
-    "@types/bun": "latest",
-    "drizzle-kit": "^0.30.6"
-  }
+	"name": "@foodwise/db",
+	"exports": {
+		"./client": {
+			"types": "./client.ts",
+			"default": "./client.ts"
+		}
+	},
+	"scripts": {
+		"build": "bunx tsc",
+		"db:generate": "drizzle-kit generate",
+		"db:migrate": "drizzle-kit migrate",
+		"db:studio": "drizzle-kit studio"
+	},
+	"dependencies": {
+		"@libsql/client": "^0.14.0",
+		"drizzle-orm": "^0.38.4",
+		"drizzle-zod": "^0.6.1"
+	},
+	"devDependencies": {
+		"@foodwise/tsconfig": "workspace:*",
+		"@types/bun": "latest",
+		"drizzle-kit": "^0.30.6"
+	}
 }

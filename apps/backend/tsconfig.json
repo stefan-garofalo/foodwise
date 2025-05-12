@@ -1,9 +1,8 @@
 {
+	"extends": "@foodwise/tsconfig/base.json",
 	"compilerOptions": {
 		"strict": true,
 		"jsx": "react-jsx",
-		"jsxImportSource": "hono/jsx",
-		"moduleResolution": "bundler",
-		"module": "esnext"
+		"jsxImportSource": "hono/jsx"
 	}
 }

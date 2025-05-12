@@ -8,10 +8,11 @@
 	"dependencies": {
 		"@hono/trpc-server": "^0.3.4",
 		"hono": "^4.7.6",
-		"@repo/auth": "workspace:*",
-		"@repo/api": "workspace:*"
+		"@foodwise/auth": "workspace:*",
+		"@foodwise/api": "workspace:*"
 	},
 	"devDependencies": {
+		"@foodwise/tsconfig": "workspace:*",
 		"@types/bun": "latest"
 	}
 }

@@ -1,13 +1,24 @@
 {
-	"name": "@repo/api",
-	"version": "0.1.0",
-	"main": "./src/index.ts",
-	"types": "./src/index.ts",
+	"name": "@foodwise/api",
+	"type": "module",
+	"scripts": {
+		"build": "bunx tsc"
+	},
+	"exports": {
+		".": {
+			"types": "./index.ts",
+			"default": "./index.ts"
+		}
+	},
 	"dependencies": {
-		"@repo/auth": "workspace:*",
-		"@repo/db": "workspace:*",
+		"@foodwise/auth": "workspace:*",
+		"@foodwise/db": "workspace:*",
 		"@trpc/server": "^11.1.0",
 		"neverthrow": "^8.2.0",
 		"zod": "^3.24.2"
+	},
+	"devDependencies": {
+		"@foodwise/tsconfig": "workspace:*",
+		"typescript": "latest"
 	}
 }

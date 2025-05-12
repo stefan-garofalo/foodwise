@@ -4,7 +4,7 @@ import { createHydrationHelpers } from '@trpc/react-query/rsc'
 import { headers } from 'next/headers'
 import { cache } from 'react'
 
-import { createTRPCContext, type AppRouter, createCaller } from '@repo/api'
+import { createTRPCContext, type AppRouter, createCaller } from '@foodwise/api'
 import { createQueryClient } from './query-client'
 
 /**

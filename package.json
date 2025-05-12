@@ -1,20 +1,22 @@
 {
 	"name": "foodwise",
 	"devDependencies": {
+		"@foodwise/tsconfig": "workspace:*",
 		"prettier": "^3.2.5",
-		"turbo": "^2.3.3",
-		"typescript": "5.5.4"
+		"turbo": "^2.5.3",
+		"typescript": "^5.8.3"
 	},
 	"engines": {
 		"node": ">=22"
 	},
-	"packageManager": "bun@1.1.42",
+	"packageManager": "bun@1.2.13",
 	"private": true,
 	"scripts": {
 		"build": "turbo build",
 		"dev": "turbo dev",
 		"lint": "turbo lint",
 		"format": "prettier --write \"**/*.{ts,tsx,md}\"",
+		"typecheck": "turbo typecheck",
 		"better-auth:generate": "bunx @better-auth/cli generate --config packages/auth/src/index.ts",
 		"better-auth:migrate": "bunx @better-auth/cli migrate --config packages/auth/src/index.ts"
 	},
