@@ -3,8 +3,6 @@ FROM oven/bun:alpine AS builder
 WORKDIR /app
 USER root
 RUN apk add --no-cache git
-USER bun
-
 COPY package.json bun.lock turbo.json ./
 COPY . .
 RUN bunx turbo prune --scope=@apps/backend --docker
