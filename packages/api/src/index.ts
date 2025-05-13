@@ -1,9 +1,10 @@
 import { db } from '@foodwise/db/client'
 
 import { router } from './trpc'
-import { categoriesRouter } from './features/categories/router'
+
 import { createCallerFactory } from './trpc'
 import { auth } from '@foodwise/auth/server'
+import { categoriesRouter } from './features/categories/router'
 
 export const appRouter = router({
 	categories: categoriesRouter

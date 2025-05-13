@@ -1,17 +1,16 @@
 import { z } from 'zod'
 import { err, ok } from 'neverthrow'
-import { eq, inArray } from '@foodwise/db/utils'
+import { eq, inArray, type BaseSQLiteTable } from '@foodwise/db/utils/index'
 
 import {
 	createInsertSchema,
 	createSelectSchema,
 	createUpdateSchema,
 	toSelectFields
-} from '@foodwise/db/schema/utils'
+} from '@foodwise/db/schema/utils/index'
 import { authedProcedure } from '../trpc'
 
-import { BaseSQLiteTable } from '@foodwise/db/utils'
-import { SQLiteTable, SQLiteUpdateSetSource } from 'drizzle-orm/sqlite-core'
+import { SQLiteTable, type SQLiteUpdateSetSource } from 'drizzle-orm/sqlite-core'
 
 export function createBaseProcedures<TTable extends BaseSQLiteTable>(
 	table: TTable

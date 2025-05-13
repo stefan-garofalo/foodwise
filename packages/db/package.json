@@ -2,12 +2,23 @@
 	"name": "@foodwise/db",
 	"exports": {
 		"./client": {
-			"types": "./client.ts",
-			"default": "./client.ts"
+			"types": "./src/client.ts",
+			"default": "./src/client.ts"
+		},
+		"./utils/*": {
+			"types": "./src/utils/*.ts",
+			"default": "./src/utils/*.ts"
+		},
+		"./schema": {
+			"types": "./src/schema/index.ts",
+			"default": "./src/schema/index.ts"
+		},
+		"./schema/utils/*": {
+			"types": "./src/schema/utils/*.ts",
+			"default": "./src/schema/utils/*.ts"
 		}
 	},
 	"scripts": {
-		"build": "bunx tsc",
 		"db:generate": "drizzle-kit generate",
 		"db:migrate": "drizzle-kit migrate",
 		"db:studio": "drizzle-kit studio"

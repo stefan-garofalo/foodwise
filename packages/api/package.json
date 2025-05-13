@@ -1,13 +1,10 @@
 {
 	"name": "@foodwise/api",
 	"type": "module",
-	"scripts": {
-		"build": "bunx tsc"
-	},
 	"exports": {
 		".": {
-			"types": "./index.ts",
-			"default": "./index.ts"
+			"types": "./src/index.ts",
+			"default": "./src/index.ts"
 		}
 	},
 	"dependencies": {

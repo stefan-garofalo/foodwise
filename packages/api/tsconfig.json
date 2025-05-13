@@ -1,25 +1,3 @@
 {
-	"compilerOptions": {
-		"lib": ["ESNext"],
-		"target": "ESNext",
-		"module": "ESNext",
-		"moduleDetection": "force",
-		"allowJs": true,
-		"moduleResolution": "bundler",
-		"allowImportingTsExtensions": true,
-		"verbatimModuleSyntax": true,
-		"noEmit": true,
-		"strict": true,
-		"skipLibCheck": true,
-		"noFallthroughCasesInSwitch": true,
-		"noUncheckedIndexedAccess": true,
-		"noPropertyAccessFromIndexSignature": false,
-		"jsx": "react-jsx",
-		"jsxImportSource": "hono/jsx",
-		"baseUrl": ".",
-		"paths": {
-			"@api/*": ["src/*"]
-		},
-		"types": ["bun-types"]
-	}
+	"extends": "@foodwise/tsconfig/base.json"
 }

@@ -1,6 +1,6 @@
 import { auth } from '@foodwise/auth/server'
-import { Context } from 'hono'
-import { BlankEnv, Next } from 'hono/types'
+import { type Context } from 'hono'
+import { type BlankEnv } from 'hono/types'
 
 export const authHandler = async (c: Context<BlankEnv, '/auth/*', {}>) =>
 	await auth.handler(c.req.raw)

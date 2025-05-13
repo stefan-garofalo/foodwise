@@ -1,16 +1,13 @@
 {
 	"name": "@foodwise/auth",
-	"scripts": {
-		"build": "bunx tsc"
-	},
 	"exports": {
 		"./server": {
 			"types": "./src/server.ts",
-			"default": "./server.ts"
+			"default": "./src/server.ts"
 		},
 		"./client": {
 			"types": "./src/client.ts",
-			"default": "./client.ts"
+			"default": "./src/client.ts"
 		}
 	},
 	"dependencies": {
