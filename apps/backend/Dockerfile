@@ -12,7 +12,7 @@ FROM oven/bun:alpine AS installer
 WORKDIR /app
 
 COPY --from=builder /app/out/json ./
-RUN bun install --frozen-lockfile
+RUN bun install
 
 COPY --from=builder /app/out/full ./
 RUN bunx turbo build --filter=@apps/backend
