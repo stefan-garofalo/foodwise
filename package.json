@@ -18,7 +18,7 @@
 		"format": "prettier --write \"**/*.{ts,tsx,md}\"",
 		"typecheck": "turbo typecheck",
 		"better-auth:generate": "bunx @better-auth/cli generate --config packages/auth/src/index.ts",
-		"better-auth:migrate": "bunx @better-auth/cli migrate --config packages/auth/src/index.ts"
+		"better-auth:migrate": "bunx @better-auth/cli migrate --config packages/auth/src/index.ts --output packages/auth/migrations"
 	},
 	"workspaces": [
 		"apps/*",
