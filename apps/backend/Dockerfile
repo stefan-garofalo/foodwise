@@ -43,7 +43,7 @@ COPY --from=builder /app/packages/tsconfig ./packages/tsconfig # For base tsconf
 
 # Copy the root package.json and bun.lock to provide workspace context and ensure consistent installs
 COPY --from=builder /app/package.json ./package.json
-COPY --from=builder /app/bun.lockb ./bun.lockb
+COPY --from=builder /app/bun.lock ./bun.lock
 
 # Change WORKDIR to the backend app's directory to install its specific dependencies
 WORKDIR /app/apps/backend
