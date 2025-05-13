@@ -3,7 +3,7 @@ WORKDIR /app
 
 # Copy essential root configuration files
 COPY package.json ./
-COPY bun.lockb ./
+COPY bun.lock ./
 COPY turbo.json ./
 # COPY tsconfig.json ./ # Uncomment if you have a root tsconfig.json relevant to the build
 
@@ -34,10 +34,10 @@ COPY --from=builder /app/apps/backend/dist ./dist
 COPY --from=builder /app/apps/backend/package.json ./package.json
 
 # Copy the root lockfile to ensure consistent prod dependency installation for the backend
-COPY --from=builder /app/bun.lockb ./bun.lockb
+COPY --from=builder /app/bun.lock ./bun.lock
 
 # Install only production dependencies defined in the backend's package.json
-# This uses the backend's package.json (now in /app/package.json) and the root bun.lockb
+# This uses the backend's package.json (now in /app/package.json) and the root bun.lock
 RUN bun install --production --frozen-lockfile
 
 # Expose the port the backend will run on
