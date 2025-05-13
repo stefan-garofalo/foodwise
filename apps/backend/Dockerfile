@@ -15,36 +15,48 @@ COPY packages/ ./packages/
 # Using --frozen-lockfile is good practice for CI/CD
 RUN bun install --frozen-lockfile
 
-# Build only the backend application using Turborepo
-# This relies on apps/backend/package.json having a "build" script
-# that outputs to apps/backend/dist/
-RUN bunx turbo build --filter=@apps/backend
+# Build step for backend is removed, we will run from source
+# RUN bunx turbo build --filter=@apps/backend
 
-# Production Stage: Prepares a lean image with only the built backend and its runtime needs
+# Production Stage: Prepares a lean image with only the backend and its runtime needs
 FROM oven/bun:alpine
-WORKDIR /app
+# WORKDIR /app # Set WORKDIR after initial copies if needed, or structure for monorepo root
 
 # Set NODE_ENV to production
 ENV NODE_ENV=production
 
-# Copy the compiled backend output from the builder stage
-COPY --from=builder /app/apps/backend/dist ./dist
+# Create the /app directory structure for the monorepo subset needed by the backend
+WORKDIR /app
 
-# Copy the backend's package.json to run its 'start' script and install its specific prod dependencies
-COPY --from=builder /app/apps/backend/package.json ./package.json
+# Copy the backend's source code
+COPY --from=builder /app/apps/backend/src ./apps/backend/src/
 
-# Copy the root lockfile to ensure consistent prod dependency installation for the backend
-COPY --from=builder /app/bun.lock ./bun.lock
+# Copy the backend's package.json and tsconfig.json (if it exists)
+COPY --from=builder /app/apps/backend/package.json ./apps/backend/package.json
+# Assuming apps/backend/tsconfig.json exists and is needed for 'bun run src/index.ts'
+COPY --from=builder /app/apps/backend/tsconfig.json ./apps/backend/tsconfig.json
 
-# Install only production dependencies defined in the backend's package.json
-# This uses the backend's package.json (now in /app/package.json) and the root bun.lock
+# Copy required workspace packages (source code and package.json)
+COPY --from=builder /app/packages/auth ./packages/auth
+COPY --from=builder /app/packages/api ./packages/api
+COPY --from=builder /app/packages/tsconfig ./packages/tsconfig # For base tsconfig files
+
+# Copy the root package.json and bun.lock to provide workspace context and ensure consistent installs
+COPY --from=builder /app/package.json ./package.json
+COPY --from=builder /app/bun.lockb ./bun.lockb
+
+# Change WORKDIR to the backend app's directory to install its specific dependencies
+WORKDIR /app/apps/backend
+
+# Install only production dependencies for the backend
+# This uses apps/backend/package.json and the root bun.lock.
+# Workspace dependencies (@foodwise/auth, @foodwise/api) will be linked from /app/packages/...
 RUN bun install --production --frozen-lockfile
 
 # Expose the port the backend will run on
 EXPOSE 3080
 
-# Copy .env file or manage environment variables through Coolify's service configuration
-# For Coolify, it's generally better to set environment variables in the Coolify UI
+# Environment variables will be managed by Coolify or other deployment mechanisms
 # ARG BETTER_AUTH_SECRET
 # ARG BETTER_AUTH_URL
 # ARG GOOGLE_CLIENT_ID
@@ -55,6 +67,6 @@ EXPOSE 3080
 # ARG NEXT_PUBLIC_FRONTEND_URL
 
 # Command to run the backend application
-# This should use the "start" script from apps/backend/package.json,
-# which should point to the compiled output, e.g., "bun ./dist/index.js"
+# WORKDIR is /app/apps/backend, so 'start' script from ./package.json is used
+# which should be "bun run src/index.ts"
 CMD ["bun", "run", "start"]
