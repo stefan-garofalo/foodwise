@@ -5,7 +5,17 @@
 		"build": {
 			"dependsOn": ["^build"],
 			"inputs": ["$TURBO_DEFAULT$", ".env*", "$NODE_ENV"],
-			"outputs": [".next/**", "!.next/cache/**", "apps/backend/dist/**"]
+			"outputs": [".next/**", "!.next/cache/**", "apps/backend/dist/**"],
+			"env": [
+				"BETTER_AUTH_SECRET",
+				"BETTER_AUTH_URL",
+				"GOOGLE_CLIENT_ID",
+				"GOOGLE_CLIENT_SECRET",
+				"TURSO_DB_URL",
+				"TURSO_AUTH_TOKEN",
+				"NEXT_PUBLIC_BACKEND_URL",
+				"NEXT_PUBLIC_FRONTEND_URL"
+			]
 		},
 		"lint": {
 			"dependsOn": ["^lint"]
