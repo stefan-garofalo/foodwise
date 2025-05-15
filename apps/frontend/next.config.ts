@@ -3,12 +3,11 @@ import path from 'path'
 
 const nextConfig: NextConfig = {
 	turbopack: {
-		root: path.join(__dirname)
+		root: path.join(__dirname, '../../')
 	},
 	experimental: {
 		ppr: 'incremental',
-		reactCompiler: true,
-		typedRoutes: true
+		reactCompiler: true
 	},
 	serverExternalPackages: ['@libsql/client', '@libsql/kysely-libsql']
 }
