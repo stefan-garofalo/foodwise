@@ -27,7 +27,7 @@
 		"install": "^0.13.0",
 		"lucide-react": "^0.507.0",
 		"motion": "^12.6.5",
-		"next": "^15.4.0-canary.17",
+		"next": "^15.4.0-canary.35",
 		"npm": "^11.3.0",
 		"react": "^19.1.0",
 		"react-dom": "^19.1.0",
