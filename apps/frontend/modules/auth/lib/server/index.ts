@@ -1,3 +1,3 @@
-'server-only'
+import 'server-only'
 
 export { getAuth } from '@foodwise/auth/server'
