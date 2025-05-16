@@ -3,7 +3,7 @@ import { db } from '@foodwise/db/client'
 import { router } from './trpc'
 
 import { createCallerFactory } from './trpc'
-import { auth } from '@foodwise/auth/server'
+import { getAuth } from '@foodwise/auth/server'
 import { categoriesRouter } from './features/categories/router'
 
 export const appRouter = router({
@@ -17,6 +17,6 @@ export const createCaller = createCallerFactory(appRouter)
 
 export const createTRPCContext = async ({ headers }: { headers: Headers }) => ({
 	headers,
-	session: await auth.api.getSession({ headers }),
+	session: await getAuth().api.getSession({ headers }),
 	db
 })
