@@ -1,4 +1,4 @@
-import { betterAuth } from 'better-auth'
+import { betterAuth, type BetterAuthOptions } from 'better-auth'
 import { LibsqlDialect } from '@libsql/kysely-libsql'
 
 export type { Session } from 'better-auth'
@@ -8,20 +8,22 @@ const dialect = new LibsqlDialect({
 	authToken: process.env.TURSO_AUTH_TOKEN!
 })
 
-export const auth = betterAuth({
-	authUrl: process.env.BETTER_AUTH_URL!,
-	database: {
-		dialect,
-		type: 'sqlite'
-	},
-	trustedOrigins: [
-		process.env.NEXT_PUBLIC_BACKEND_URL!,
-		process.env.NEXT_PUBLIC_FRONTEND_URL!
-	],
-	socialProviders: {
-		google: {
-			clientId: process.env.GOOGLE_CLIENT_ID!,
-			clientSecret: process.env.GOOGLE_CLIENT_SECRET!
-		}
-	}
-})
+export const getAuth = (opt?: BetterAuthOptions) =>
+	betterAuth({
+		authUrl: process.env.BETTER_AUTH_URL!,
+		database: {
+			dialect,
+			type: 'sqlite'
+		},
+		trustedOrigins: [
+			process.env.NEXT_PUBLIC_BACKEND_URL!,
+			process.env.NEXT_PUBLIC_FRONTEND_URL!
+		],
+		socialProviders: {
+			google: {
+				clientId: process.env.GOOGLE_CLIENT_ID!,
+				clientSecret: process.env.GOOGLE_CLIENT_SECRET!
+			}
+		},
+		...opt
+	})

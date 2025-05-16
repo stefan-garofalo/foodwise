@@ -1,3 +1,3 @@
 'server-only'
 
-export { auth } from '@foodwise/auth/server'
+export { getAuth } from '@foodwise/auth/server'

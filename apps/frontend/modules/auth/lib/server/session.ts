@@ -1,6 +1,6 @@
 'server-only'
 
-import { auth } from '@foodwise/auth/server'
+import { getAuth } from '@foodwise/auth/server'
 import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
 
@@ -13,7 +13,7 @@ export async function getSession() {
 }
 
 async function _getSession() {
-	const session = await auth.api.getSession({
+	const session = await getAuth().api.getSession({
 		headers: await headers()
 	})
 	if (!session) redirect('/login')
