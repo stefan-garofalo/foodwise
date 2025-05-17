@@ -18,3 +18,4 @@ export const LOCALES: Record<Lang, string> = {
 }
 
 export const LOCALE_LIST = Object.keys(LOCALES) as ['it', 'en']
+export const FALLBACK_LOCALE = 'en'
