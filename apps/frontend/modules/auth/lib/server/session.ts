@@ -16,7 +16,7 @@ async function _getSession() {
 	const session = await getAuth().api.getSession({
 		headers: await headers()
 	})
-	console.log({ headers, session })
-	if (!session) redirect('/login')
+
+	if (!session) return redirect('/login')
 	return session
 }

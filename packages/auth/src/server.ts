@@ -16,13 +16,17 @@ export const getAuth = (opt?: BetterAuthOptions) =>
 		},
 		advanced: {
 			cookiePrefix: 'foodwise',
-			cookies: {
-				defaultCookieAttributes: {
-					attributes: {
-						sameSite: 'none',
-						secure: true
-					}
-				}
+			crossSubDomainCookies: {
+				enabled: true,
+				domain:
+					process.env.NODE_ENV === 'development'
+						? 'localhost'
+						: '.stefangarofalo.dev'
+			},
+			defaultCookieAttributes: {
+				secure: true,
+				httpOnly: true,
+				sameSite: 'none'
 			},
 			useSecureCookies: true
 		},
