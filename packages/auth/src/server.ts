@@ -18,10 +18,7 @@ export const getAuth = (opt?: BetterAuthOptions) =>
 			cookiePrefix: 'foodwise',
 			crossSubDomainCookies: {
 				enabled: true,
-				domain:
-					process.env.NODE_ENV === 'development'
-						? 'localhost'
-						: '.stefangarofalo.dev'
+				domain: process.env.COOKIE_CROSS_DOMAIN!
 			},
 			defaultCookieAttributes: {
 				secure: true,
