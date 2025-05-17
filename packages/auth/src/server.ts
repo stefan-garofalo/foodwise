@@ -10,10 +10,20 @@ const dialect = new LibsqlDialect({
 
 export const getAuth = (opt?: BetterAuthOptions) =>
 	betterAuth({
-		authUrl: process.env.BETTER_AUTH_URL!,
 		database: {
 			dialect,
 			type: 'sqlite'
+		},
+		advanced: {
+			cookies: {
+				defaultCookieAttributes: {
+					attributes: {
+						sameSite: 'none',
+						secure: true
+					}
+				}
+			},
+			useSecureCookies: true
 		},
 		trustedOrigins: [
 			process.env.NEXT_PUBLIC_BACKEND_URL!,
@@ -24,6 +34,6 @@ export const getAuth = (opt?: BetterAuthOptions) =>
 				clientId: process.env.GOOGLE_CLIENT_ID!,
 				clientSecret: process.env.GOOGLE_CLIENT_SECRET!
 			}
-		},
-		...opt
+		}
+		// ...opt
 	})
