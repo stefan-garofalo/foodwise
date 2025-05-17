@@ -1,5 +1,5 @@
 import { NextRequest } from 'next/server'
-import { LOCALE_LIST } from '../config'
+import { FALLBACK_LOCALE, LOCALE_LIST } from '../config'
 
 // Helper function to create locale redirect URL
 export function createLocaleRedirectUrl(
@@ -9,7 +9,7 @@ export function createLocaleRedirectUrl(
 	baseUrl: string
 ) {
 	return new URL(
-		`/${getLocaleFromCookie(request) ?? LOCALE_LIST[0]}/${pathname}${search}`,
+		`/${getLocaleFromCookie(request) ?? FALLBACK_LOCALE}/${pathname}${search}`,
 		baseUrl
 	)
 }
