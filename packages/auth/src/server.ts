@@ -15,6 +15,10 @@ export const getAuth = (opt?: BetterAuthOptions) =>
 			type: 'sqlite'
 		},
 		advanced: {
+			crossSubDomainCookies: {
+				enabled: true,
+				domain: '.foodwise.stefangarofalo.dev'
+			},
 			cookies: {
 				defaultCookieAttributes: {
 					attributes: {
