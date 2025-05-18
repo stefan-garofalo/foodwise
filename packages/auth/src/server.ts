@@ -1,5 +1,7 @@
 import { betterAuth, type BetterAuthOptions } from 'better-auth'
 import { LibsqlDialect } from '@libsql/kysely-libsql'
+import { getSessionCookie as getSessionCookieRaw } from 'better-auth/cookies'
+import { COOKIE_PREFIX } from './config'
 
 export type { Session } from 'better-auth'
 
@@ -15,7 +17,7 @@ export const getAuth = (opt?: BetterAuthOptions) =>
 			type: 'sqlite'
 		},
 		advanced: {
-			cookiePrefix: 'foodwise',
+			cookiePrefix: COOKIE_PREFIX,
 			crossSubDomainCookies: {
 				enabled: true,
 				domain:
@@ -46,3 +48,6 @@ export const getAuth = (opt?: BetterAuthOptions) =>
 		},
 		...opt
 	})
+
+export const getSessionCookie = (request: Request) =>
+	getSessionCookieRaw(request, { cookiePrefix: COOKIE_PREFIX })
