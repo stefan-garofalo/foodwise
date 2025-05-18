@@ -11,7 +11,7 @@ import { canAccessRoute } from './modules/auth/middleware'
 
 export function middleware(request: NextRequest) {
 	if (!canAccessRoute(request)) {
-		return NextResponse.redirect(setAbsoluteUrl(request, '/login'))
+		return NextResponse.rewrite(setAbsoluteUrl(request, '/login'))
 	}
 
 	const { pathname, search } = request.nextUrl
