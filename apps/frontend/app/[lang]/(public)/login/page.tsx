@@ -3,8 +3,6 @@ import { getLoginDictionary } from './dictionary'
 import { Title } from '@/modules/ui/primitives/typography'
 
 import { PageParams } from '@/utils/types'
-import { Button } from '@/modules/ui/primitives/button'
-import { GoogleIcon } from '@/modules/ui/icons'
 import { LoginButton } from '@/modules/auth/components/login'
 
 export async function generateMetadata({ params }: generateMetadataParams) {
