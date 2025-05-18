@@ -6,11 +6,13 @@ import {
 	getLocaleFromCookie,
 	getLocaleFromPathname
 } from './modules/i18n/middleware'
-import { isStaticFile } from './utils/middleware'
+import { isStaticFile, setAbsoluteUrl } from './utils/middleware'
 import { canAccessRoute } from './modules/auth/middleware'
 
 export function middleware(request: NextRequest) {
-	if (!canAccessRoute(request)) return NextResponse.redirect('/login')
+	if (!canAccessRoute(request)) {
+		return NextResponse.redirect(setAbsoluteUrl(request, '/login'))
+	}
 
 	const { pathname, search } = request.nextUrl
 	if (isStaticFile(pathname)) return NextResponse.next()
