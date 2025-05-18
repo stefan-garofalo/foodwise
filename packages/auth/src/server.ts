@@ -18,7 +18,14 @@ export const getAuth = (opt?: BetterAuthOptions) =>
 			cookiePrefix: 'foodwise',
 			crossSubDomainCookies: {
 				enabled: true,
-				domain: process.env.COOKIE_CROSS_DOMAIN!
+				domain:
+					process.env.ENVRIONMENT! === 'local'
+						? 'localhost'
+						: `.${process.env
+								.NEXT_PUBLIC_BACKEND_URL!.replace('https://', '')
+								.split('.')
+								.slice(-3)
+								.join('.')}`
 			},
 			defaultCookieAttributes: {
 				secure: true,
