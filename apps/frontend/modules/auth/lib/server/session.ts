@@ -6,6 +6,8 @@ import { headers } from 'next/headers'
 
 import { ReadonlyHeaders } from 'next/dist/server/web/spec-extension/adapters/headers'
 import { redirect } from 'next/navigation'
+import { localizePath } from '@/modules/i18n/lib'
+
 
 export async function getUser() {
 	return (await _getSession())?.user
@@ -17,7 +19,7 @@ export async function getSession() {
 
 async function _getSession() {
 	const session = await cachedSession(headers())
-	if (!session) redirect('/login')
+	if (!session) redirect(localizePath('/login'))
 	return session
 }
 

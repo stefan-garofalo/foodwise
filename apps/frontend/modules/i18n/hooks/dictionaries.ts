@@ -1,9 +1,9 @@
 'use client'
 
 import { useParams } from 'next/navigation'
-import { getGlobalDictionary, getPageDictionary } from '../utils'
 import { LangParams } from '../types'
 import { useCleanedPath } from './path'
+import { getGlobalDictionary, getPageDictionary } from '../getters'
 
 export function useGlobalDictionary() {
 	const { lang } = useParams<LangParams>()
