@@ -1,7 +1,7 @@
 'use client'
 
 import { useParams, usePathname } from 'next/navigation'
-import { path } from '../utils'
+import { path } from '../lib'
 import { LangParams } from '../types'
 
 /**

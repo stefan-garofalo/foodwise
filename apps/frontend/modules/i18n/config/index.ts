@@ -18,4 +18,5 @@ export const LOCALES: Record<Lang, string> = {
 }
 
 export const LOCALE_LIST = Object.keys(LOCALES) as ['it', 'en']
+export const LOCALE_PATHS = LOCALE_LIST.map((locale) => `/${locale}`)
 export const FALLBACK_LOCALE = 'en'

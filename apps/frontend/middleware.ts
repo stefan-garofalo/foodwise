@@ -1,17 +1,15 @@
 import { NextResponse } from 'next/server'
 
 import type { NextRequest } from 'next/server'
-import {
-	createLocaleRedirectUrl,
-	getLocaleFromCookie,
-	getLocaleFromPathname
-} from './modules/i18n/middleware'
+import { createLocaleRedirectUrl } from './modules/i18n/middleware'
 import { isStaticFile, setAbsoluteUrl } from './utils/middleware'
 import { canAccessRoute } from './modules/auth/middleware'
+import { getLocaleFromPathname } from './modules/i18n/lib'
+import { getLocaleFromCookie } from './modules/i18n/lib/cookies'
 
 export function middleware(request: NextRequest) {
 	if (!canAccessRoute(request)) {
-		return NextResponse.rewrite(setAbsoluteUrl(request, '/login'))
+		return NextResponse.rewrite(setAbsoluteUrl(request, 'login'))
 	}
 
 	const { pathname, search } = request.nextUrl
@@ -24,7 +22,7 @@ export function middleware(request: NextRequest) {
 		)
 	}
 
-	const cookieLocale = getLocaleFromCookie(request)
+	const cookieLocale = getLocaleFromCookie(request.cookies)
 	if (cookieLocale === pathLocale) return NextResponse.next()
 
 	const response = NextResponse.next()
