@@ -1,10 +1,3 @@
-import { LANGS } from '@/modules/i18n/config'
-import { accessNestedObject } from '@/utils/objects'
-import { Prettify } from '@/utils/types'
-import { Route } from 'next'
-
-// --- Type Helpers ---
-
 // Splits a path string into an array of segments
 type Split<S extends string, D extends string = '/'> = string extends S
 	? string[]
@@ -58,36 +51,4 @@ type GetTypeFromPath<T, P extends string[]> = P extends []
 			: undefined // Key 'First' not found in T
 		: never // Path segment is not valid
 
-// --- Original Functions ---
-
-export function path(url: string, lang: keyof typeof LANGS) {
-	return `/${lang}${url}` as Route<string>
-}
-
-export function getGlobalDictionary(lang: keyof typeof LANGS) {
-	return LANGS[lang]
-}
-
-// --- Updated Function ---
-
-/**
- * Retrieves a nested dictionary object for a specific page/component path.
- * @param lang The target language.
- * @param path The '/' separated path to the dictionary object (e.g., 'login/seo').
- * @returns The dictionary object corresponding to the path. The *type* represents
- *          the merged structure across all languages defined in LANGS, with leaf
- *          nodes being unions reflecting possibilities (e.g., string | undefined).
- */
-export function getPageDictionary<P extends string>(
-	lang: keyof typeof LANGS,
-	path: P
-) {
-	const dict = getGlobalDictionary(lang)
-	const paths = path.split('/')
-	// accessNestedObject gets the actual value from the specific language dictionary
-	const result = accessNestedObject(dict, paths)
-
-	// The type assertion uses the MergedDictionary and GetTypeFromPath helper.
-	// This tells TypeScript the expected shape based on *all* languages.
-	return result as Prettify<GetTypeFromPath<MergedDictionary, Split<P>>>
-}
+export type { GetTypeFromPath, MergedDictionary, Split }
