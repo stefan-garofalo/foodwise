@@ -8,9 +8,8 @@ import { getLocaleFromPathname } from './modules/i18n/lib'
 import { getLocaleFromCookie } from './modules/i18n/lib/cookies'
 
 export function middleware(request: NextRequest) {
-	if (!canAccessRoute(request)) {
-		return NextResponse.rewrite(setAbsoluteUrl(request, 'login'))
-	}
+	const redirect = canAccessRoute(request)
+	if (redirect) return NextResponse.redirect(redirect)
 
 	const { pathname, search } = request.nextUrl
 	if (isStaticFile(pathname)) return NextResponse.next()
