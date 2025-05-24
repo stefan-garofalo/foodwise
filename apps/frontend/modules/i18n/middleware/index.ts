@@ -14,3 +14,11 @@ export function createLocaleRedirectUrl(
 		baseUrl
 	)
 }
+
+export function stripLangFromPathname(
+	pathname: string
+): [path: string, lang: string] {
+	const [lang, ...segments] = pathname.split('/').filter(Boolean)
+	if (segments.length === 0) return ['/', lang] as const
+	return [`/${segments.join('/')}`, lang] as const
+}
