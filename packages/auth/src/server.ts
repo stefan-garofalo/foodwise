@@ -21,7 +21,7 @@ export const getAuth = (opt?: BetterAuthOptions) =>
 			crossSubDomainCookies: {
 				enabled: true,
 				domain:
-					process.env.ENVRIONMENT! === 'local'
+					process.env.ENVIRONMENT! === 'local'
 						? 'localhost'
 						: `.${process.env
 								.NEXT_PUBLIC_BACKEND_URL!.replace('https://', '')
