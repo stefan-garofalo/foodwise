@@ -5,8 +5,6 @@ export function isStaticFile(pathname: string) {
 	return Boolean(pathname.match(/\.[^/]+$/))
 }
 
-export function setAbsoluteUrl(request: NextRequest, path: string) {
-	const url = request.nextUrl.clone()
-	url.pathname = path
-	return url
+export function buildAbsoluteUrl(path: string, request: NextRequest) {
+	return new URL(path, request.url)
 }
