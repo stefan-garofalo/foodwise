@@ -1,7 +1,11 @@
+import { env } from '@/env'
 import { LOCALES } from '@/modules/i18n/config'
 import { Lang, LangPageParams } from '@/modules/i18n/types'
+import type { Metadata } from 'next'
 
-type Metadata = {
+export type generateMetadataParams = { params: LangPageParams }
+
+type generateParams = {
 	title: string
 	description: string
 	image?: {
@@ -13,22 +17,18 @@ type Metadata = {
 	lang: Lang
 }
 
-export type generateMetadataParams = { params: LangPageParams }
-
 export function generate({
 	title,
 	description,
 	image,
 	canonical,
 	lang = 'it'
-}: Metadata) {
+}: generateParams): Metadata {
 	return {
 		title,
 		description,
-		metadataBase: process.env.PROD_URL ? new URL(`${process.env.PROD_URL}`) : '',
-		alternates: {
-			canonical
-		},
+		metadataBase: new URL(env.NEXT_PUBLIC_FRONTEND_URL),
+		alternates: { canonical },
 		openGraph: {
 			title,
 			description,

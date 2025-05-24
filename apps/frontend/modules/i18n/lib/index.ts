@@ -1,5 +1,5 @@
 import { LANGS, LOCALE_LIST } from '@/modules/i18n/config'
-import { getParams } from '@nimpl/getters/get-params'
+import { getAppParams } from '@nimpl/getters/get-app-params'
 import { Route } from 'next'
 import { Lang } from '../types'
 
@@ -15,6 +15,6 @@ export function getLocaleFromPathname(pathname: string): string | undefined {
 	return undefined
 }
 export function localizePath(url: string) {
-	const { lang } = getParams()
+	const { lang } = getAppParams()
 	return path(url, lang as Lang)
 }
