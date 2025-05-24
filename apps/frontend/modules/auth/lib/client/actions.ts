@@ -5,7 +5,7 @@ import { env } from '@/env'
 export async function signInWithGoogle() {
 	return await authClient.signIn.social({
 		provider: 'google',
-		callbackURL: `${env.NEXT_PUBLIC_FRONTEND_URL}/it`
+		callbackURL: env.NEXT_PUBLIC_FRONTEND_URL
 	})
 }
 

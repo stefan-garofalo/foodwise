@@ -1,10 +1,13 @@
 import { NextResponse } from 'next/server'
 
 import type { NextRequest } from 'next/server'
-import { createLocaleRedirectUrl } from './modules/i18n/middleware'
-import { isStaticFile, setAbsoluteUrl } from './utils/middleware'
+import {
+	createLocaleRedirectUrl,
+	stripLangFromPathname
+} from './modules/i18n/middleware'
+import { isStaticFile } from './utils/middleware'
 import { canAccessRoute } from './modules/auth/middleware'
-import { getLocaleFromPathname } from './modules/i18n/lib'
+
 import { getLocaleFromCookie } from './modules/i18n/lib/cookies'
 
 export function middleware(request: NextRequest) {
@@ -14,11 +17,9 @@ export function middleware(request: NextRequest) {
 	const { pathname, search } = request.nextUrl
 	if (isStaticFile(pathname)) return NextResponse.next()
 
-	const pathLocale = getLocaleFromPathname(pathname)
+	const [pathLocale] = stripLangFromPathname(pathname)
 	if (!pathLocale) {
-		return NextResponse.redirect(
-			createLocaleRedirectUrl(request, pathname, search, request.url)
-		)
+		return NextResponse.redirect(createLocaleRedirectUrl(request, pathname, search))
 	}
 
 	const cookieLocale = getLocaleFromCookie(request.cookies)
@@ -26,6 +27,7 @@ export function middleware(request: NextRequest) {
 
 	const response = NextResponse.next()
 	response.cookies.set('x-locale', pathLocale)
+
 	return response
 }
 
