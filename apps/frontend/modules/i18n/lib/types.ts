@@ -1,3 +1,5 @@
+import { LANGS } from '../config'
+
 // Splits a path string into an array of segments
 type Split<S extends string, D extends string = '/'> = string extends S
 	? string[]
