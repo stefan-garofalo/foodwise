@@ -3,7 +3,7 @@ import { NextRequest } from 'next/server'
 import { PUBLIC_ROUTES } from '../config'
 import { stripLangFromPathname } from '@/modules/i18n/middleware'
 import { buildAbsoluteUrl } from '@/utils/middleware'
-import { FALLBACK_LOCALE } from '@/modules/i18n/config'
+
 import { getLocaleFromCookie } from '@/modules/i18n/lib/cookies'
 
 export function canAccessRoute(request: NextRequest) {
