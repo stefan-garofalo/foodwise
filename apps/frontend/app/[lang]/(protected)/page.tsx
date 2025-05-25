@@ -1,4 +1,3 @@
-import { LogoutButton } from '@/modules/auth/components/logout'
 import { getUser } from '@/modules/auth/lib/server/session'
 import { generate, generateMetadataParams } from '@/modules/metadata'
 
@@ -17,7 +16,6 @@ export default async function HomePage() {
 	return (
 		<main className="px-container grow pb-12">
 			home page protected {(await getUser()).name}
-			<LogoutButton />
 		</main>
 	)
 }
