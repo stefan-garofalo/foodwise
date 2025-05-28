@@ -1,39 +1,27 @@
-import { useCallback, useSyncExternalStore } from 'react'
+import { useEffect, useState } from 'react'
+
+const MOBILE_BREAKPOINT = 768
 
 export function useIsMobile() {
-	return useMediaQuery('(max-width: 768px)')
-}
+	const [isMobile, setIsMobile] = useState<boolean | undefined>(undefined)
 
-export function useIsDesktop() {
-	return useMediaQuery('(min-width: 769px)')
+	useEffect(() => {
+		const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`)
+		const onChange = () => {
+			setIsMobile(window.innerWidth < MOBILE_BREAKPOINT)
+		}
+		mql.addEventListener('change', onChange)
+		setIsMobile(window.innerWidth < MOBILE_BREAKPOINT)
+		return () => mql.removeEventListener('change', onChange)
+	}, [])
+
+	return !!isMobile
 }
 
 export function MobileMediaQuery({ children }: { children: React.ReactNode }) {
-	const isMobile = useIsMobile()
-	return isMobile ? children : null
+	return useIsMobile() ? children : null
 }
 
 export function DesktopMediaQuery({ children }: { children: React.ReactNode }) {
-	const isDesktop = useIsDesktop()
-	return isDesktop ? children : null
-}
-
-function useMediaQuery(query: string) {
-	const subscribe = useCallback(
-		(callback: (event: MediaQueryListEvent) => void) => {
-			const matchMedia = window.matchMedia(query)
-
-			matchMedia.addEventListener('change', callback)
-			return () => {
-				matchMedia.removeEventListener('change', callback)
-			}
-		},
-		[query]
-	)
-
-	const getSnapshot = () => {
-		return window.matchMedia(query).matches
-	}
-
-	return useSyncExternalStore(subscribe, getSnapshot, () => false)
+	return useIsMobile() ? null : children
 }
