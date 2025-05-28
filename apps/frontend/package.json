@@ -29,7 +29,7 @@
 		"clsx": "^2.1.1",
 		"eslint-config-next": "^15.3.2",
 		"install": "^0.13.0",
-		"lucide-react": "^0.507.0",
+		"lucide-react": "^0.511.0",
 		"motion": "^12.12.2",
 		"next": "^15.4.0-canary.50",
 		"npm": "^11.4.1",
