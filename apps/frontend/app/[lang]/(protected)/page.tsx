@@ -14,8 +14,8 @@ export async function generateMetadata({ params }: generateMetadataParams) {
 
 export default async function HomePage() {
 	return (
-		<main className="px-container grow pb-12">
+		<div className="px-container grow pb-12">
 			home page protected {(await getUser()).name}
-		</main>
+		</div>
 	)
 }
