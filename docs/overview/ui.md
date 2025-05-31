@@ -36,7 +36,7 @@ modules/ui/
 --color-background: light-dark(off-white, deep-teal);
 --color-foreground: light-dark(deep-teal, subtle-cream);
 --color-primary: light-dark(terracotta, apple-green);
---color-border: light-dark(off-white-darkest, deep-teal-lighter);
+--color-border: light-dark(off-white-darkest, deep-teal);
 --color-danger: light-dark(error, error-darker);
 ```
 
