@@ -16,10 +16,10 @@
 
 	/* palette */
 	--color-apple-green: oklch(0.55 0.12 123.82);
-	--color-deep-teal-black: oklch(0.13 0.04 185.8);
+	--color-deep-teal-black: oklch(0.17 0.04 185.8);
 	--color-deep-teal-darkest: oklch(0.22 0.04 185.8);
 	--color-deep-teal-darker: oklch(0.26 0.04 187.09);
-	--color-deep-teal-lighter: oklch(0.33 0.05 187.17);
+	--color-deep-teal: oklch(0.33 0.05 187.17);
 
 	--color-terracotta: oklch(0.69 0.14 48.86);
 	--color-subtle-cream: oklch(0.98 0.02 90);
@@ -54,7 +54,7 @@
 
 	--color-border: light-dark(
 		var(--color-off-white-darkest),
-		var(--color-deep-teal-lighter)
+		var(--color-deep-teal)
 	);
 	--color-danger: light-dark(var(--color-error), var(--color-error-darker));
 
@@ -95,17 +95,10 @@
 	--color-input: light-dark(var(--color-off-white-darkest), oklch(1 0 0 / 15%));
 	--color-ring: light-dark(oklch(0.708 0 0), oklch(0.556 0 0));
 
-	/* chart colors using existing palette */
-	--color-chart-1: var(--color-terracotta);
-	--color-chart-2: var(--color-apple-green);
-	--color-chart-3: var(--color-deep-teal-lighter);
-	--color-chart-4: oklch(0.828 0.189 84.429);
-	--color-chart-5: oklch(0.769 0.188 70.08);
-
 	/* sidebar variables using existing palette */
-	--color-sidebar-background: light-dark(
+	--color-sidebar: light-dark(
 		var(--color-off-white),
-		var(--color-deep-teal-black)
+		var(--color-deep-teal-darkest)
 	);
 	--color-sidebar-foreground: light-dark(
 		var(--color-deep-teal-darkest),
@@ -129,7 +122,7 @@
 	);
 	--color-sidebar-border: light-dark(
 		var(--color-off-white-darkest),
-		var(--color-deep-teal-lighter)
+		var(--color-deep-teal)
 	);
 	--color-sidebar-ring: light-dark(
 		var(--color-terracotta),
