@@ -72,15 +72,13 @@
 		var(--color-off-white),
 		var(--color-deep-teal-darker)
 	);
+	--color-popover-focus: light-dark(var(--color-off-white), var(--color-deep-teal));
 	--color-popover-foreground: light-dark(
 		var(--color-deep-teal-darkest),
 		var(--color-subtle-cream)
 	);
 
-	--color-muted: light-dark(
-		var(--color-off-white-darker),
-		var(--color-deep-teal-darker)
-	);
+	--color-muted: light-dark(var(--color-off-white-darker), var(--color-deep-teal));
 	--color-muted-foreground: light-dark(oklch(0.556 0 0), oklch(0.708 0 0));
 
 	--color-accent: var(--color-primary);
