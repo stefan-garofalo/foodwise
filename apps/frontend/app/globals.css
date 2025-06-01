@@ -16,10 +16,10 @@
 
 	/* palette */
 	--color-apple-green: oklch(0.55 0.12 123.82);
-	--color-deep-teal-black: oklch(0.17 0.04 185.8);
-	--color-deep-teal-darkest: oklch(0.22 0.04 185.8);
-	--color-deep-teal-darker: oklch(0.26 0.04 187.09);
-	--color-deep-teal: oklch(0.33 0.05 187.17);
+	--color-deep-teal-black: oklch(0.15 0.03 190);
+	--color-deep-teal-darkest: oklch(0.19 0.03 190);
+	--color-deep-teal-darker: oklch(0.24 0.03 190);
+	--color-deep-teal: oklch(0.3 0.04 190);
 
 	--color-terracotta: oklch(0.69 0.14 48.86);
 	--color-subtle-cream: oklch(0.98 0.02 90);
