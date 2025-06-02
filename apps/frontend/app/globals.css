@@ -126,6 +126,11 @@
 		var(--color-terracotta),
 		var(--color-apple-green)
 	);
+
+	--color-sheet-border: light-dark(
+		var(--color-off-white-darkest),
+		var(--color-deep-teal)
+	);
 }
 
 /*
