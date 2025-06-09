@@ -10,6 +10,16 @@ const dictionary = {
 		actions: {
 			google: 'Sign in with Google'
 		}
+	},
+	sidebar: {
+		groups: {
+			settings: {
+				label: 'Settings',
+				routes: {
+					categories: 'Categories'
+				}
+			}
+		}
 	}
 }
 
