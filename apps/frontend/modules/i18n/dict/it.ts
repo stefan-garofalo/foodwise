@@ -9,6 +9,16 @@ const dictionary = {
 		actions: {
 			google: 'Entra con Google'
 		}
+	},
+	sidebar: {
+		groups: {
+			settings: {
+				label: 'Impostazioni',
+				routes: {
+					categories: 'Categorie'
+				}
+			}
+		}
 	}
 }
 

@@ -18,35 +18,34 @@ import {
 	SidebarMenuSubButton,
 	SidebarMenuSubItem
 } from '@/modules/ui/primitives/sidebar'
+import { RouteGroup } from '@/modules/routing'
+import { usePathname } from 'next/navigation'
+import { useGlobalDictionary } from '@/modules/i18n/hooks/dictionaries'
 
-export default function SidebarMainGroup({
-	items
-}: {
-	items: {
-		title: string
-		url: string
-		icon: LucideIcon
-		isActive?: boolean
-		items?: {
-			title: string
-			url: string
-		}[]
-	}[]
-}) {
+export default function SidebarMainGroup({ group }: { group: RouteGroup }) {
+	const pathname = usePathname()
+	const labels = useGlobalDictionary().sidebar.groups[group.label as 'settings']
+
 	return (
 		<SidebarGroup>
-			<SidebarGroupLabel>Platform</SidebarGroupLabel>
+			<SidebarGroupLabel>{labels.label}</SidebarGroupLabel>
 			<SidebarMenu>
-				{items.map((item) => (
-					<Collapsible key={item.title} asChild defaultOpen={item.isActive}>
+				{group.routes.map((item) => (
+					<Collapsible
+						key={item.name}
+						asChild
+						defaultOpen={pathname.startsWith(item.path())}
+					>
 						<SidebarMenuItem>
-							<SidebarMenuButton asChild tooltip={item.title}>
-								<a href={item.url}>
+							<SidebarMenuButton asChild>
+								<a href={item.path()}>
 									<item.icon />
-									<span>{item.title}</span>
+									<span>
+										{labels.routes[item.name as keyof typeof labels.routes]}
+									</span>
 								</a>
 							</SidebarMenuButton>
-							{item.items?.length ? (
+							{item.children?.length ? (
 								<>
 									<CollapsibleTrigger asChild>
 										<SidebarMenuAction className="data-[state=open]:rotate-90">
@@ -56,11 +55,18 @@ export default function SidebarMainGroup({
 									</CollapsibleTrigger>
 									<CollapsibleContent>
 										<SidebarMenuSub>
-											{item.items?.map((subItem) => (
-												<SidebarMenuSubItem key={subItem.title}>
+											{item.children?.map((subItem) => (
+												<SidebarMenuSubItem key={subItem.name}>
 													<SidebarMenuSubButton asChild>
-														<a href={subItem.url}>
-															<span>{subItem.title}</span>
+														<a href={subItem.path()}>
+															<subItem.icon />
+															<span>
+																{
+																	labels.routes[
+																		subItem.name as keyof typeof labels.routes
+																	]
+																}
+															</span>
 														</a>
 													</SidebarMenuSubButton>
 												</SidebarMenuSubItem>
