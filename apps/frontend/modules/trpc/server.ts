@@ -5,7 +5,7 @@ import { headers } from 'next/headers'
 import { cache } from 'react'
 
 import { createTRPCContext } from '@foodwise/api'
-import { makeQueryClient, makeTrpcClient } from './lib'
+import { makeQueryClient, makeTrpcClient } from './lib/clients'
 
 /**
  * This wraps the `createTRPCContext` helper and provides the required context for the tRPC API when

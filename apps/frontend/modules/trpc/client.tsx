@@ -9,8 +9,8 @@ import {
 	type inferRouterOutputs
 } from '@foodwise/api'
 
-import { makeQueryClient } from './lib'
-import { makeTrpcClient } from './lib'
+import { makeQueryClient } from './lib/clients'
+import { makeTrpcClient } from './lib/clients'
 
 let clientQueryClientSingleton: QueryClient | undefined = undefined
 const getQueryClient = () => {
