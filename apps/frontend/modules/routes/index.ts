@@ -12,15 +12,11 @@ export const SettingsRoutes: RouteGroup = {
 	]
 }
 
-const routes: RouteDefinition[] = [...SettingsRoutes.routes]
+export const RootRoutes: RouteDefinition[] = [
+	{
+		name: 'login',
+		path: () => '/login'
+	}
+]
 
-export function getRoute(path: string) {
-	return (
-		routes.find((route) => route.path() === path) ??
-		({
-			name: undefined,
-			path: () => undefined,
-			icon: undefined
-		} as unknown as RouteDefinition)
-	)
-}
+export const routes: RouteDefinition[] = [...RootRoutes, ...SettingsRoutes.routes]

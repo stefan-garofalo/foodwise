@@ -39,7 +39,7 @@ export default function SidebarMainGroup({ group }: { group: RouteGroup }) {
 						<SidebarMenuItem>
 							<SidebarMenuButton asChild>
 								<a href={item.path()}>
-									<item.icon />
+									{item.icon && <item.icon />}
 									<span>
 										{labels.routes[item.name as keyof typeof labels.routes]}
 									</span>
@@ -59,7 +59,7 @@ export default function SidebarMainGroup({ group }: { group: RouteGroup }) {
 												<SidebarMenuSubItem key={subItem.name}>
 													<SidebarMenuSubButton asChild>
 														<a href={subItem.path()}>
-															<subItem.icon />
+															{subItem.icon && <subItem.icon />}
 															<span>
 																{
 																	labels.routes[
