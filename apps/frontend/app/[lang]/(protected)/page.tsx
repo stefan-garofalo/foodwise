@@ -1,5 +1,4 @@
 import { getUser } from '@/modules/auth/lib/server/session'
-import { getMetadata, generateMetadataProps } from '@/modules/metadata'
 
 export default async function HomePage() {
 	return (
