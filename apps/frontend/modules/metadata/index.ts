@@ -3,7 +3,7 @@ import { env } from '@/env'
 
 import { LOCALES } from '@/modules/i18n/config'
 import { getPageDictionary } from '@/modules/i18n/getters'
-import { getRoute } from '../routes'
+import { getRoute } from '../routes/utils'
 import { type generateMetadataProps, type generateParams } from './types'
 import { calculatePath } from './utils'
 

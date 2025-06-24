@@ -25,6 +25,7 @@ import {
 	SidebarMenuItem,
 	useSidebar
 } from '@/modules/ui/primitives/sidebar'
+import { signOut } from '@/modules/auth/lib/client/actions'
 
 export default function SidebarUser({
 	user
@@ -76,29 +77,7 @@ export default function SidebarUser({
 							</div>
 						</DropdownMenuLabel>
 						<DropdownMenuSeparator />
-						<DropdownMenuGroup>
-							<DropdownMenuItem>
-								<Sparkles />
-								Upgrade to Pro
-							</DropdownMenuItem>
-						</DropdownMenuGroup>
-						<DropdownMenuSeparator />
-						<DropdownMenuGroup>
-							<DropdownMenuItem>
-								<BadgeCheck />
-								Account
-							</DropdownMenuItem>
-							<DropdownMenuItem>
-								<CreditCard />
-								Billing
-							</DropdownMenuItem>
-							<DropdownMenuItem>
-								<Bell />
-								Notifications
-							</DropdownMenuItem>
-						</DropdownMenuGroup>
-						<DropdownMenuSeparator />
-						<DropdownMenuItem>
+						<DropdownMenuItem onClick={signOut}>
 							<LogOut />
 							Log out
 						</DropdownMenuItem>
