@@ -1,6 +1,6 @@
 'use client'
 
-import { ChevronRight, type LucideIcon } from 'lucide-react'
+import { ChevronRight } from 'lucide-react'
 
 import {
 	Collapsible,
@@ -18,7 +18,7 @@ import {
 	SidebarMenuSubButton,
 	SidebarMenuSubItem
 } from '@/modules/ui/primitives/sidebar'
-import { RouteGroup } from '@/modules/routes'
+import { type RouteGroup } from '@/modules/routes/types'
 import { usePathname } from 'next/navigation'
 import { useGlobalDictionary } from '@/modules/i18n/hooks/dictionaries'
 

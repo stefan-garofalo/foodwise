@@ -1,5 +1,4 @@
 import { Suspense } from 'react'
-import { getMetadata, generateMetadataProps } from '@/modules/metadata'
 
 import type { SearchParams } from '@/features/search/types'
 import SearchBar from '@/features/search/components/Searchbar'

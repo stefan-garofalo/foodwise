@@ -1,9 +1,10 @@
-import { getMetadata, generateMetadataProps } from '@/modules/metadata'
+import { getMetadata } from '@/modules/metadata'
 import { getLoginDictionary } from './dictionary'
 import { Title } from '@/modules/ui/primitives/typography'
 
 import { PageParams } from '@/utils/types'
 import { LoginButton } from '@/modules/auth/components/login'
+import { type generateMetadataProps } from '@/modules/metadata/types'
 
 export const generateMetadata = async (props: generateMetadataProps) =>
 	getMetadata(props, import.meta.url)
