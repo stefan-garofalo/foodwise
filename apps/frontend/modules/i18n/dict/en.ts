@@ -1,5 +1,3 @@
-import { title } from 'process'
-
 const dictionary = {
 	login: {
 		seo: {
@@ -16,10 +14,33 @@ const dictionary = {
 	settings: {
 		categories: {
 			seo: {
-				title: 'Categories',
-				description: 'Manage food labels'
+				title: 'Food Categories',
+				description:
+					'Organize ingredients into logical groups with customizable labels'
 			},
-			title: 'Food categories'
+			title: 'Ingredient tags',
+			description:
+				'Categories help you organize your food items into logical groups for easier inventory management.',
+			form: {
+				name: 'Category Name',
+				namePlaceholder: 'Enter category name...',
+				color: 'Color',
+				colorHelp: 'Choose a color to visually identify this category',
+				icon: 'Icon',
+				iconHelp: 'Select an icon to represent this category'
+			},
+			empty: 'No categories found',
+			actions: {
+				create: 'Create',
+				edit: 'Edit',
+				delete: 'Delete',
+				deleteConfirm: 'Are you sure you want to delete this category?'
+			},
+			toast: {
+				created: 'Category created successfully',
+				updated: 'Category updated successfully',
+				deleted: 'Category deleted successfully'
+			}
 		}
 	},
 	sidebar: {

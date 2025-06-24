@@ -6,7 +6,9 @@ import { baseTableColumns } from '../utils'
 
 export const categories = sqliteTable('categories', {
 	...baseTableColumns,
-	uid: text('uid').notNull().unique()
+	uid: text('uid').notNull().unique(),
+	iconUid: text('icon_uid'),
+	color: text('color').notNull()
 })
 
 export const categoriesRelations = relations(categories, ({ many }) => ({

@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
-@theme {
+@theme inline {
 	/* fonts */
 	--font-instrument: var(--font-instrument);
 	--font-geist: var(--font-geist);
@@ -158,6 +158,13 @@
 
 :root {
 	color-scheme: light dark;
+	--container: 16px;
+}
+
+@media (min-width: 64rem) {
+	:root {
+		--container: 24px;
+	}
 }
 
 body {
