@@ -45,7 +45,7 @@ type SidebarContextProps = {
 const SidebarContext = React.createContext<SidebarContextProps | null>(null)
 
 function useSidebar() {
-	const context = React.useContext(SidebarContext)
+	const context = React.use(SidebarContext)
 	if (!context) {
 		throw new Error('useSidebar must be used within a SidebarProvider.')
 	}
@@ -127,8 +127,8 @@ function SidebarProvider({
 	)
 
 	return (
-		<SidebarContext.Provider value={contextValue}>
-			<TooltipProvider delayDuration={0}>
+        (<SidebarContext value={contextValue}>
+            <TooltipProvider delayDuration={0}>
 				<div
 					data-slot="sidebar-wrapper"
 					style={
@@ -147,8 +147,8 @@ function SidebarProvider({
 					{children}
 				</div>
 			</TooltipProvider>
-		</SidebarContext.Provider>
-	)
+        </SidebarContext>)
+    );
 }
 
 function Sidebar({
