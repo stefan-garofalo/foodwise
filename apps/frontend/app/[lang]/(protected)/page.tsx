@@ -1,16 +1,5 @@
 import { getUser } from '@/modules/auth/lib/server/session'
-import { generate, generateMetadataParams } from '@/modules/metadata'
-
-export async function generateMetadata({ params }: generateMetadataParams) {
-	const { lang } = await params
-
-	return generate({
-		title: 'Next starter',
-		description: '',
-		canonical: '',
-		lang
-	})
-}
+import { getMetadata, generateMetadataProps } from '@/modules/metadata'
 
 export default async function HomePage() {
 	return (

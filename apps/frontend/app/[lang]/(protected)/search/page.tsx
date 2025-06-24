@@ -1,5 +1,5 @@
 import { Suspense } from 'react'
-import { generate, generateMetadataParams } from '@/modules/metadata'
+import { getMetadata, generateMetadataProps } from '@/modules/metadata'
 
 import type { SearchParams } from '@/features/search/types'
 import SearchBar from '@/features/search/components/Searchbar'
@@ -8,18 +8,6 @@ import Pagination, {
 	PaginationSkeleton
 } from '@/features/search/components/Pagination'
 import Sort from '@/features/search/components/Sort'
-
-export async function generateMetadata({ params }: generateMetadataParams) {
-	const { lang } = await params
-
-	return generate({
-		title: 'Optimistic Git',
-		description:
-			'All the new React and Next jazz to power Github Search API. ft: PPR, Suspense, Streaming, optimistic updates and auth',
-		canonical: '/',
-		lang
-	})
-}
 
 type HomePageProps = {
 	searchParams: Promise<SearchParams>

@@ -1,20 +1,18 @@
 import '../globals.css'
 import { instrument, geist } from '@/modules/font'
 import { LOCALE_LIST } from '@/modules/i18n/config'
-import { LangPageParams } from '@/modules/i18n/types'
+import { WithLangParam } from '@/modules/i18n/types'
 import Providers from '@/modules/providers'
+import { PropsWithChildren } from 'react'
 
 export const experimental_ppr = true
 
-export function generateStaticParams() {
-	return LOCALE_LIST.map((lang) => ({ lang }))
-}
+export const generateStaticParams = () => LOCALE_LIST.map((lang) => ({ lang }))
 
-type LayoutProps = {
-	children: React.ReactNode
-	params: LangPageParams
-}
-export default async function RootLayout({ params, children }: LayoutProps) {
+export default async function RootLayout({
+	params,
+	children
+}: WithLangParam<PropsWithChildren>) {
 	const { lang } = await params
 
 	return (

@@ -1,21 +1,12 @@
-import { generate, generateMetadataParams } from '@/modules/metadata'
+import { getMetadata, generateMetadataProps } from '@/modules/metadata'
 import { getLoginDictionary } from './dictionary'
 import { Title } from '@/modules/ui/primitives/typography'
 
 import { PageParams } from '@/utils/types'
 import { LoginButton } from '@/modules/auth/components/login'
 
-export async function generateMetadata({ params }: generateMetadataParams) {
-	const { lang } = await params
-	const { seo } = getLoginDictionary(lang)
-
-	return generate({
-		title: seo.title,
-		description: seo.description,
-		canonical: '/login',
-		lang
-	})
-}
+export const generateMetadata = async (props: generateMetadataProps) =>
+	getMetadata(props, import.meta.url)
 
 export default async function LoginPage({ params }: PageParams) {
 	const { lang } = await params
