@@ -28,12 +28,12 @@ export function AccordionGroup({ children, className, ref }: AccordionGroupProps
 		useState<TAccordioGroupContext['openIndex']>(null)
 
 	return (
-		<AccordionGroupContext.Provider value={{ openIndex, setOpenIndex }}>
-			<ul {...(ref ? { ref } : {})} className={merge('flex flex-col', className)}>
+        (<AccordionGroupContext value={{ openIndex, setOpenIndex }}>
+            <ul {...(ref ? { ref } : {})} className={merge('flex flex-col', className)}>
 				{children}
 			</ul>
-		</AccordionGroupContext.Provider>
-	)
+        </AccordionGroupContext>)
+    );
 }
 
 type AccordionItemProps = {
@@ -43,10 +43,10 @@ type AccordionItemProps = {
 }
 export function AccordionItem({ children, index, ref }: AccordionItemProps) {
 	return (
-		<AccordionItemContext.Provider value={{ currentIndex: index }}>
-			<li {...(ref ? { ref } : {})}>{children}</li>
-		</AccordionItemContext.Provider>
-	)
+        (<AccordionItemContext value={{ currentIndex: index }}>
+            <li {...(ref ? { ref } : {})}>{children}</li>
+        </AccordionItemContext>)
+    );
 }
 
 type AccordionTriggerProps = {
