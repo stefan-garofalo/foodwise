@@ -25,7 +25,7 @@ import {
 } from '@/modules/ui/primitives/sidebar'
 import SidebarMainGroup from './groups/main'
 import SidebarUser from './groups/user'
-import { SettingsRoutes } from '@/modules/routing'
+import { SettingsRoutes } from '@/modules/routes'
 
 const data = {
 	user: {

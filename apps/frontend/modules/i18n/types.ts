@@ -4,3 +4,4 @@ import { LANGS } from './config'
 export type Lang = Prettify<keyof typeof LANGS>
 export type LangParams = Prettify<{ lang: Lang }>
 export type LangPageParams = Promise<Prettify<LangParams>>
+export type WithLangParam<T> = T & { params: LangPageParams }

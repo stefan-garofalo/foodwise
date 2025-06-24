@@ -18,7 +18,7 @@ import {
 	SidebarMenuSubButton,
 	SidebarMenuSubItem
 } from '@/modules/ui/primitives/sidebar'
-import { RouteGroup } from '@/modules/routing'
+import { RouteGroup } from '@/modules/routes'
 import { usePathname } from 'next/navigation'
 import { useGlobalDictionary } from '@/modules/i18n/hooks/dictionaries'
 
