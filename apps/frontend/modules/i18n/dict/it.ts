@@ -10,6 +10,15 @@ const dictionary = {
 			google: 'Entra con Google'
 		}
 	},
+	settings: {
+		categories: {
+			seo: {
+				title: 'Categorie',
+				description: 'Gestisci le categorie'
+			},
+			title: 'Categorie'
+		}
+	},
 	sidebar: {
 		groups: {
 			settings: {
