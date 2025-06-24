@@ -1,28 +1,28 @@
 'use client'
 
 import { QueryClientProvider, type QueryClient } from '@tanstack/react-query'
-import { loggerLink, httpBatchStreamLink } from '@trpc/client'
-import { createTRPCReact } from '@trpc/react-query'
+import { createTRPCContext } from '@trpc/tanstack-react-query'
 import { useState } from 'react'
 import {
 	type AppRouter,
 	type inferRouterInputs,
 	type inferRouterOutputs
 } from '@foodwise/api'
-import { env } from '@/env'
-import { createQueryClient } from './query-client'
+
+import { makeQueryClient } from './lib'
+import { makeTrpcClient } from './lib'
 
 let clientQueryClientSingleton: QueryClient | undefined = undefined
 const getQueryClient = () => {
 	if (typeof window === 'undefined') {
 		// Server: always make a new query client
-		return createQueryClient()
+		return makeQueryClient()
 	}
 	// Browser: use singleton pattern to keep the same query client
-	return (clientQueryClientSingleton ??= createQueryClient())
+	return (clientQueryClientSingleton ??= makeQueryClient())
 }
 
-export const api = createTRPCReact<AppRouter>()
+export const { TRPCProvider, useTRPC } = createTRPCContext<AppRouter>()
 
 /**
  * Inference helper for inputs.
@@ -40,27 +40,13 @@ export type RouterOutputs = inferRouterOutputs<AppRouter>
 
 export function TRPCReactProvider(props: { children: React.ReactNode }) {
 	const queryClient = getQueryClient()
-
-	const [trpcClient] = useState(() =>
-		api.createClient({
-			links: [
-				loggerLink({
-					enabled: (op) =>
-						process.env.NODE_ENV === 'development' ||
-						(op.direction === 'down' && op.result instanceof Error)
-				}),
-				httpBatchStreamLink({
-					url: env.NEXT_PUBLIC_BACKEND_URL + '/api/trpc'
-				})
-			]
-		})
-	)
+	const [trpcClient] = useState(makeTrpcClient)
 
 	return (
 		<QueryClientProvider client={queryClient}>
-			<api.Provider client={trpcClient} queryClient={queryClient}>
+			<TRPCProvider trpcClient={trpcClient} queryClient={queryClient}>
 				{props.children}
-			</api.Provider>
+			</TRPCProvider>
 		</QueryClientProvider>
 	)
 }

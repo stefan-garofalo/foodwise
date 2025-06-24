@@ -1,11 +1,11 @@
 import 'server-only'
 
-import { createHydrationHelpers } from '@trpc/react-query/rsc'
+import { createTRPCOptionsProxy } from '@trpc/tanstack-react-query'
 import { headers } from 'next/headers'
 import { cache } from 'react'
 
-import { createTRPCContext, type AppRouter, createCaller } from '@foodwise/api'
-import { createQueryClient } from './query-client'
+import { createTRPCContext } from '@foodwise/api'
+import { makeQueryClient, makeTrpcClient } from './lib'
 
 /**
  * This wraps the `createTRPCContext` helper and provides the required context for the tRPC API when
@@ -20,10 +20,12 @@ const createContext = cache(async () => {
 	})
 })
 
-const getQueryClient = cache(createQueryClient)
-const caller = createCaller(createContext)
+// IMPORTANT: Create a stable getter for the query client that
+// will return the same client during the same request.
+const getQueryClient = cache(makeQueryClient)
 
-export const { trpc: api, HydrateClient } = createHydrationHelpers<AppRouter>(
-	caller,
-	getQueryClient
-)
+export const trpc = createTRPCOptionsProxy({
+	ctx: createContext,
+	queryClient: getQueryClient,
+	client: makeTrpcClient()
+})
