@@ -4,10 +4,10 @@ import { router } from './trpc'
 
 import { createCallerFactory } from './trpc'
 import { getAuth } from '@foodwise/auth/server'
-import { categoriesRouter } from './features/categories/router'
+import { usersRouter } from './features/users/router'
 
 export const appRouter = router({
-	categories: categoriesRouter
+	users: usersRouter
 })
 export type AppRouter = typeof appRouter
 export type Context = Awaited<ReturnType<typeof createTRPCContext>>

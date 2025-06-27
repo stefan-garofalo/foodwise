@@ -17,18 +17,19 @@ export function createBaseProcedures<TTable extends BaseSQLiteTable>(
 ) {
 	return {
 		create: authedProcedure
-			.input(createInsertSchema(table as unknown as SQLiteTable))
+			.input(createInsertSchema(table))
 			.mutation(async ({ input, ctx: { db } }) => {
 				try {
-					const query = await db
-						.insert(table as unknown as BaseSQLiteTable)
-						.values(input as TTable['$inferInsert'])
-						.onConflictDoUpdate({
-							target: (table as unknown as BaseSQLiteTable).id,
-							set: input as SQLiteUpdateSetSource<SQLiteTable>
-						})
-						.returning()
-					return ok(Array.isArray(input) ? query : query[0])
+					return ok(
+						await db
+							.insert(table)
+							.values(input as TTable['$inferInsert'])
+							.onConflictDoUpdate({
+								target: table.id,
+								set: input as SQLiteUpdateSetSource<SQLiteTable>
+							})
+							.returning()
+					)
 				} catch (error) {
 					return err(error)
 				}
@@ -37,18 +38,22 @@ export function createBaseProcedures<TTable extends BaseSQLiteTable>(
 		update: authedProcedure
 			.input(
 				z.object({
-					values: createUpdateSchema<SQLiteTable>(table as unknown as SQLiteTable),
+					values: createUpdateSchema<TTable>(table),
 					id: z.string()
 				})
 			)
 			.mutation(async ({ input, ctx: { db } }) => {
 				try {
-					const query = await db
-						.update(table as unknown as BaseSQLiteTable)
-						.set({ ...input?.values!, updatedAt: new Date() })
-						.where(eq(table.id, input?.id!))
-						.returning()
-					return ok(Array.isArray(input?.values!) ? query : query[0])
+					return ok(
+						await db
+							.update(table as TTable)
+							.set({
+								...(input?.values! as SQLiteUpdateSetSource<TTable>),
+								updatedAt: new Date()
+							} as SQLiteUpdateSetSource<TTable>)
+							.where(eq(table.id, input?.id!))
+							.returning()
+					)
 				} catch (error) {
 					return err(error)
 				}

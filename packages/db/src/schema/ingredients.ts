@@ -1,13 +1,13 @@
 import { sqliteTable, text, real, integer } from 'drizzle-orm/sqlite-core'
 
 import { relations } from 'drizzle-orm'
-import { categories } from './categories'
+import { userSettingsCategories } from './user-settings-categories'
 import { baseTableColumns } from '../utils'
 
 export const ingredients = sqliteTable('ingredients', {
 	...baseTableColumns,
 	name: text('name').notNull(),
-	categoryId: text('category_id').references(() => categories.id, {
+	categoryId: text('category_id').references(() => userSettingsCategories.id, {
 		onDelete: 'set null'
 	}),
 	quantity: real('quantity').notNull(),
@@ -18,8 +18,8 @@ export const ingredients = sqliteTable('ingredients', {
 })
 
 export const ingredientsRelations = relations(ingredients, ({ one }) => ({
-	category: one(categories, {
+	category: one(userSettingsCategories, {
 		fields: [ingredients.categoryId],
-		references: [categories.id]
+		references: [userSettingsCategories.id]
 	})
 }))

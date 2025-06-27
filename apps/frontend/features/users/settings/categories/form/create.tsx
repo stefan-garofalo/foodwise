@@ -11,8 +11,6 @@ export default function CategoryCreateForm() {
 	const Form = useAppForm({
 		validators: {
 			onSubmit: z.object({})
-		},
-		onSubmit: (a) => mutate
+		}
 	})
 }
- 

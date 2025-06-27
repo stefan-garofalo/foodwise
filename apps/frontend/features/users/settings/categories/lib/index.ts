@@ -1,6 +1,4 @@
 import { RouterInputs, RouterOutputs, useTRPC } from '@/modules/trpc/client'
-import { makeTrpcClient } from '@/modules/trpc/lib/clients'
-import { createRouterHooks } from '@/modules/trpc/lib/hooks'
 import { useMutation, useQuery } from '@tanstack/react-query'
 
 export type CategoriesRouterInputs = RouterInputs['categories']['create']
