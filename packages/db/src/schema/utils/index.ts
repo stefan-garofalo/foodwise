@@ -33,4 +33,4 @@ export const toSelectFields = (fields?: Record<string, any>) =>
 			)
 		: {}
 
-export type Tables = 'categories' | 'ingredients'
+export type Tables = 'user_settings_categories' | 'ingredients'

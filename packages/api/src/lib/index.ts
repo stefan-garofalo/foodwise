@@ -5,12 +5,12 @@ import { eq, inArray, type BaseSQLiteTable } from '@foodwise/db/utils/index'
 import {
 	createInsertSchema,
 	createSelectSchema,
-	createUpdateSchema,
-	toSelectFields
+	createUpdateSchema
 } from '@foodwise/db/schema/utils/index'
 import { authedProcedure } from '../trpc'
 
 import { SQLiteTable, type SQLiteUpdateSetSource } from 'drizzle-orm/sqlite-core'
+import { getTableColumns } from 'drizzle-orm'
 
 export function createBaseProcedures<TTable extends BaseSQLiteTable>(
 	table: TTable
@@ -72,38 +72,40 @@ export function createBaseProcedures<TTable extends BaseSQLiteTable>(
 				}
 			}),
 
-		get: authedProcedure.query(async ({ ctx: { db } }) => {}),
-		getAll: authedProcedure.query(async ({ ctx: { db } }) => {})
-		// get: authedProcedure
-		// 	.input(
-		// 		z.object({
-		// 			id: z.string(),
-		// 			columns: createSelectSchema(table)
-		// 		})
-		// 	)
-		// 	.query(async ({ input: { id, columns }, ctx: { db } }) => {
-		// 		// db.query.categories.findFirst({
-		// 		// 	columns: toSelectFields(columns),
-		// 		// 	where: (table, { eq }) => eq(table.id, id)
-		// 		// })
-		// 		try {
-		// 			return ok(
-		// 				await db.query[table._.name].findFirst({
-		// 					columns: toSelectFields(columns),
-		// 					where: (t: TTable, { eq }: { eq: typeof eq }) => eq(t.id, id)
-		// 				})
-		// 			)
-		// 		} catch (error) {
-		// 			return err(error)
-		// 		}
-		// 	}),
-
-		// getAll: authedProcedure.query(async ({ ctx: { db } }) => {
-		// 	try {
-		// 		return ok(await db.query[table._.name].findMany({}))
-		// 	} catch (error) {
-		// 		return err(error)
-		// 	}
-		// })
+		get: authedProcedure
+			.input(
+				z.object({
+					id: z.string(),
+					columns: createSelectSchema(table).optional()
+				})
+			)
+			.query(async ({ input: { id, columns }, ctx: { db } }) => {
+				try {
+					return ok(
+						await db
+							.select(
+								columns
+									? Object.fromEntries(
+											Object.entries(getTableColumns(table)).filter(
+												([key]) => columns[key] === true
+											)
+										)
+									: getTableColumns(table)
+							)
+							.from(table)
+							.where(eq(table.id, id))
+							.limit(1)
+					)
+				} catch (error) {
+					return err(error)
+				}
+			}),
+		getAll: authedProcedure.query(async ({ ctx: { db } }) => {
+			try {
+				return ok(await db.select(getTableColumns(table)).from(table))
+			} catch (error) {
+				return err(error)
+			}
+		})
 	}
 }
