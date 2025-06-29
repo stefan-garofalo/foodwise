@@ -1,11 +1,25 @@
 {
 	"name": "@foodwise/api",
 	"type": "module",
+	"typesVersions": {
+		"*": {
+			"*": ["./src/*"],
+			".": ["./src/index.ts"]
+		}
+	},
 	"exports": {
 		".": {
 			"types": "./src/index.ts",
-			"default": "./src/index.ts"
+			"default": "./dist/index.js"
+		},
+		"./*": {
+			"types": "./src/*.ts",
+			"default": "./dist/*.js"
 		}
+	},
+	"scripts": {
+		"build": "tsc",
+		"typecheck": "tsc --noEmit"
 	},
 	"dependencies": {
 		"@foodwise/auth": "workspace:*",

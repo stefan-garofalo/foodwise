@@ -1,4 +1,4 @@
-import { RouterInputs, RouterOutputs, useTRPC } from '@/modules/trpc/client'
+import { RouterInputs, useTRPC } from '@/modules/trpc/client'
 import { useMutation, useQuery } from '@tanstack/react-query'
 
 /**
@@ -6,7 +6,6 @@ import { useMutation, useQuery } from '@tanstack/react-query'
  */
 export function useCategoriesRouter() {
 	const trpc = useTRPC()
-
 	return {
 		useCategoryCreate: () =>
 			useMutation(trpc.users.settings.categories.create.mutationOptions()),
@@ -14,9 +13,11 @@ export function useCategoriesRouter() {
 			useMutation(trpc.users.settings.categories.update.mutationOptions()),
 		useCategoryRemove: () =>
 			useMutation(trpc.users.settings.categories.remove.mutationOptions()),
-		useCategoryGet: () =>
-			useQuery(trpc.users.settings.categories.get.queryOptions()),
-		useCategoryGetAll: () =>
-			useQuery(trpc.users.settings.categories.getAll.queryOptions())
+		useCategoryGet: (
+			params: RouterInputs['users']['settings']['categories']['get']
+		) => useQuery(trpc.users.settings.categories.get.queryOptions(params)),
+		useCategoryGetAll: (
+			params: RouterInputs['users']['settings']['categories']['getAll']
+		) => useQuery(trpc.users.settings.categories.getAll.queryOptions(params))
 	}
 }

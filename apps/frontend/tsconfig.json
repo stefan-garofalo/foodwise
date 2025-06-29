@@ -20,8 +20,10 @@
 		"paths": {
 			"@/*": ["./*"]
 		},
-		"target": "ESNext"
+		"target": "ESNext",
+		"composite": true
 	},
+	"references": [{ "path": "../../packages/api" }],
 	"include": [
 		"next-env.d.ts",
 		"**/*.ts",
