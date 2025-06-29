@@ -22,6 +22,13 @@
       "when": 1750770403144,
       "tag": "0002_fat_major_mapleleaf",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1751203559990,
+      "tag": "0003_sharp_leo",
+      "breakpoints": true
     }
   ]
 }

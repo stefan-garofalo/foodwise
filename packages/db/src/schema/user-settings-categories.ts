@@ -4,7 +4,7 @@ import { sqliteTable, text } from 'drizzle-orm/sqlite-core'
 import { ingredients } from './ingredients'
 import { baseTableColumns } from '../utils'
 
-export const userSettingsCategories = sqliteTable('categories', {
+export const userSettingsCategories = sqliteTable('user_settings_categories', {
 	...baseTableColumns,
 	uid: text('uid').notNull().unique(),
 	iconUid: text('icon_uid'),

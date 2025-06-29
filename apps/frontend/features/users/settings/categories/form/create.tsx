@@ -5,9 +5,10 @@ import { useTRPC } from '@/modules/trpc/client'
 import { useMutation } from '@tanstack/react-query'
 
 export default function CategoryCreateForm() {
-	const { useCategoryCreate } = useCategoriesRouter()
+	const { useCategoryCreate, useCategoryGet } = useCategoriesRouter()
 	const { mutate } = useCategoryCreate()
-
+	const {data} = useCategoryGet()
+	data
 	const Form = useAppForm({
 		validators: {
 			onSubmit: z.object({})
