@@ -3,7 +3,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "bun run --hot src/index.ts",
-		"deploy": "vc deploy",
+		"build": "tsc",
 		"start": "bun ./dist/index.js"
 	},
 	"dependencies": {
