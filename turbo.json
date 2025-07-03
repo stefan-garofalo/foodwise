@@ -27,7 +27,14 @@
 		"lint": {
 			"dependsOn": ["^lint"]
 		},
-
+		"typecheck": {
+			"dependsOn": ["^typecheck"],
+			"inputs": [
+				"src/**/*.tsx",
+				"src/**/*.ts",
+				"tsconfig.json"
+			]
+		},
 		"dev": {
 			"cache": false,
 			"persistent": true,

@@ -1,5 +1,5 @@
+import type { Tables } from '#schema/utils/index.js'
 import { integer, sqliteTable, text } from 'drizzle-orm/sqlite-core'
-import { type Tables } from '../schema/utils'
 
 export const baseTableColumns = {
 	id: text('id')
