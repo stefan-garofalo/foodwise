@@ -10,11 +10,11 @@ import {
 	createInsertSchema,
 	createSelectSchema,
 	createUpdateSchema
-} from '@foodwise/db/schema/utils/index'
+} from 'drizzle-zod'
 
 import { type SQLiteUpdateSetSource } from '@foodwise/db/utils/types'
 
-import { authedProcedure } from '../trpc'
+import { authedProcedure } from '#trpc.js'
 
 export function createBaseProcedures<TTable extends BaseSQLiteTable>(
 	table: TTable
@@ -91,13 +91,13 @@ export function createBaseProcedures<TTable extends BaseSQLiteTable>(
 								columns
 									? Object.fromEntries(
 											Object.entries(getTableColumns(table)).filter(
-												([key]) => columns[key] === true
+												([key]) => columns[key as keyof typeof columns] === true
 											)
 										)
 									: getTableColumns(table)
 							)
 							.from(table)
-							.where(eq(table.id, id))
+							.where(eq(table.id, id as string))
 							.limit(1)
 					)
 				} catch (error) {

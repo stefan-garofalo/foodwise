@@ -1,5 +1,8 @@
 {
 	"name": "@foodwise/db",
+	"imports": {
+		"#*": "./src/*"
+	},
 	"exports": {
 		"./client": {
 			"types": "./src/client.ts",
@@ -21,7 +24,8 @@
 	"scripts": {
 		"db:generate": "drizzle-kit generate",
 		"db:migrate": "drizzle-kit migrate",
-		"db:studio": "drizzle-kit studio"
+		"db:studio": "drizzle-kit studio",
+		"typecheck": "tsc --noEmit"
 	},
 	"dependencies": {
 		"@libsql/client": "^0.14.0",

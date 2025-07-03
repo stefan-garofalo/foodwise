@@ -3,9 +3,16 @@
 	"type": "module",
 	"typesVersions": {
 		"*": {
-			"*": ["./src/*"],
-			".": ["./src/index.ts"]
+			"*": [
+				"./src/*"
+			],
+			".": [
+				"./src/index.ts"
+			]
 		}
+	},
+	"imports": {
+		"#*": "./dist/*"
 	},
 	"exports": {
 		".": {

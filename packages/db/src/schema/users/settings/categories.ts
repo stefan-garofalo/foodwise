@@ -1,9 +1,9 @@
 import { relations } from 'drizzle-orm'
 import { sqliteTable, text } from 'drizzle-orm/sqlite-core'
 
-import { baseTableColumns } from '../../../utils'
+import { baseTableColumns } from '#utils/index.js'
+import { ingredients } from '#schema/ingredients.js'
 import { userSettings } from '.'
-import { ingredients } from '../../ingredients'
 
 export const userSettingsCategories = sqliteTable('user_settings_categories', {
 	...baseTableColumns,
