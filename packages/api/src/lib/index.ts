@@ -1,16 +1,20 @@
 import { z } from 'zod'
 import { err, ok } from 'neverthrow'
-import { eq, inArray, type BaseSQLiteTable } from '@foodwise/db/utils/index'
-
+import {
+	eq,
+	inArray,
+	getTableColumns,
+	type BaseSQLiteTable
+} from '@foodwise/db/utils/index'
 import {
 	createInsertSchema,
 	createSelectSchema,
 	createUpdateSchema
 } from '@foodwise/db/schema/utils/index'
-import { authedProcedure } from '../trpc'
 
-import { SQLiteTable, type SQLiteUpdateSetSource } from 'drizzle-orm/sqlite-core'
-import { getTableColumns } from 'drizzle-orm'
+import { type SQLiteUpdateSetSource } from '@foodwise/db/utils/types'
+
+import { authedProcedure } from '../trpc'
 
 export function createBaseProcedures<TTable extends BaseSQLiteTable>(
 	table: TTable
@@ -26,7 +30,7 @@ export function createBaseProcedures<TTable extends BaseSQLiteTable>(
 							.values(input as TTable['$inferInsert'])
 							.onConflictDoUpdate({
 								target: table.id,
-								set: input as SQLiteUpdateSetSource<SQLiteTable>
+								set: input as SQLiteUpdateSetSource<TTable>
 							})
 							.returning()
 					)

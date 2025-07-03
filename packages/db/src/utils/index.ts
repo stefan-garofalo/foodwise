@@ -16,4 +16,6 @@ export const baseTableColumns = {
 export type BaseSQLiteTable = typeof baseType
 const baseType = sqliteTable('base' as Tables, baseTableColumns)
 
+export { getTableColumns } from 'drizzle-orm'
+
 export { eq, inArray } from 'drizzle-orm'

@@ -1,2 +1,2 @@
-export * from './user-settings-categories'
+export * from './users'
 export * from './ingredients'

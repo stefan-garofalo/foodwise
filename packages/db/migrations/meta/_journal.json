@@ -29,6 +29,13 @@
       "when": 1751203559990,
       "tag": "0003_sharp_leo",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1751561669463,
+      "tag": "0004_redundant_swordsman",
+      "breakpoints": true
     }
   ]
 }

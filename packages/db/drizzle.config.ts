@@ -7,5 +7,6 @@ export default {
 	dbCredentials: {
 		url: process.env.TURSO_DB_URL!,
 		authToken: process.env.TURSO_AUTH_TOKEN
-	}
+	},
+	tablesFilter: ['user']
 } satisfies Config
