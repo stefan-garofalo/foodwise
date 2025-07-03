@@ -1,7 +1,7 @@
 import { sqliteTable, text, real, integer } from 'drizzle-orm/sqlite-core'
 
 import { relations } from 'drizzle-orm'
-import { userSettingsCategories } from './user-settings-categories'
+import { userSettingsCategories } from './users/settings/categories'
 import { baseTableColumns } from '../utils'
 
 export const ingredients = sqliteTable('ingredients', {
