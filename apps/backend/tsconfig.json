@@ -5,6 +5,11 @@
 		"verbatimModuleSyntax": false,
 		"strict": true,
 		"jsx": "react-jsx",
-		"jsxImportSource": "hono/jsx"
+		"jsxImportSource": "hono/jsx",
+		"outDir": "dist",
+		"rootDir": "src",
+		"baseUrl": ".",
+		"declaration": true,
+		"declarationMap": true
 	}
 }
