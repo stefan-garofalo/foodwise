@@ -1,4 +1,4 @@
-import type { Tables } from '#schema/utils/index.js'
+import type { Tables } from '#db/schema/utils/index.js'
 import { integer, sqliteTable, text } from 'drizzle-orm/sqlite-core'
 
 export const baseTableColumns = {
@@ -13,8 +13,8 @@ export const baseTableColumns = {
 		.$defaultFn(() => new Date())
 } as const
 
-export type BaseSQLiteTable = typeof baseType
 const baseType = sqliteTable('base' as Tables, baseTableColumns)
+export type BaseSQLiteTable = typeof baseType
 
 export { getTableColumns } from 'drizzle-orm'
 
