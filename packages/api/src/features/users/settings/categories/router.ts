@@ -1,12 +1,14 @@
 import { router } from '#api/trpc.js'
 import {
-	create
+	create,
+	update
+
 	//	get, getAll, remove, update
 } from './service'
 
 export const categoriesRouter = router({
-	create
-	// update,
+	create,
+	update
 	// remove,
 	// get,
 	// getAll
