@@ -8,11 +8,13 @@ import {
 
 import { buildCreateProcedure } from './operations/create'
 import { buildUpdateProcedure } from './operations/update'
+import { buildRemoveProcedure } from './operations/remove'
 
 export function createBaseProcedures<T extends BaseSQLiteTable>(table: T) {
 	return {
 		create: buildCreateProcedure(table),
-		update: buildUpdateProcedure(table)
+		update: buildUpdateProcedure(table),
+		remove: buildRemoveProcedure(table)
 	} as const
 }
 

@@ -14,7 +14,6 @@ type UpdateInput<T extends BaseSQLiteTable> = {
 }
 
 export function buildUpdateProcedure<T extends BaseSQLiteTable>(table: T) {
-	// Runtime validator: id + optional values adhering to table schema
 	return authedProcedure
 		.input(
 			type({

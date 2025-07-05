@@ -6,12 +6,6 @@ import { ok } from 'neverthrow'
 import type { ParserLike, TableColumns } from '../types'
 import type { SQLiteUpdateSetSource } from '@foodwise/db/utils/types'
 
-/**
- * buildCreateProcedure
- * --------------------
- * Produces a TRPC mutation that performs an INSERT … ON CONFLICT DO UPDATE.
- * Everything is generic over the table, so each table enjoys full type-safety.
- */
 export function buildCreateProcedure<T extends BaseSQLiteTable>(table: T) {
 	return authedProcedure
 		.input(
