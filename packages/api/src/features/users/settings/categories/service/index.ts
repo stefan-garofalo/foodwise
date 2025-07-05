@@ -1,4 +1,4 @@
-import { createBaseProcedures } from '#api/lib/index.js'
+import { createBaseProcedures } from '#api/lib/crud/index.js'
 import { userSettingsCategories } from '@foodwise/db/schema'
 
-export const { create } = createBaseProcedures(userSettingsCategories)
+export const { create, update } = createBaseProcedures(userSettingsCategories)
