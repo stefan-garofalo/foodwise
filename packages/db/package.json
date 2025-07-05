@@ -1,7 +1,7 @@
 {
 	"name": "@foodwise/db",
 	"imports": {
-		"#*": "./src/*"
+		"#db/*": "./src/*"
 	},
 	"exports": {
 		"./client": {
@@ -30,7 +30,8 @@
 	"dependencies": {
 		"@libsql/client": "^0.14.0",
 		"drizzle-orm": "^0.38.4",
-		"drizzle-zod": "^0.6.1"
+		"drizzle-zod": "^0.8.2",
+		"zod": "^3.25.74"
 	},
 	"devDependencies": {
 		"@foodwise/tsconfig": "workspace:*",
