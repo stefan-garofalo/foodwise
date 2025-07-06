@@ -15,9 +15,6 @@ export function useCategoriesRouter() {
 			useMutation(trpc.users.settings.categories.remove.mutationOptions()),
 		useCategoryGet: (
 			params: RouterInputs['users']['settings']['categories']['get']
-		) => useQuery(trpc.users.settings.categories.get.queryOptions(params)),
-		useCategoryGetAll: (
-			params: RouterInputs['users']['settings']['categories']['getAll']
-		) => useQuery(trpc.users.settings.categories.getAll.queryOptions(params))
+		) => useQuery(trpc.users.settings.categories.get.queryOptions(params))
 	}
 }
