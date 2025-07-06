@@ -1,34 +1,41 @@
 import { authedProcedure } from '#api/trpc.js'
 import type { BaseSQLiteTable } from '@foodwise/db/utils/index'
 import { eq, getTableColumns } from '@foodwise/db/utils/index'
-import { type } from 'arktype'
-import { createInsertSchema } from 'drizzle-arktype'
+import { scope, type } from 'arktype'
+import { createSelectSchema } from 'drizzle-arktype'
 import { ok, err } from 'neverthrow'
 import type { ParserLike, TableColumns } from '../types'
 
 // All columns optional – suitable for a partial update payload
-type UpdateInput<T extends BaseSQLiteTable> = {
-	id: string
-	values?: Partial<TableColumns<T>>
+type ColumnFlags<T extends BaseSQLiteTable> = {
+	[K in keyof TableColumns<T>]?: boolean
 }
 
-export function buildUpdateProcedure<T extends BaseSQLiteTable>(table: T) {
+type GetInput<T extends BaseSQLiteTable> = {
+	id: string
+	columns?: ColumnFlags<T>
+}
+
+export function buildGetProcedure<T extends BaseSQLiteTable>(table: T) {
 	return authedProcedure
 		.input(
 			type({
 				id: 'string',
-				values: createInsertSchema(table).optional()
-			}).assert as unknown as ParserLike<UpdateInput<T>>
+				selectableColumns: scope({
+					Keys: type({ '...': createSelectSchema(table) as any }).keyof(),
+					Flags: { '[Keys]': 'boolean' }
+				}).type('Flags')
+			}).assert as unknown as ParserLike<GetInput<T>>
 		)
-		.query(async ({ input: { id, values }, ctx: { db } }) => {
+		.query(async ({ input: { id, columns }, ctx: { db } }) => {
 			try {
 				return ok(
 					await db
 						.select(
-							values
+							columns
 								? Object.fromEntries(
 										Object.entries(getTableColumns(table)).filter(
-											([key]) => values[key as keyof typeof values] === true
+											([key]) => columns[key as keyof typeof columns] === true
 										)
 									)
 								: getTableColumns(table)
