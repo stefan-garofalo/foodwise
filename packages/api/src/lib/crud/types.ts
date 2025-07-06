@@ -12,11 +12,7 @@ export type ParserLike<TIn, TOut = TIn> = {
 }
 
 export type TableColumns<T extends BaseSQLiteTable> = {
-	[K in keyof T['$inferInsert'] as K extends
-		| 'id'
-		| 'createdAt'
-		| 'updatedAt'
-		| `${string}Id`
+	[K in keyof T['$inferInsert'] as K extends 'id' | 'createdAt' | 'updatedAt'
 		? never
 		: K]: T['$inferInsert'][K]
 }

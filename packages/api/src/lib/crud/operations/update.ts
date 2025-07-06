@@ -5,6 +5,7 @@ import { type } from 'arktype'
 import { createInsertSchema } from 'drizzle-arktype'
 import { ok, err } from 'neverthrow'
 import type { ParserLike, TableColumns } from '../types'
+import type { SQLiteUpdateSetSource } from '@foodwise/db/utils/types'
 
 // All columns optional – suitable for a partial update payload
 type UpdateInput<T extends BaseSQLiteTable> = {
@@ -12,30 +13,27 @@ type UpdateInput<T extends BaseSQLiteTable> = {
 	values?: Partial<TableColumns<T>>
 }
 
-export function buildUpdateProcedure<T extends BaseSQLiteTable>(table: T) {
+export function buildUpdateProcedure<TTable extends BaseSQLiteTable>(
+	table: TTable
+) {
 	return authedProcedure
 		.input(
 			type({
 				id: 'string',
 				values: createInsertSchema(table).optional()
-			}).assert as unknown as ParserLike<UpdateInput<T>>
+			}).assert as unknown as ParserLike<UpdateInput<TTable>>
 		)
-		.query(async ({ input: { id, values }, ctx: { db } }) => {
+		.mutation(async ({ input, ctx: { db } }) => {
 			try {
 				return ok(
 					await db
-						.select(
-							values
-								? Object.fromEntries(
-										Object.entries(getTableColumns(table)).filter(
-											([key]) => values[key as keyof typeof values] === true
-										)
-									)
-								: getTableColumns(table)
-						)
-						.from(table)
-						.where(eq(table.id, id as string))
-						.limit(1)
+						.update(table as TTable)
+						.set({
+							...(input?.values! as SQLiteUpdateSetSource<TTable>),
+							updatedAt: new Date()
+						} as SQLiteUpdateSetSource<TTable>)
+						.where(eq(table.id, input?.id!))
+						.returning()
 				)
 			} catch (error) {
 				return err(error)
