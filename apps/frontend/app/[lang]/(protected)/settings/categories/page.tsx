@@ -2,15 +2,15 @@ import { getMetadata } from '@/modules/metadata'
 import { generateMetadataProps } from '@/modules/metadata/types'
 import { Title } from '@/modules/ui/primitives/typography'
 import { getCategoriesDictionary } from './dictionary'
-import { WithLangParam } from '@/modules/i18n/types'
-import { Button } from '@/modules/ui/primitives/button'
+import { CategoriesSettingsPageProps } from './types'
+import CategoryCreateDialog from '@/features/users/settings/categories/create'
 
 export const generateMetadata = async (props: generateMetadataProps) =>
 	await getMetadata(props, import.meta.url)
 
 export default async function CategoriesSettingsPage({
 	params
-}: WithLangParam<{}>) {
+}: CategoriesSettingsPageProps) {
 	const { lang } = await params
 	const dict = getCategoriesDictionary(lang)
 	return (
@@ -20,7 +20,7 @@ export default async function CategoriesSettingsPage({
 					<Title variant="title">{dict.title}</Title>
 					<p>{dict.description}</p>
 				</div>
-				<Button>{dict.actions.create}</Button>
+				<CategoryCreateDialog />
 			</section>
 		</div>
 	)

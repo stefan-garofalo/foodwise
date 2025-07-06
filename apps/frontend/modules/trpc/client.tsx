@@ -16,11 +16,11 @@ let clientQueryClientSingleton: QueryClient | undefined = undefined
 const getQueryClient = () => {
 	// Server: always make a new query client
 	if (typeof window === 'undefined') return makeQueryClient()
-	// Browser: use singleton pattern to keep the same query cl	ient
+	// Browser: use singleton pattern to keep the same query client
 	return (clientQueryClientSingleton ??= makeQueryClient())
 }
 
-export const { TRPCProvider, useTRPC } = createTRPCContext<AppRouter>()
+const { TRPCProvider, useTRPC, useTRPCClient } = createTRPCContext<AppRouter>()
 
 /**
  * Inference helper for inputs.
@@ -36,6 +36,7 @@ export type RouterInputs = inferRouterInputs<AppRouter>
  */
 export type RouterOutputs = inferRouterOutputs<AppRouter>
 
+export { useTRPC, useTRPCClient }
 export function TRPCReactProvider(props: { children: React.ReactNode }) {
 	const queryClient = getQueryClient()
 	const [trpcClient] = useState(makeTrpcClient)

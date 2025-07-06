@@ -1,20 +1,15 @@
 import '../globals.css'
 import { instrument, geist } from '@/modules/font'
 import { LOCALE_LIST } from '@/modules/i18n/config'
-import { WithLangParam } from '@/modules/i18n/types'
 import Providers from '@/modules/providers'
-import { PropsWithChildren } from 'react'
+import { RootLayoutProps } from './types'
 
 export const experimental_ppr = true
 
 export const generateStaticParams = () => LOCALE_LIST.map((lang) => ({ lang }))
 
-export default async function RootLayout({
-	params,
-	children
-}: WithLangParam<PropsWithChildren>) {
+export default async function RootLayout({ params, children }: RootLayoutProps) {
 	const { lang } = await params
-
 	return (
 		<html lang={lang}>
 			<body className={`${geist.variable} ${instrument.variable}`}>
