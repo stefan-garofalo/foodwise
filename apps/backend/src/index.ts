@@ -7,8 +7,8 @@ import { authHandler } from './middleware/auth'
 const app = new Hono()
 
 app.use('*', corsMiddleware)
-app.use('api/trpc/*', trpcMiddleware)
-app.on(['POST', 'GET'], 'api/auth/*', authHandler)
+app.use('/api/trpc/*', trpcMiddleware)
+app.on(['POST', 'GET'], '/api/auth/*', authHandler)
 
 app.get('/health', (c) =>
 	c.json({ status: 'ok', timestamp: new Date().toISOString() })
