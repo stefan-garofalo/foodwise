@@ -11,7 +11,7 @@ export function buildCreateProcedure<T extends BaseSQLiteTable>(table: T) {
 		.input(
 			type({
 				'...': createInsertSchema(table) as any
-			}) as any as ParserLike<TableColumns<T>>
+			}).assert as any as ParserLike<TableColumns<T>>
 		)
 		.mutation(async ({ input, ctx: { db } }) =>
 			ok(

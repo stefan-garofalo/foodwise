@@ -6,7 +6,7 @@ import { ok, err } from 'neverthrow'
 
 export function buildRemoveProcedure<T extends BaseSQLiteTable>(table: T) {
 	return authedProcedure
-		.input(type({ id: 'string | string[]' }))
+		.input(type({ id: 'string | string[]' }).assert)
 		.mutation(async ({ input: { id }, ctx: { db } }) => {
 			try {
 				await db
