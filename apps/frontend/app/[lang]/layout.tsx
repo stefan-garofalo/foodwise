@@ -3,6 +3,7 @@ import { instrument, geist } from '@/modules/font'
 import { LOCALE_LIST } from '@/modules/i18n/config'
 import Providers from '@/modules/providers'
 import { RootLayoutProps } from './types'
+import { Toaster } from '@/modules/ui/primitives/sonner'
 
 export const experimental_ppr = true
 
@@ -13,7 +14,10 @@ export default async function RootLayout({ params, children }: RootLayoutProps) 
 	return (
 		<html lang={lang}>
 			<body className={`${geist.variable} ${instrument.variable}`}>
-				<Providers>{children}</Providers>
+				<Providers>
+					<Toaster />
+					{children}
+				</Providers>
 			</body>
 		</html>
 	)

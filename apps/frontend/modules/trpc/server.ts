@@ -4,7 +4,7 @@ import { createTRPCOptionsProxy } from '@trpc/tanstack-react-query'
 import { headers } from 'next/headers'
 import { cache } from 'react'
 
-import { createTRPCContext } from '@foodwise/api'
+import { createCaller, createTRPCContext } from '@foodwise/api'
 import { makeQueryClient, makeTrpcClient } from './lib/clients'
 
 /**

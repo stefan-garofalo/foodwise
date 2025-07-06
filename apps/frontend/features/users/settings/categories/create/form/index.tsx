@@ -1,8 +1,9 @@
 'use client'
 
 import { useAppForm } from '@/modules/form/hooks'
-import { useCategoryCreate } from '../lib'
+
 import { type } from 'arktype'
+import { useCategoryCreate } from '../../lib'
 
 const CategoryCreateSchema = type({
 	color: 'string',
@@ -17,7 +18,7 @@ export default function CategoryCreateForm() {
 
 	const { handleSubmit, AppField } = useAppForm({
 		validators: {
-			onSubmit: CategoryCreateSchema
+			// onSubmit: CategoryCreateSchema
 		}
 	})
 
@@ -25,7 +26,15 @@ export default function CategoryCreateForm() {
 		<form
 			onSubmit={(e) => {
 				e.preventDefault()
-				handleSubmit(mutate)
+				handleSubmit(
+					mutate({
+						color: '',
+						name: '',
+						uid: '',
+						iconUid: '',
+						settingsId: ''
+					})
+				)
 			}}
 		>
 			<AppField name="name" children={(field) => <field.Input />} />
