@@ -1,20 +1,14 @@
+'use client'
+
 import { RouterInputs, useTRPC } from '@/modules/trpc/client'
 import { useMutation, useQuery } from '@tanstack/react-query'
 
-/**
- * Hook to access categories router with autocompletion and type safety
- */
-export function useCategoriesRouter() {
-	const trpc = useTRPC()
-	return {
-		useCategoryCreate: () =>
-			useMutation(trpc.users.settings.categories.create.mutationOptions()),
-		useCategoryUpdate: () =>
-			useMutation(trpc.users.settings.categories.update.mutationOptions()),
-		useCategoryRemove: () =>
-			useMutation(trpc.users.settings.categories.remove.mutationOptions()),
-		useCategoryGet: (
-			params: RouterInputs['users']['settings']['categories']['get']
-		) => useQuery(trpc.users.settings.categories.get.queryOptions(params))
-	}
-}
+export const useCategoryCreate = () =>
+	useMutation(useTRPC().users.settings.categories.create.mutationOptions())
+export const useCategoryUpdate = () =>
+	useMutation(useTRPC().users.settings.categories.update.mutationOptions())
+export const useCategoryRemove = () =>
+	useMutation(useTRPC().users.settings.categories.remove.mutationOptions())
+export const useCategoryGet = (
+	params: RouterInputs['users']['settings']['categories']['get']
+) => useQuery(useTRPC().users.settings.categories.get.queryOptions(params))

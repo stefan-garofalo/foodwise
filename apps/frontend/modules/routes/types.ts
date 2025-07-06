@@ -1,5 +1,3 @@
-import { LangPageParams } from '../i18n/types'
-
 export type RouteDefinition = {
 	name: string
 	icon?: React.FC<React.SVGProps<SVGSVGElement>>
