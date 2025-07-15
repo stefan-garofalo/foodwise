@@ -1,31 +1,28 @@
-import { db } from '@foodwise/db/client'
-
-import { router } from './trpc'
-
-import { createCallerFactory } from './trpc'
 import { getAuth } from '@foodwise/auth/server'
+import { db } from '@foodwise/db/client'
 import { usersRouter } from './features/users/router'
+import { createCallerFactory, router } from './trpc'
 
 export const appRouter = router({
-	users: usersRouter
+  users: usersRouter,
 })
 export type AppRouter = typeof appRouter
 export type Context = Awaited<ReturnType<typeof createTRPCContext>>
-export { type inferRouterInputs, type inferRouterOutputs } from '@trpc/server'
+export type { inferRouterInputs, inferRouterOutputs } from '@trpc/server'
 
 export const createCaller = createCallerFactory(appRouter)
 export const createCallerWithDb = (
-	headers: Headers,
-	session: Awaited<ReturnType<ReturnType<typeof getAuth>['api']['getSession']>>
+  headers: Headers,
+  session: Awaited<ReturnType<ReturnType<typeof getAuth>['api']['getSession']>>
 ) =>
-	createCaller({
-		db,
-		headers,
-		session
-	})
+  createCaller({
+    db,
+    headers,
+    session,
+  })
 
 export const createTRPCContext = async ({ headers }: { headers: Headers }) => ({
-	headers,
-	session: await getAuth().api.getSession({ headers }),
-	db
+  headers,
+  session: await getAuth().api.getSession({ headers }),
+  db,
 })

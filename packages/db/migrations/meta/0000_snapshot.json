@@ -39,9 +39,7 @@
       "indexes": {
         "categories_name_unique": {
           "name": "categories_name_unique",
-          "columns": [
-            "name"
-          ],
+          "columns": ["name"],
           "isUnique": true
         }
       },
@@ -131,12 +129,8 @@
           "name": "ingredients_category_id_categories_id_fk",
           "tableFrom": "ingredients",
           "tableTo": "categories",
-          "columnsFrom": [
-            "category_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["category_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         }

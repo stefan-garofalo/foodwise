@@ -1,1 +1,1 @@
-export { default as LocalizedSwitch } from './Switch'
+export { default as LocalizedSwitch } from './switch'

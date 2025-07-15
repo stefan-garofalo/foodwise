@@ -53,9 +53,7 @@
       "indexes": {
         "user_settings_categories_uid_unique": {
           "name": "user_settings_categories_uid_unique",
-          "columns": [
-            "uid"
-          ],
+          "columns": ["uid"],
           "isUnique": true
         }
       },
@@ -145,12 +143,8 @@
           "name": "ingredients_category_id_user_settings_categories_id_fk",
           "tableFrom": "ingredients",
           "tableTo": "user_settings_categories",
-          "columnsFrom": [
-            "category_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["category_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         }

@@ -1,13 +1,5 @@
-import { SearchParams } from '@/features/search/types'
-import Error from './Error'
-import SkeletonResults from './Skeletons/Results'
+export { default as SkeletonResults } from './skeletons/results'
 
-export default async function Results({
-	searchParams
-}: {
-	searchParams: SearchParams
-}) {
-	return <></>
+export default function Results() {
+  return null
 }
-
-export { SkeletonResults as ResultsSkeleton }

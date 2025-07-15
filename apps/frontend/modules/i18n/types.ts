@@ -1,5 +1,5 @@
-import { Prettify } from '@/utils/types'
-import { LANGS } from './config'
+import type { Prettify } from '@/utils/types'
+import type { LANGS } from './config'
 
 export type Lang = Prettify<keyof typeof LANGS>
 export type LangParams = Prettify<{ lang: Lang }>

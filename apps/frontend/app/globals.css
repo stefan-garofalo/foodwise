@@ -1,136 +1,146 @@
-@import 'tailwindcss';
-@import 'tw-animate-css';
+/** biome-ignore-all lint/nursery/noUnknownAtRule: tailwind at-rules are not recognized */
+@import "tailwindcss";
+@import "tw-animate-css";
 
 @theme inline {
-	/* fonts */
-	--font-instrument: var(--font-instrument);
-	--font-geist: var(--font-geist);
+  /* fonts */
+  --font-instrument: var(--font-instrument);
+  --font-geist: var(--font-geist);
 
-	/* typography */
-	--text-title: 3rem; /* 48px */
-	--text-title-sm: 1.75rem; /* 28px */
-	--text-title-xs: 1.5rem; /* 24px */
+  /* typography */
+  --text-title: 3rem; /* 48px */
+  --text-title-sm: 1.75rem; /* 28px */
+  --text-title-xs: 1.5rem; /* 24px */
 
-	/* spacing */
-	--spacing-container: var(--container);
+  /* spacing */
+  --spacing-container: var(--container);
 
-	/* palette */
-	--color-apple-green: oklch(0.55 0.12 123.82);
-	--color-deep-teal-black: oklch(0.15 0.03 190);
-	--color-deep-teal-darkest: oklch(0.19 0.03 190);
-	--color-deep-teal-darker: oklch(0.24 0.03 190);
-	--color-deep-teal: oklch(0.3 0.04 190);
+  /* palette */
+  --color-apple-green: oklch(0.55 0.12 123.82);
+  --color-deep-teal-black: oklch(0.15 0.03 190);
+  --color-deep-teal-darkest: oklch(0.19 0.03 190);
+  --color-deep-teal-darker: oklch(0.24 0.03 190);
+  --color-deep-teal: oklch(0.3 0.04 190);
 
-	--color-terracotta: oklch(0.69 0.14 48.86);
-	--color-subtle-cream: oklch(0.98 0.02 90);
+  --color-terracotta: oklch(0.69 0.14 48.86);
+  --color-subtle-cream: oklch(0.98 0.02 90);
 
-	--color-off-white: oklch(0.97 0.01 85);
-	--color-off-white-darker: oklch(0.92 0.015 82);
-	--color-off-white-darkest: oklch(0.87 0.02 79);
+  --color-off-white: oklch(0.97 0.01 85);
+  --color-off-white-darker: oklch(0.92 0.015 82);
+  --color-off-white-darkest: oklch(0.87 0.02 79);
 
-	--color-error: oklch(0.58 0.25 25);
-	--color-error-darker: oklch(0.65 0.28 26);
+  --color-error: oklch(0.58 0.25 25);
+  --color-error-darker: oklch(0.65 0.28 26);
 
-	/* semantics */
-	--color-background: light-dark(
-		var(--color-off-white),
-		var(--color-deep-teal-black)
-	);
-	--color-foreground: light-dark(
-		var(--color-deep-teal-darkest),
-		var(--color-subtle-cream)
-	);
+  /* semantics */
+  --color-background: light-dark(
+    var(--color-off-white),
+    var(--color-deep-teal-black)
+  );
+  --color-foreground: light-dark(
+    var(--color-deep-teal-darkest),
+    var(--color-subtle-cream)
+  );
 
-	--color-primary: light-dark(var(--color-terracotta), var(--color-apple-green));
-	--color-primary-foreground: light-dark(
-		var(--color-off-white),
-		var(--color-subtle-cream)
-	);
+  --color-primary: light-dark(var(--color-terracotta), var(--color-apple-green));
+  --color-primary-foreground: light-dark(
+    var(--color-off-white),
+    var(--color-subtle-cream)
+  );
 
-	--color-secondary: light-dark(
-		var(--color-warm-beige),
-		var(--color-deep-teal-darker)
-	);
+  --color-secondary: light-dark(
+    var(--color-warm-beige),
+    var(--color-deep-teal-darker)
+  );
 
-	--color-border: light-dark(
-		var(--color-off-white-darkest),
-		var(--color-deep-teal)
-	);
-	--color-danger: light-dark(var(--color-error), var(--color-error-darker));
+  --color-border: light-dark(
+    var(--color-off-white-darkest),
+    var(--color-deep-teal)
+  );
+  --color-danger: light-dark(var(--color-error), var(--color-error-darker));
 
-	/* shadcn/ui variables */
-	--radius: 0.625rem;
+  /* shadcn/ui variables */
+  --radius: 0.625rem;
 
-	/* using existing semantic colors where possible */
-	--color-card: light-dark(var(--color-off-white), var(--color-deep-teal-darkest));
-	--color-card-foreground: light-dark(
-		var(--color-deep-teal-darkest),
-		var(--color-subtle-cream)
-	);
+  /* using existing semantic colors where possible */
+  --color-card: light-dark(
+    var(--color-off-white),
+    var(--color-deep-teal-darkest)
+  );
+  --color-card-foreground: light-dark(
+    var(--color-deep-teal-darkest),
+    var(--color-subtle-cream)
+  );
 
-	--color-popover: light-dark(
-		var(--color-off-white),
-		var(--color-deep-teal-darker)
-	);
-	--color-popover-focus: light-dark(var(--color-off-white), var(--color-deep-teal));
-	--color-popover-foreground: light-dark(
-		var(--color-deep-teal-darkest),
-		var(--color-subtle-cream)
-	);
+  --color-popover: light-dark(
+    var(--color-off-white),
+    var(--color-deep-teal-darker)
+  );
+  --color-popover-focus: light-dark(
+    var(--color-off-white),
+    var(--color-deep-teal)
+  );
+  --color-popover-foreground: light-dark(
+    var(--color-deep-teal-darkest),
+    var(--color-subtle-cream)
+  );
 
-	--color-muted: light-dark(var(--color-off-white-darker), var(--color-deep-teal));
-	--color-muted-foreground: light-dark(oklch(0.556 0 0), oklch(0.708 0 0));
+  --color-muted: light-dark(
+    var(--color-off-white-darker),
+    var(--color-deep-teal)
+  );
+  --color-muted-foreground: light-dark(oklch(0.556 0 0), oklch(0.708 0 0));
 
-	--color-accent: var(--color-primary);
-	--color-accent-foreground: var(--color-primary-foreground);
+  --color-accent: var(--color-primary);
+  --color-accent-foreground: var(--color-primary-foreground);
 
-	--color-destructive: var(--color-danger);
-	--color-destructive-foreground: light-dark(
-		var(--color-off-white),
-		var(--color-subtle-cream)
-	);
+  --color-destructive: var(--color-danger);
+  --color-destructive-foreground: light-dark(
+    var(--color-off-white),
+    var(--color-subtle-cream)
+  );
 
-	--color-input: light-dark(var(--color-off-white-darkest), oklch(1 0 0 / 15%));
-	--color-ring: light-dark(oklch(0.708 0 0), oklch(0.556 0 0));
+  --color-input: light-dark(var(--color-off-white-darkest), oklch(1 0 0 / 15%));
+  --color-ring: light-dark(oklch(0.708 0 0), oklch(0.556 0 0));
 
-	/* sidebar variables using existing palette */
-	--color-sidebar: light-dark(
-		var(--color-off-white),
-		var(--color-deep-teal-darkest)
-	);
-	--color-sidebar-foreground: light-dark(
-		var(--color-deep-teal-darkest),
-		var(--color-subtle-cream)
-	);
-	--color-sidebar-primary: light-dark(
-		var(--color-deep-teal-darkest),
-		var(--color-apple-green)
-	);
-	--color-sidebar-primary-foreground: light-dark(
-		var(--color-off-white),
-		var(--color-subtle-cream)
-	);
-	--color-sidebar-accent: light-dark(
-		var(--color-off-white-darker),
-		var(--color-deep-teal-darker)
-	);
-	--color-sidebar-accent-foreground: light-dark(
-		var(--color-deep-teal-darkest),
-		var(--color-subtle-cream)
-	);
-	--color-sidebar-border: light-dark(
-		var(--color-off-white-darkest),
-		var(--color-deep-teal)
-	);
-	--color-sidebar-ring: light-dark(
-		var(--color-terracotta),
-		var(--color-apple-green)
-	);
+  /* sidebar variables using existing palette */
+  --color-sidebar: light-dark(
+    var(--color-off-white),
+    var(--color-deep-teal-darkest)
+  );
+  --color-sidebar-foreground: light-dark(
+    var(--color-deep-teal-darkest),
+    var(--color-subtle-cream)
+  );
+  --color-sidebar-primary: light-dark(
+    var(--color-deep-teal-darkest),
+    var(--color-apple-green)
+  );
+  --color-sidebar-primary-foreground: light-dark(
+    var(--color-off-white),
+    var(--color-subtle-cream)
+  );
+  --color-sidebar-accent: light-dark(
+    var(--color-off-white-darker),
+    var(--color-deep-teal-darker)
+  );
+  --color-sidebar-accent-foreground: light-dark(
+    var(--color-deep-teal-darkest),
+    var(--color-subtle-cream)
+  );
+  --color-sidebar-border: light-dark(
+    var(--color-off-white-darkest),
+    var(--color-deep-teal)
+  );
+  --color-sidebar-ring: light-dark(
+    var(--color-terracotta),
+    var(--color-apple-green)
+  );
 
-	--color-sheet-border: light-dark(
-		var(--color-off-white-darkest),
-		var(--color-deep-teal)
-	);
+  --color-sheet-border: light-dark(
+    var(--color-off-white-darkest),
+    var(--color-deep-teal)
+  );
 }
 
 /*
@@ -142,32 +152,32 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
-	*,
-	::after,
-	::before,
-	::backdrop,
-	::file-selector-button {
-		border-color: var(--color-gray-200, currentColor);
-	}
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
 
-	button:not(:disabled),
-	[role='button']:not(:disabled) {
-		cursor: pointer;
-	}
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
 }
 
 :root {
-	color-scheme: light dark;
-	--container: 16px;
+  color-scheme: light dark;
+  --container: 16px;
 }
 
 @media (min-width: 64rem) {
-	:root {
-		--container: 24px;
-	}
+  :root {
+    --container: 24px;
+  }
 }
 
 body {
-	@apply bg-background text-foreground font-geist text-sm lg:text-base;
-	@apply transition-colors duration-300;
+  @apply bg-background text-foreground font-geist text-sm lg:text-base;
+  @apply transition-colors duration-300;
 }

@@ -46,16 +46,12 @@
       "indexes": {
         "user_profiles_user_id_unique": {
           "name": "user_profiles_user_id_unique",
-          "columns": [
-            "user_id"
-          ],
+          "columns": ["user_id"],
           "isUnique": true
         },
         "user_profiles_settings_id_unique": {
           "name": "user_profiles_settings_id_unique",
-          "columns": [
-            "settings_id"
-          ],
+          "columns": ["settings_id"],
           "isUnique": true
         }
       },
@@ -64,12 +60,8 @@
           "name": "user_profiles_user_id_user_id_fk",
           "tableFrom": "user_profiles",
           "tableTo": "user",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -77,12 +69,8 @@
           "name": "user_profiles_settings_id_user_settings_id_fk",
           "tableFrom": "user_profiles",
           "tableTo": "user_settings",
-          "columnsFrom": [
-            "settings_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["settings_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -185,9 +173,7 @@
       "indexes": {
         "user_settings_categories_uid_unique": {
           "name": "user_settings_categories_uid_unique",
-          "columns": [
-            "uid"
-          ],
+          "columns": ["uid"],
           "isUnique": true
         }
       },
@@ -196,12 +182,8 @@
           "name": "user_settings_categories_settings_id_user_settings_id_fk",
           "tableFrom": "user_settings_categories",
           "tableTo": "user_settings",
-          "columnsFrom": [
-            "settings_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["settings_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -291,12 +273,8 @@
           "name": "ingredients_category_id_user_settings_categories_id_fk",
           "tableFrom": "ingredients",
           "tableTo": "user_settings_categories",
-          "columnsFrom": [
-            "category_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["category_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         }

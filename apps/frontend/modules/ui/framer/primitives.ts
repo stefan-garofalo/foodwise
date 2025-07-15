@@ -1,5 +1,8 @@
 'use client'
-import { motion, AnimatePresence } from 'motion/react'
+
+import { motion } from 'motion/react'
+
+export { AnimatePresence } from 'motion/react'
 
 export const MotionLi = motion.li
 export const MotionUl = motion.ul
@@ -12,5 +15,3 @@ export const MotionNav = motion.nav
 export const MotionSpan = motion.span
 export const MotionVideo = motion.video
 export const MotionButton = motion.button
-
-export { AnimatePresence }

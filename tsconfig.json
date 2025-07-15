@@ -1,3 +1,6 @@
 {
-	"extends": "@foodwise/tsconfig/base.json"
+  "extends": "@foodwise/tsconfig/base.json",
+  "compilerOptions": {
+    "strictNullChecks": true
+  }
 }

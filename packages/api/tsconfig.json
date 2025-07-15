@@ -1,15 +1,15 @@
 {
-	"extends": "@foodwise/tsconfig/base.json",
-	"compilerOptions": {
-		"paths": {
-			"@/*": ["./src/*"]
-		},
-		"outDir": "dist",
-		"rootDir": "src",
-		"baseUrl": ".",
-		"declaration": true,
-		"declarationMap": true
-	},
-	"include": ["src"],
-	"exclude": ["node_modules"]
+  "extends": "@foodwise/tsconfig/base.json",
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "outDir": "dist",
+    "rootDir": "src",
+    "baseUrl": ".",
+    "declaration": true,
+    "declarationMap": true
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
 }

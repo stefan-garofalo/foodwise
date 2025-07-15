@@ -1,11 +1,11 @@
 import { LANGS } from '@/modules/i18n/config'
 import { accessNestedObject } from '@/utils/objects'
-import { Prettify } from '@/utils/types'
+import type { Prettify } from '@/utils/types'
 
-import { GetTypeFromPath, MergedDictionary, Split } from '../lib/types'
+import type { GetTypeFromPath, MergedDictionary, Split } from '../lib/types'
 
 export function getGlobalDictionary(lang: keyof typeof LANGS) {
-	return LANGS[lang]
+  return LANGS[lang]
 }
 
 /**
@@ -17,15 +17,15 @@ export function getGlobalDictionary(lang: keyof typeof LANGS) {
  *          nodes being unions reflecting possibilities (e.g., string | undefined).
  */
 export function getPageDictionary<P extends string>(
-	lang: keyof typeof LANGS,
-	path: P
+  lang: keyof typeof LANGS,
+  path: P
 ) {
-	const dict = getGlobalDictionary(lang)
-	const paths = path.split('/')
-	// accessNestedObject gets the actual value from the specific language dictionary
-	const result = accessNestedObject(dict, paths)
+  const dict = getGlobalDictionary(lang)
+  const paths = path.split('/')
+  // accessNestedObject gets the actual value from the specific language dictionary
+  const result = accessNestedObject(dict, paths)
 
-	// The type assertion uses the MergedDictionary and GetTypeFromPath helper.
-	// This tells TypeScript the expected shape based on *all* languages.
-	return result as Prettify<GetTypeFromPath<MergedDictionary, Split<P>>>
+  // The type assertion uses the MergedDictionary and GetTypeFromPath helper.
+  // This tells TypeScript the expected shape based on *all* languages.
+  return result as Prettify<GetTypeFromPath<MergedDictionary, Split<P>>>
 }

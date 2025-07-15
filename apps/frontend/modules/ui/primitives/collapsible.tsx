@@ -1,3 +1,5 @@
+/** biome-ignore-all lint/performance/noNamespaceImport: shadcn */
+
 'use client'
 
 import * as CollapsiblePrimitive from '@radix-ui/react-collapsible'
