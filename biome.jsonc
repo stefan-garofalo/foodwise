@@ -9,6 +9,9 @@
   },
   "linter": {
     "rules": {
+      "nursery": {
+        "useSortedClasses": "warn"
+      },
       "correctness": {
         "noChildrenProp": "off"
       },
