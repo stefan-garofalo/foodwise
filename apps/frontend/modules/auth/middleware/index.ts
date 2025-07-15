@@ -1,27 +1,26 @@
 import { getSessionCookie } from '@foodwise/auth/server'
-import { NextRequest } from 'next/server'
-import { PUBLIC_ROUTES } from '../config'
+import type { NextRequest } from 'next/server'
+import { getLocaleFromCookie } from '@/modules/i18n/lib/cookies'
 import { stripLangFromPathname } from '@/modules/i18n/middleware'
 import { buildAbsoluteUrl } from '@/utils/middleware'
-
-import { getLocaleFromCookie } from '@/modules/i18n/lib/cookies'
+import { PUBLIC_ROUTES } from '../config'
 
 export function canAccessRoute(request: NextRequest) {
-	const session = getSessionCookie(request)
-	const [lang, path] = stripLangFromPathname(request.nextUrl.pathname)
+  const session = getSessionCookie(request)
+  const [lang, path] = stripLangFromPathname(request.nextUrl.pathname)
 
-	if (session && PUBLIC_ROUTES.includes(path)) {
-		return buildAbsoluteUrl(
-			`/${lang ?? getLocaleFromCookie(request.cookies)}`,
-			request
-		)
-	}
-	if (!session && !PUBLIC_ROUTES.includes(path)) {
-		return buildAbsoluteUrl(
-			`/${lang ?? getLocaleFromCookie(request.cookies)}/login`,
-			request
-		)
-	}
+  if (session && PUBLIC_ROUTES.includes(path)) {
+    return buildAbsoluteUrl(
+      `/${lang ?? getLocaleFromCookie(request.cookies)}`,
+      request
+    )
+  }
+  if (!(session || PUBLIC_ROUTES.includes(path))) {
+    return buildAbsoluteUrl(
+      `/${lang ?? getLocaleFromCookie(request.cookies)}/login`,
+      request
+    )
+  }
 
-	return null
+  return null
 }

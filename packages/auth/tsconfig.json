@@ -1,8 +1,8 @@
 {
-	"extends": "@foodwise/tsconfig/base.json",
-	"compilerOptions": {
-		"paths": {
-			"@/*": ["./src/*"]
-		}
-	}
+  "extends": "@foodwise/tsconfig/base.json",
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
 }

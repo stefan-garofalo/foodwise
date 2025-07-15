@@ -1,20 +1,20 @@
 {
-	"name": "@foodwise/auth",
-	"exports": {
-		"./server": {
-			"types": "./src/server.ts",
-			"default": "./src/server.ts"
-		},
-		"./client": {
-			"types": "./src/client.ts",
-			"default": "./src/client.ts"
-		}
-	},
-	"dependencies": {
-		"@libsql/kysely-libsql": "^0.4.1",
-		"better-auth": "^1.2.8"
-	},
-	"devDependencies": {
-		"@foodwise/tsconfig": "workspace:*"
-	}
+  "name": "@foodwise/auth",
+  "exports": {
+    "./server": {
+      "types": "./src/server.ts",
+      "default": "./src/server.ts"
+    },
+    "./client": {
+      "types": "./src/client.ts",
+      "default": "./src/client.ts"
+    }
+  },
+  "dependencies": {
+    "@libsql/kysely-libsql": "^0.4.1",
+    "better-auth": "^1.2.8"
+  },
+  "devDependencies": {
+    "@foodwise/tsconfig": "workspace:*"
+  }
 }

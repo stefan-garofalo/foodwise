@@ -1,7 +1,7 @@
-import { ClassValue } from 'clsx'
+import type { ClassValue } from 'clsx'
 
 export { GoogleIcon } from './google'
 export type IconProps = {
-	className?: ClassValue
-	color: string
+  className?: ClassValue
+  color: string
 }

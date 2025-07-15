@@ -2,7 +2,7 @@
 
 import { useParams, usePathname } from 'next/navigation'
 import { path } from '../lib'
-import { LangParams } from '../types'
+import type { LangParams } from '../types'
 
 /**
  * Converts a regular pathname into a localized pathname by adding the current language prefix.
@@ -10,8 +10,8 @@ import { LangParams } from '../types'
  * @returns A localized pathname with language prefix (e.g., '/en/dashboard')
  */
 export function useLocalizePath(value: string) {
-	const { lang } = useParams<LangParams>()
-	return path(value, lang)
+  const { lang } = useParams<LangParams>()
+  return path(value, lang)
 }
 
 /**
@@ -19,7 +19,7 @@ export function useLocalizePath(value: string) {
  * For example, if the current path is '/en/dashboard', this hook returns '/dashboard'.
  */
 export function useCleanedPath() {
-	const { lang } = useParams<LangParams>()
-	const pathname = usePathname()
-	return pathname.replace(`/${lang}`, '')
+  const { lang } = useParams<LangParams>()
+  const pathname = usePathname()
+  return pathname.replace(`/${lang}`, '')
 }

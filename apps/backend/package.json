@@ -1,19 +1,19 @@
 {
-	"name": "@apps/backend",
+  "name": "@apps/backend",
 	"type": "module",
-	"scripts": {
-		"dev": "bun run --hot src/index.ts",
-		"build": "tsc",
-		"start": "bun ./dist/index.js"
-	},
-	"dependencies": {
-		"@hono/trpc-server": "^0.3.4",
-		"hono": "^4.7.6",
-		"@foodwise/auth": "workspace:*",
-		"@foodwise/api": "workspace:*"
-	},
-	"devDependencies": {
-		"@foodwise/tsconfig": "workspace:*",
-		"@types/bun": "latest"
-	}
+  "scripts": {
+    "dev": "bun run --hot src/index.ts",
+    "build": "tsc",
+    "start": "bun ./dist/index.js"
+  },
+  "dependencies": {
+    "@hono/trpc-server": "^0.3.4",
+    "hono": "^4.7.6",
+    "@foodwise/auth": "workspace:*",
+    "@foodwise/api": "workspace:*"
+  },
+  "devDependencies": {
+    "@foodwise/tsconfig": "workspace:*",
+    "@types/bun": "latest"
+  }
 }

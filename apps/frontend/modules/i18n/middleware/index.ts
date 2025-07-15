@@ -1,17 +1,19 @@
-import { NextRequest } from 'next/server'
-import { getLocaleFromCookie } from '../lib/cookies'
+import type { NextRequest } from 'next/server'
 import { buildAbsoluteUrl } from '@/utils/middleware'
 import { LOCALE_LIST } from '../config'
+import { getLocaleFromCookie } from '../lib/cookies'
+
+const LEADING_SLASH_REGEX = /^\//
 
 export function createLocaleRedirectUrl(
-	request: NextRequest,
-	pathname: string,
-	search: string
+  request: NextRequest,
+  pathname: string,
+  search: string
 ) {
-	return buildAbsoluteUrl(
-		`/${getLocaleFromCookie(request.cookies)}${pathname}${search}`,
-		request
-	)
+  return buildAbsoluteUrl(
+    `/${getLocaleFromCookie(request.cookies)}${pathname}${search}`,
+    request
+  )
 }
 
 /**
@@ -32,17 +34,19 @@ export function createLocaleRedirectUrl(
  * stripLangFromPathname("/invalid") // returns [undefined, "/invalid"]
  */
 export function stripLangFromPathname(
-	pathname: string
+  pathname: string
 ): [lang: string | undefined, path: string] {
-	const localePattern = LOCALE_LIST.join('|')
-	const regex = new RegExp(`^/?(?:${localePattern})(?:/(.*))?$`)
+  const localePattern = LOCALE_LIST.join('|')
+  const regex = new RegExp(`^/?(?:${localePattern})(?:/(.*))?$`)
 
-	const match = pathname.match(regex)
-	if (!match) return [undefined, pathname || '/']
+  const match = pathname.match(regex)
+  if (!match) return [undefined, pathname || '/']
 
-	// Extract locale (remove leading slash if present)
-	const locale = pathname.replace(/^\//, '').split('/')[0] as string
-	// Extract remaining path or default to '/'
-	const path = match[1] ? `/${match[1]}` : '/'
-	return [locale, path]
+  // Extract locale (remove leading slash if present)
+  const locale = pathname
+    .replace(LEADING_SLASH_REGEX, '')
+    .split('/')[0] as string
+  // Extract remaining path or default to '/'
+  const path = match[1] ? `/${match[1]}` : '/'
+  return [locale, path]
 }

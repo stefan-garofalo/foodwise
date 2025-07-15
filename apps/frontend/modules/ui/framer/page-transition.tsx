@@ -1,17 +1,17 @@
 import { MotionDiv } from './primitives'
 
 export default function PageTransition({
-	children
+  children,
 }: {
-	children: React.ReactNode
+  children: React.ReactNode
 }) {
-	return (
-		<MotionDiv
-			initial={{ opacity: 0 }}
-			animate={{ opacity: 1 }}
-			transition={{ ease: 'easeInOut' }}
-		>
-			{children}
-		</MotionDiv>
-	)
+  return (
+    <MotionDiv
+      animate={{ opacity: 1 }}
+      initial={{ opacity: 0 }}
+      transition={{ ease: 'easeInOut' }}
+    >
+      {children}
+    </MotionDiv>
+  )
 }

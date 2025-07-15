@@ -1,25 +1,26 @@
 {
-	"name": "foodwise",
-	"devDependencies": {
-		"@foodwise/tsconfig": "workspace:*",
-		"prettier": "^3.2.5",
-		"turbo": "^2.5.3",
-		"typescript": "^5.8.3"
-	},
-	"engines": {
-		"node": ">=22"
-	},
-	"packageManager": "bun@1.2.13",
-	"private": true,
-	"scripts": {
-		"build": "turbo build",
-		"dev": "turbo dev",
-		"lint": "turbo lint",
-		"typecheck": "turbo typecheck",
-		"format": "prettier --write \"**/*.{ts,tsx,md}\""
-	},
-	"workspaces": [
-		"apps/*",
-		"packages/*"
-	]
+  "name": "foodwise",
+  "devDependencies": {
+    "@biomejs/biome": "2.1.1",
+    "@foodwise/tsconfig": "workspace:*",
+    "turbo": "^2.5.3",
+    "typescript": "^5.8.3",
+    "ultracite": "5.0.36"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "bun@1.2.13",
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "typecheck": "turbo typecheck",
+    "format": "bunx ultracite@latest format",
+    "lint": "bunx ultracite@latest lint"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
 }

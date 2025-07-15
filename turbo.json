@@ -1,41 +1,41 @@
 {
-	"$schema": "https://turbo.build/schema.json",
-	"ui": "tui",
-	"tasks": {
-		"build": {
-			"dependsOn": ["^build"],
-			"inputs": ["$TURBO_DEFAULT$", ".env*", "$NODE_ENV"],
-			"outputs": [
-				".next/**",
-				"!.next/cache/**",
-				"apps/backend/dist/**",
-				"apps/frontend/.next/**",
-				"packages/api/dist/**"
-			],
-			"env": [
-				"BETTER_AUTH_SECRET",
-				"BETTER_AUTH_URL",
-				"ENVIRONMENT",
-				"GOOGLE_CLIENT_ID",
-				"GOOGLE_CLIENT_SECRET",
-				"TURSO_DB_URL",
-				"TURSO_AUTH_TOKEN",
-				"NEXT_PUBLIC_BACKEND_URL",
-				"NEXT_PUBLIC_FRONTEND_URL"
-			]
-		},
-		"lint": {
-			"dependsOn": ["^lint"]
-		},
-		"typecheck": {
-			"dependsOn": ["^typecheck"],
-			"inputs": ["src/**/*.tsx", "src/**/*.ts", "tsconfig.json"]
-		},
-		"dev": {
-			"cache": false,
-			"persistent": true,
-			"inputs": ["$NODE_ENV", ".env*"],
-			"dependsOn": ["^build"]
-		}
-	}
+  "$schema": "https://turbo.build/schema.json",
+  "ui": "tui",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*", "$NODE_ENV"],
+      "outputs": [
+        ".next/**",
+        "!.next/cache/**",
+        "apps/backend/dist/**",
+        "apps/frontend/.next/**",
+        "packages/api/dist/**"
+      ],
+      "env": [
+        "BETTER_AUTH_SECRET",
+        "BETTER_AUTH_URL",
+        "ENVIRONMENT",
+        "GOOGLE_CLIENT_ID",
+        "GOOGLE_CLIENT_SECRET",
+        "TURSO_DB_URL",
+        "TURSO_AUTH_TOKEN",
+        "NEXT_PUBLIC_BACKEND_URL",
+        "NEXT_PUBLIC_FRONTEND_URL"
+      ]
+    },
+    "lint": {
+      "dependsOn": ["^lint"]
+    },
+    "typecheck": {
+      "dependsOn": ["^typecheck"],
+      "inputs": ["src/**/*.tsx", "src/**/*.ts", "tsconfig.json"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true,
+      "inputs": ["$NODE_ENV", ".env*"],
+      "dependsOn": ["^build"]
+    }
+  }
 }

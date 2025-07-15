@@ -1,5 +1,5 @@
-export {
-	type SQLiteTableWithColumns,
-	type SQLiteUpdateSetSource,
-	type TableConfig
+export type {
+  SQLiteTableWithColumns,
+  SQLiteUpdateSetSource,
+  TableConfig,
 } from 'drizzle-orm/sqlite-core'

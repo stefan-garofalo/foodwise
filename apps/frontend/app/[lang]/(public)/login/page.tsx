@@ -1,27 +1,26 @@
-import { getMetadata } from '@/modules/metadata'
-import { getLoginDictionary } from './dictionary'
-import { Title } from '@/modules/ui/primitives/typography'
-
 import { LoginButton } from '@/modules/auth/components/login'
-import { type generateMetadataProps } from '@/modules/metadata/types'
-import { LoginPageProps } from './types'
+import { getMetadata } from '@/modules/metadata'
+import type { generateMetadataProps } from '@/modules/metadata/types'
+import { Title } from '@/modules/ui/primitives/typography'
+import { getLoginDictionary } from './dictionary'
+import type { LoginPageProps } from './types'
 
 export const generateMetadata = async (props: generateMetadataProps) =>
-	getMetadata(props, import.meta.url)
+  getMetadata(props, import.meta.url)
 
 export default async function LoginPage({ params }: LoginPageProps) {
-	const { lang } = await params
-	const labels = getLoginDictionary(lang)
+  const { lang } = await params
+  const labels = getLoginDictionary(lang)
 
-	return (
-		<main className="flex h-svh flex-col items-center justify-center gap-y-4">
-			<Title variant="title" className="text-center lg:text-7xl!">
-				{labels.title}
-			</Title>
-			<p className="text-center text-pretty whitespace-pre-line md:w-1/2 lg:text-lg 2xl:w-1/3">
-				{labels.subtitle}
-			</p>
-			<LoginButton className="mt-5 max-w-sm" />
-		</main>
-	)
+  return (
+    <main className="flex h-svh flex-col items-center justify-center gap-y-4">
+      <Title className="text-center lg:text-7xl!" variant="title">
+        {labels.title}
+      </Title>
+      <p className="whitespace-pre-line text-pretty text-center md:w-1/2 lg:text-lg 2xl:w-1/3">
+        {labels.subtitle}
+      </p>
+      <LoginButton className="mt-5 max-w-sm" />
+    </main>
+  )
 }

@@ -1,5 +1,5 @@
-import { Prettify } from '@/utils/types'
+import type { Prettify } from '@/utils/types'
 
 export type SearchParams = Prettify<{
-	[key: string]: string | number | undefined | string[]
+  [key: string]: string | number | undefined | string[]
 }>
