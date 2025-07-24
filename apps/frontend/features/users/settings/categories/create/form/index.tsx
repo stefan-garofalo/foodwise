@@ -1,7 +1,9 @@
 'use client'
 
 import { type } from 'arktype'
+import type { CategoriesDictionary } from '@/app/[lang]/(protected)/settings/categories/dictionary'
 import { useAppForm } from '@/modules/form/hooks'
+import { CATEGORIES_ICONS } from '../../constants'
 import { useCategoryCreate } from '../../lib'
 
 const _CategoryCreateSchema = type({
@@ -12,10 +14,15 @@ const _CategoryCreateSchema = type({
   settingsId: 'string',
 })
 
-export default function CategoryCreateForm() {
+type CategoryCreateFormProps = {
+  labels: CategoriesDictionary['form']['create']
+}
+export default function CategoryCreateForm({
+  labels,
+}: CategoryCreateFormProps) {
   const { mutate } = useCategoryCreate()
 
-  const { handleSubmit, AppField } = useAppForm({
+  const { AppField, handleSubmit } = useAppForm({
     validators: {
       // onSubmit: CategoryCreateSchema
     },
@@ -36,7 +43,25 @@ export default function CategoryCreateForm() {
         )
       }}
     >
-      <AppField children={(field) => <field.Input />} name="name" />
+      <AppField
+        children={({ Input }) => <Input label={labels.fields.name.label} />}
+        name="name"
+      />
+      <AppField
+        children={({ Select }) => (
+          <Select
+            label={labels.fields.iconUid.label}
+            name="iconUid"
+            options={CATEGORIES_ICONS.map(({ Icon, name }) => ({
+              value: name,
+              label: name,
+              icon: <Icon className="size-4" />,
+            }))}
+            placeholder={labels.fields.iconUid.placeholder}
+          />
+        )}
+        name="iconUid"
+      />
     </form>
   )
 }

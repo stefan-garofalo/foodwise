@@ -6,8 +6,12 @@ const nextConfig: NextConfig = {
     root: path.join(__dirname, '../../'),
   },
   experimental: {
-    ppr: 'incremental',
+    cacheComponents: true,
     reactCompiler: true,
+    clientSegmentCache: true,
+    devtoolSegmentExplorer: true,
+    turbopackPersistentCaching: true,
+    browserDebugInfoInTerminal: true,
   },
   serverExternalPackages: ['@libsql/client', '@libsql/kysely-libsql'],
 }
