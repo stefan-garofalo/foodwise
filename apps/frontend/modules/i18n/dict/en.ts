@@ -22,12 +22,23 @@ const dictionary = {
       description:
         'Categories help you organize your food items into logical groups for easier inventory management.',
       form: {
-        name: 'Category Name',
-        namePlaceholder: 'Enter category name...',
-        color: 'Color',
-        colorHelp: 'Choose a color to visually identify this category',
-        icon: 'Icon',
-        iconHelp: 'Select an icon to represent this category',
+        create: {
+          title: 'Categories',
+          description:
+            'Organize ingredients into logical groups with customizable labels',
+          fields: {
+            name: {
+              label: 'Name',
+            },
+            color: {
+              label: 'Color',
+            },
+            iconUid: {
+              label: 'Icon',
+              placeholder: 'Select an icon',
+            },
+          },
+        },
       },
       empty: 'No categories found',
       actions: {

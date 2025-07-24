@@ -17,23 +17,16 @@ type FormDialogProps = PropsWithChildren<{
 }>
 
 export default function DialogForm({ children, labels }: FormDialogProps) {
-  const { lang } = getParams() as Awaited<CategoriesSettingsPageParams>
-  const dict = getCategoriesDictionary(lang)
-
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button>{labels?.trigger ?? dict.actions.create}</Button>
+        <Button>{labels?.trigger}</Button>
       </DialogTrigger>
 
       <DialogContent>
-        {(dict.title || labels?.title) && (
-          <DialogTitle>{labels?.title ?? dict.title}</DialogTitle>
-        )}
-        {(dict.description || labels?.description) && (
-          <DialogDescription>
-            {labels?.description ?? dict.description}
-          </DialogDescription>
+        {labels?.title && <DialogTitle>{labels?.title}</DialogTitle>}
+        {labels?.description && (
+          <DialogDescription>{labels?.description}</DialogDescription>
         )}
         {children}
       </DialogContent>
