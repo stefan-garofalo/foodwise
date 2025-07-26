@@ -1,11 +1,22 @@
 'use client'
 
 import { createFormHook, createFormHookContexts } from '@tanstack/react-form'
+
 import { Button } from '@/modules/ui/primitives/button'
+import {
+  FormDescription,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/modules/ui/primitives/form'
 import { Input } from '@/modules/ui/primitives/input'
 import { Select } from '../components/fields'
 
-const { fieldContext, formContext } = createFormHookContexts()
+// Create TanStack Form contexts
+export const { fieldContext, formContext, useFieldContext, useFormContext } =
+  createFormHookContexts()
+
+// Main form hook with enhanced capabilities
 export const { useAppForm } = createFormHook({
   fieldContext,
   fieldComponents: {
@@ -14,6 +25,11 @@ export const { useAppForm } = createFormHook({
   },
   formContext,
   formComponents: {
+    Form: formContext.Provider,
+    Item: FormItem,
+    Label: FormLabel,
+    Description: FormDescription,
+    Message: FormMessage,
     Button,
   },
 })
