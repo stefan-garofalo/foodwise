@@ -1,7 +1,6 @@
 'use client'
 
 import { createContext, use, useId } from 'react'
-
 import { useFieldContext } from '@/modules/form/hooks'
 import { merge } from '../utils/tailwind'
 import Label from './label'
@@ -46,29 +45,15 @@ function FormLabel({
   )
 }
 
-function FormDescription({ className, ...props }: React.ComponentProps<'p'>) {
-  const item = use(FormItemContext)
-
-  return (
-    <p
-      className={merge('text-muted-foreground text-sm', className)}
-      data-slot="form-description"
-      id={`${item.id}-form-item-description`}
-      {...props}
-    />
-  )
-}
-
 function FormMessage({
   className,
   children,
   ...props
 }: React.ComponentProps<'p'>) {
-  const field = useFieldContext()
-  const item = use(FormItemContext)
+  const { id } = use(FormItemContext)
+  const { errors } = useFieldContext().state.meta
 
-  const error =
-    field.state.meta.errors.length > 0 ? field.state.meta.errors[0] : undefined
+  const error = errors.length > 0 ? errors[0] : undefined
   const body = error ? String(error) : children
 
   if (!body) return null
@@ -77,7 +62,7 @@ function FormMessage({
     <p
       className={merge('text-destructive text-sm', className)}
       data-slot="form-message"
-      id={`${item.id}-form-item-message`}
+      id={`${id}-form-item-message`}
       {...props}
     >
       {body}
@@ -85,4 +70,4 @@ function FormMessage({
   )
 }
 
-export { FormItem, FormLabel, FormDescription, FormMessage }
+export { FormItem, FormLabel, FormMessage }

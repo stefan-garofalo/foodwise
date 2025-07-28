@@ -1,13 +1,14 @@
-import type { BaseGenerateMetadataProps } from '@/app/[lang]/types'
-import CategoryCreateDialog from '@/features/users/settings/categories/create'
+import type { GenerateMetadataProps } from '@/app/[lang]/types'
+
+import CategoryCreateForm from '@/features/users/settings/categories/create/form'
+import DialogForm from '@/modules/form/components/abstractions/dialog-form'
 import { getMetadata } from '@/modules/metadata'
-import type { GenerateMetadataProps } from '@/modules/metadata/types'
 import { Title } from '@/modules/ui/primitives/typography'
 import { getCategoriesDictionary } from './dictionary'
 import type { CategoriesSettingsPageProps } from './types'
 
-export const generateMetadata = async (props: BaseGenerateMetadataProps) =>
-  await getMetadata(props as unknown as GenerateMetadataProps, import.meta.url)
+export const generateMetadata = async (props: GenerateMetadataProps) =>
+  await getMetadata(props, import.meta.url)
 
 export default async function CategoriesSettingsPage({
   params,
@@ -22,10 +23,15 @@ export default async function CategoriesSettingsPage({
           <Title variant="title">{dict.title}</Title>
           <p>{dict.description}</p>
         </div>
-        <CategoryCreateDialog
-          dialogLabels={dict}
-          formLabels={dict.form.create}
-        />
+        <DialogForm
+          labels={{
+            title: dict.form.create.title,
+            description: dict.form.create.description,
+            trigger: dict.actions.create,
+          }}
+        >
+          <CategoryCreateForm labels={dict} />
+        </DialogForm>
       </section>
     </div>
   )

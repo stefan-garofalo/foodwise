@@ -3,12 +3,7 @@
 import { createFormHook, createFormHookContexts } from '@tanstack/react-form'
 
 import { Button } from '@/modules/ui/primitives/button'
-import {
-  FormDescription,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/modules/ui/primitives/form'
+import { FormItem, FormLabel, FormMessage } from '@/modules/ui/primitives/form'
 import { Input } from '@/modules/ui/primitives/input'
 import { Select } from '../components/fields'
 
@@ -25,10 +20,8 @@ export const { useAppForm } = createFormHook({
   },
   formContext,
   formComponents: {
-    Form: formContext.Provider,
     Item: FormItem,
     Label: FormLabel,
-    Description: FormDescription,
     Message: FormMessage,
     Button,
   },

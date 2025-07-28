@@ -1,13 +1,13 @@
 import { LoginButton } from '@/modules/auth/components/login'
 import { getMetadata } from '@/modules/metadata'
-import type { GenerateMetadataProps } from '@/modules/metadata/types'
+
 import { Title } from '@/modules/ui/primitives/typography'
-import type { BaseGenerateMetadataProps, PageProps } from '../../types'
+import type { GenerateMetadataProps, PageProps } from '../../types'
 import { getLoginDictionary } from './dictionary'
 import type { LoginPageProps } from './types'
 
-export const generateMetadata = async (props: BaseGenerateMetadataProps) =>
-  getMetadata(props as unknown as GenerateMetadataProps, import.meta.url)
+export const generateMetadata = async (props: GenerateMetadataProps) =>
+  getMetadata(props, import.meta.url)
 
 export default async function LoginPage({ params }: PageProps) {
   const { lang } = await (params as unknown as LoginPageProps['params'])

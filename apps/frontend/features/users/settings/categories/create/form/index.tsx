@@ -1,9 +1,10 @@
 'use client'
 
 import { type } from 'arktype'
-import type { CategoriesDictionary } from '@/app/[lang]/(protected)/settings/categories/dictionary'
+import type { getCategoriesDictionary } from '@/app/[lang]/(protected)/settings/categories/dictionary'
 import { useAppForm } from '@/modules/form/hooks'
-import { CATEGORIES_ICONS } from '../../constants'
+import { usePageDictionary } from '@/modules/i18n/hooks/dictionaries'
+import { CATEGORIES } from '../../constants'
 import { useCategoryCreate } from '../../lib'
 
 const _CategoryCreateSchema = type({
@@ -14,54 +15,57 @@ const _CategoryCreateSchema = type({
   settingsId: 'string',
 })
 
-type CategoryCreateFormProps = {
-  labels: CategoriesDictionary['form']['create']
+export type CategoryCreateFormProps = {
+  labels: ReturnType<typeof getCategoriesDictionary>
 }
 export default function CategoryCreateForm({
   labels,
 }: CategoryCreateFormProps) {
-  const { mutate } = useCategoryCreate()
+  const {
+    form: { create: formLabels },
+  } = labels
 
-  const { AppField, handleSubmit } = useAppForm({
+  const { mutate } = useCategoryCreate()
+  const { AppField, AppForm, Label, Item, Message, Button } = useAppForm({
     validators: {
-      // onSubmit: CategoryCreateSchema
+      onSubmit: _CategoryCreateSchema
     },
+    onSubmit: ({ value }) => mutate({
+      
+    }),
   })
 
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault()
-        handleSubmit(
-          mutate({
-            color: '',
-            name: '',
-            uid: '',
-            iconUid: '',
-            settingsId: '',
-          })
-        )
-      }}
-    >
-      <AppField
-        children={({ Input }) => <Input label={labels.fields.name.label} />}
-        name="name"
-      />
-      <AppField
-        children={({ Select }) => (
-          <Select
-            label={labels.fields.iconUid.label}
-            name="iconUid"
-            options={CATEGORIES_ICONS.map(({ Icon, name }) => ({
-              value: name,
-              label: name,
-              icon: <Icon className="size-4" />,
-            }))}
-            placeholder={labels.fields.iconUid.placeholder}
-          />
-        )}
-        name="iconUid"
-      />
-    </form>
+    <AppForm>
+      <div className="flex w-full items-center gap-2.5">
+        <AppField
+          children={({ Input }) => (
+            <Item className="grow">
+              <Label>{formLabels.fields.name.label}</Label>
+              <Input />
+              <Message />
+            </Item>
+          )}
+          name="name"
+        />
+        <AppField
+          children={({ Select }) => (
+            <Item className="w-full shrink-0 basis-2/12">
+              <Label>{formLabels.fields.iconUid.label}</Label>
+              <Select
+                name="iconUid"
+                options={CATEGORIES.map(({ Icon, name }) => ({
+                  value: name,
+                  icon: <Icon className="size-4" />,
+                }))}
+              />
+              <Message />
+            </Item>
+          )}
+          name="iconUid"
+        />
+      </div>
+      <Button />
+    </AppForm>
   )
 }
