@@ -1,10 +1,11 @@
 import type { Metadata } from 'next'
+import type { GenerateMetadataProps } from '@/app/[lang]/types'
 import { env } from '@/env'
-
 import { LOCALES } from '@/modules/i18n/config'
 import { getPageDictionary } from '@/modules/i18n/getters'
+import type { LangParams } from '../i18n/types'
 import { getRoute } from '../routes/utils'
-import type { GenerateMetadataProps, GenerateParams } from './types'
+import type { GenerateParams } from './types'
 import { calculatePath } from './utils'
 
 export async function getMetadata(
@@ -12,7 +13,7 @@ export async function getMetadata(
   route: string,
   { image, canonical, ...override }: GenerateParams = {}
 ): Promise<Metadata> {
-  const { lang } = (await props).params
+  const { lang } = (await props.params) as unknown as LangParams
 
   const { path, name } = getRoute(canonical ?? calculatePath(route))
   const { seo } = getPageDictionary(

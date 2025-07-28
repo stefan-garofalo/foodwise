@@ -6,7 +6,7 @@ export type RootLayoutParams = {
   params: Promise<ParamsWithLang>
 }
 
-export interface BaseGenerateMetadataProps {
+export type GenerateMetadataProps = {
   params: Promise<{ slug: string }>
 }
 export interface PageProps {

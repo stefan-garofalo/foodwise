@@ -13,7 +13,7 @@ import {
   Wheat,
 } from 'lucide-react'
 
-export const CATEGORIES_ICONS = [
+export const CATEGORIES = [
   {
     Icon: Apple,
     name: 'fruit',
