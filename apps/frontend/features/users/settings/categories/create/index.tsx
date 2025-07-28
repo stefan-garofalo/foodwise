@@ -1,22 +1,19 @@
-import { getAppParams } from '@nimpl/getters/get-app-params'
-import { getCategoriesDictionary } from '@/app/[lang]/(protected)/settings/categories/dictionary'
-import type { CategoriesSettingsPageParams } from '@/app/[lang]/(protected)/settings/categories/types'
+import type { ComponentProps } from 'react'
 import DialogForm from '@/modules/form/components/abstractions/dialog-form'
 import CategoryCreateForm from './form'
 
-export default function CategoryCreateDialog() {
-  // const { lang } = getAppParams() as Awaited<CategoriesSettingsPageParams>
-  // const dict = getCategoriesDictionary(lang)
-  return null
-  // return (
-  // <DialogForm
-  //   labels={{
-  //     description: dict.form.create.description,
-  //     title: dict.form.create.title,
-  //     trigger: dict.actions.create,
-  //   }}
-  // >
-  //   <CategoryCreateForm labels={dict.form.create} />
-  // </DialogForm>
-  //)
+export type CategoryCreateDialogProps = {
+  formLabels: ComponentProps<typeof CategoryCreateForm>['labels']
+  dialogLabels: ComponentProps<typeof DialogForm>['labels']
+}
+
+export default function CategoryCreateDialog({
+  formLabels,
+  dialogLabels,
+}: CategoryCreateDialogProps) {
+  return (
+    <DialogForm labels={dialogLabels}>
+      <CategoryCreateForm labels={formLabels} />
+    </DialogForm>
+  )
 }

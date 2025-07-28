@@ -14,6 +14,7 @@ export default async function CategoriesSettingsPage({
 }: CategoriesSettingsPageProps) {
   const { lang } = await params
   const dict = getCategoriesDictionary(lang)
+
   return (
     <div className="flex-col gap-y-4 px-container py-4">
       <section className="flex items-center justify-between">
@@ -21,7 +22,10 @@ export default async function CategoriesSettingsPage({
           <Title variant="title">{dict.title}</Title>
           <p>{dict.description}</p>
         </div>
-        <CategoryCreateDialog />
+        <CategoryCreateDialog
+          dialogLabels={dict}
+          formLabels={dict.form.create}
+        />
       </section>
     </div>
   )

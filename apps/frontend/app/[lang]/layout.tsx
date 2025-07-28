@@ -5,8 +5,6 @@ import Providers from '@/modules/providers'
 import { Toaster } from '@/modules/ui/primitives/sonner'
 import type { RootLayoutProps } from './types'
 
-export const experimental_ppr = true
-
 export const generateStaticParams = () => LOCALE_LIST.map((lang) => ({ lang }))
 
 export default async function RootLayout({
