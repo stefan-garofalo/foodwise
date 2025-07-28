@@ -1,8 +1,8 @@
 import type { Lang, LangParams } from '../i18n/types'
 
-export type generateMetadataProps = Promise<{ params: LangParams }>
+export type GenerateMetadataProps = Promise<{ params: LangParams }>
 
-export type generateParams = {
+export type GenerateParams = {
   canonical?: string
   title?: string
   description?: string

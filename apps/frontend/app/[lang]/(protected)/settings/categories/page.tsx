@@ -1,12 +1,13 @@
+import type { BaseGenerateMetadataProps } from '@/app/[lang]/types'
 import CategoryCreateDialog from '@/features/users/settings/categories/create'
 import { getMetadata } from '@/modules/metadata'
-import type { generateMetadataProps } from '@/modules/metadata/types'
+import type { GenerateMetadataProps } from '@/modules/metadata/types'
 import { Title } from '@/modules/ui/primitives/typography'
 import { getCategoriesDictionary } from './dictionary'
 import type { CategoriesSettingsPageProps } from './types'
 
-export const generateMetadata = async (props: generateMetadataProps) =>
-  await getMetadata(props, import.meta.url)
+export const generateMetadata = async (props: BaseGenerateMetadataProps) =>
+  await getMetadata(props as unknown as GenerateMetadataProps, import.meta.url)
 
 export default async function CategoriesSettingsPage({
   params,

@@ -53,7 +53,7 @@
         "install": "^0.13.0",
         "lucide-react": "^0.525.0",
         "motion": "^12.12.2",
-        "next": "^15.4.2-canary.11",
+        "next": "15.4.2-canary.11",
         "npm": "^11.4.1",
         "react": "^19.1.0",
         "react-dom": "^19.1.0",
@@ -72,7 +72,6 @@
         "postcss": "^8.5.3",
         "prettier-plugin-tailwindcss": "^0.6.11",
         "tailwindcss": "^4.1.7",
-        "tw-animate-css": "^1.3.6",
         "typescript": "^5.8.3",
       },
     },
@@ -1406,8 +1405,6 @@
     "turbo-windows-64": ["turbo-windows-64@2.5.3", "", { "os": "win32", "cpu": "x64" }, "sha512-arLQYohuHtIEKkmQSCU9vtrKUg+/1TTstWB9VYRSsz+khvg81eX6LYHtXJfH/dK7Ho6ck+JaEh5G+QrE1jEmCQ=="],
 
     "turbo-windows-arm64": ["turbo-windows-arm64@2.5.3", "", { "os": "win32", "cpu": "arm64" }, "sha512-3JPn66HAynJ0gtr6H+hjY4VHpu1RPKcEwGATvGUTmLmYSYBQieVlnGDRMMoYN066YfyPqnNGCfhYbXfH92Cm0g=="],
-
-    "tw-animate-css": ["tw-animate-css@1.3.6", "", {}, "sha512-9dy0R9UsYEGmgf26L8UcHiLmSFTHa9+D7+dAt/G/sF5dCnPePZbfgDYinc7/UzAM7g/baVrmS6m9yEpU46d+LA=="],
 
     "type-check": ["type-check@0.4.0", "", { "dependencies": { "prelude-ls": "^1.2.1" } }, "sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew=="],
 
