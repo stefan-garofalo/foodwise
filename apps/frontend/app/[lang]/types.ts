@@ -5,3 +5,11 @@ export type RootLayoutProps = PropsWithChildren<RootLayoutParams>
 export type RootLayoutParams = {
   params: Promise<ParamsWithLang>
 }
+
+export interface BaseGenerateMetadataProps {
+  params: Promise<{ slug: string }>
+}
+export interface PageProps {
+  params: Promise<{ slug: string }>
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}

@@ -4,15 +4,15 @@ import { env } from '@/env'
 import { LOCALES } from '@/modules/i18n/config'
 import { getPageDictionary } from '@/modules/i18n/getters'
 import { getRoute } from '../routes/utils'
-import type { generateMetadataProps, generateParams } from './types'
+import type { GenerateMetadataProps, GenerateParams } from './types'
 import { calculatePath } from './utils'
 
 export async function getMetadata(
-  props: generateMetadataProps,
+  props: GenerateMetadataProps,
   route: string,
-  { image, canonical, ...override }: generateParams = {}
+  { image, canonical, ...override }: GenerateParams = {}
 ): Promise<Metadata> {
-  const { lang } = await props.params
+  const { lang } = (await props).params
 
   const { path, name } = getRoute(canonical ?? calculatePath(route))
   const { seo } = getPageDictionary(
