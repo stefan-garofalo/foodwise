@@ -1,5 +1,3 @@
-/** biome-ignore-all lint/performance/noNamespaceImport: shadcn */
-
 'use client'
 
 import { createContext, use, useId } from 'react'

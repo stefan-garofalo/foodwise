@@ -1,8 +1,13 @@
 /** biome-ignore-all lint/nursery/noUnknownAtRule: tailwind at-rules are not recognized */
+/** biome-ignore-all lint/correctness/noUnknownPseudoClass: tailwind syntax */
+
 @import "tailwindcss";
 @import "tw-animate-css";
 
 @theme inline {
+  /* resets */
+  --color-\*: initial;
+
   /* fonts */
   --font-instrument: var(--font-instrument);
   --font-geist: var(--font-geist);
@@ -15,6 +20,9 @@
   /* spacing */
   --spacing-container: var(--container);
 
+  /* primitives */
+  --color-black: oklch(0 0 0);
+  --color-white: oklch(1 0 0);
   /* palette */
   --color-apple-green: oklch(0.55 0.12 123.82);
   --color-deep-teal-black: oklch(0.15 0.03 190);
@@ -37,6 +45,11 @@
     var(--color-off-white),
     var(--color-deep-teal-black)
   );
+  --color-overlay: color-mix(
+    in oklab,
+    light-dark(var(--color-off-white), var(--color-deep-teal-black)) 80%,
+    transparent
+  );
   --color-foreground: light-dark(
     var(--color-deep-teal-darkest),
     var(--color-subtle-cream)
@@ -57,6 +70,12 @@
     var(--color-off-white-darkest),
     var(--color-deep-teal)
   );
+  --color-border-darker: color-mix(
+    in oklab,
+    light-dark(var(--color-off-white-darkest), var(--color-deep-teal)) 60%,
+    transparent
+  );
+
   --color-danger: light-dark(var(--color-error), var(--color-error-darker));
 
   /* shadcn/ui variables */
