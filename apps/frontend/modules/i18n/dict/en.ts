@@ -1,4 +1,14 @@
 const dictionary = {
+  common: {
+    actions: {
+      create: 'Create',
+      edit: 'Edit',
+      delete: 'Delete',
+      confirm: 'Confirm',
+      cancel: 'Cancel',
+      submit: 'Submit',
+    },
+  },
   login: {
     seo: {
       title: 'Login',

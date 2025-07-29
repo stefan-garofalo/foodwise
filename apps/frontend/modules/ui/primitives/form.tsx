@@ -1,8 +1,10 @@
 'use client'
 
 import { createContext, use, useId } from 'react'
-import { useFieldContext } from '@/modules/form/hooks'
+import { useFieldContext, useFormContext } from '@/modules/form/hooks'
+import { useCommonDictionary } from '@/modules/i18n/hooks/dictionaries'
 import { merge } from '../utils/tailwind'
+import { Button } from './button'
 import Label from './label'
 
 type FormItemContextValue = {
@@ -70,4 +72,24 @@ function FormMessage({
   )
 }
 
-export { FormItem, FormLabel, FormMessage }
+function SubmitButton({
+  children,
+  ...props
+}: React.ComponentProps<typeof Button>) {
+  const { actions } = useCommonDictionary()
+  const { isSubmitting, isFormValid } = useFormContext().state
+
+  return (
+    <Button
+      data-slot="form-submit-button"
+      disabled={!isFormValid}
+      loading={isSubmitting}
+      type="submit"
+      {...props}
+    >
+      {children ?? actions.submit}
+    </Button>
+  )
+}
+
+export { FormItem, FormLabel, FormMessage, SubmitButton }

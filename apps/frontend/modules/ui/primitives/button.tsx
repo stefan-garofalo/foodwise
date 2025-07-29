@@ -5,13 +5,19 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { merge } from '@/modules/ui/utils/tailwind'
 
 const variants = cva(
-  'inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
+  merge(
+    'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary',
+    'disabled:cursor-not-allowed disabled:opacity-50',
+    'data-[loading]:cursor-progress data-[loading]:opacity-50 ',
+    '[&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0'
+  ),
   {
     variants: {
       variant: {
         default:
-          'bg-primary text-primary-foreground shadow hover:bg-primary/80',
-        danger: 'bg-danger text-foreground shadow-sm hover:bg-danger/80',
+          'bg-primary text-primary-foreground shadow hover:bg-primary/80 disabled:hover:bg-primary data-[loading]:hover:bg-primary',
+        danger:
+          'bg-danger text-foreground shadow-sm hover:bg-danger/80 disabled:hover:bg-danger data-[loading]:hover:bg-danger',
         outline:
           'border border-border bg-background shadow-sm hover:bg-primary',
         link: 'underline-offset-4 hover:underline',
@@ -45,13 +51,17 @@ function Button({
   asChild = false,
   ref,
   loading,
+  disabled,
+  onClick,
   ...props
 }: ButtonProps) {
   const Comp = asChild ? Slot : 'button'
   return (
     <Comp
       className={merge(variants({ variant, size, className }))}
-      disabled={loading}
+      data-loading={loading ? 'true' : undefined}
+      disabled={disabled}
+      onClick={loading || disabled ? undefined : onClick}
       ref={ref}
       {...props}
     />

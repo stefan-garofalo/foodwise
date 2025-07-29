@@ -10,6 +10,8 @@ export function useGlobalDictionary() {
   return getGlobalDictionary(lang)
 }
 
+export const useCommonDictionary = () => useGlobalDictionary().common
+
 export function usePageDictionary<P extends string>() {
   const { lang } = useParams<LangParams>()
   const paths = useCleanedPath()
