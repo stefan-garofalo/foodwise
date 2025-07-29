@@ -9,26 +9,26 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/modules/ui/primitives/select'
+import { merge } from '@/modules/ui/utils/tailwind'
 
 type SelectOption = {
   value: string
   label?: string
   icon?: React.ReactNode
 }
-type SelectProps = PropsWithChildren &
-  (
+type SelectProps = PropsWithChildren & {
+  className?: string
+  name: string
+  placeholder?: string
+} & (
     | {
-        name: string
-        placeholder?: string
         options: SelectOption[]
-
         groupLabel?: string
         asChild?: boolean
       }
     | {
         asChild: true
-        name: string
-        placeholder?: string
+
         options?: undefined
         groupLabel?: undefined
       }
@@ -36,13 +36,14 @@ type SelectProps = PropsWithChildren &
 export const Select = ({
   name,
   placeholder,
+  className,
   groupLabel,
   asChild,
   options,
   children,
 }: SelectProps) => (
   <SelectPrimitive name={name}>
-    <SelectTrigger className="w-full">
+    <SelectTrigger className={merge('w-full', className)}>
       <SelectValue placeholder={placeholder} />
     </SelectTrigger>
     <SelectContent>

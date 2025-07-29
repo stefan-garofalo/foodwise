@@ -4,7 +4,8 @@ import { type } from 'arktype'
 import type { getCategoriesDictionary } from '@/app/[lang]/(protected)/settings/categories/dictionary'
 import { useAppForm } from '@/modules/form/hooks'
 import { usePageDictionary } from '@/modules/i18n/hooks/dictionaries'
-import { CATEGORIES } from '../../constants'
+import { merge } from '@/modules/ui/utils/tailwind'
+import { CATEGORIES, COLORS } from '../../constants'
 import { useCategoryCreate } from '../../lib'
 
 const _CategoryCreateSchema = type({
@@ -28,11 +29,9 @@ export default function CategoryCreateForm({
   const { mutate } = useCategoryCreate()
   const { AppField, AppForm, Label, Item, Message, Button } = useAppForm({
     validators: {
-      onSubmit: _CategoryCreateSchema
+      onSubmit: _CategoryCreateSchema,
     },
-    onSubmit: ({ value }) => mutate({
-      
-    }),
+    onSubmit: ({ value }) => mutate({}),
   })
 
   return (
@@ -63,6 +62,29 @@ export default function CategoryCreateForm({
             </Item>
           )}
           name="iconUid"
+        />
+        <AppField
+          children={({ Select }) => (
+            <Item className="w-full shrink-0 basis-[14.5%]">
+              <Label>{formLabels.fields.color.label}</Label>
+              <Select
+                name="color"
+                options={COLORS.map(({ value, className }) => ({
+                  value,
+                  icon: (
+                    <div
+                      className={merge(
+                        'aspect-square size-4 rounded',
+                        className
+                      )}
+                    />
+                  ),
+                }))}
+              />
+              <Message />
+            </Item>
+          )}
+          name="color"
         />
       </div>
       <Button />

@@ -63,3 +63,38 @@ export const CATEGORIES = [
     name: 'condiments',
   },
 ] as const
+
+export const COLORS = [
+  {
+    value: 'oklch(0.65 0.15 285)',
+    className: 'bg-[oklch(0.65_0.15_285)]',
+  },
+  {
+    value: 'oklch(0.68 0.16 240)',
+    className: 'bg-[oklch(0.68_0.16_240)]',
+  },
+  {
+    value: 'oklch(0.72 0.18 15)',
+    className: 'bg-[oklch(0.72_0.18_15)]',
+  },
+  {
+    value: 'oklch(0.77 0.15 85)',
+    className: 'bg-[oklch(0.77_0.15_85)]',
+  },
+  {
+    value: 'oklch(0.62 0.08 145)',
+    className: 'bg-[oklch(0.62_0.08_145)]',
+  },
+  {
+    value: 'oklch(0.58 0.2 320)',
+    className: 'bg-[oklch(0.58_0.2_320)]',
+  },
+  {
+    value: 'oklch(0.7 0.16 65)',
+    className: 'bg-[oklch(0.7_0.16_65)]',
+  },
+  {
+    value: 'oklch(0.52 0.18 265)',
+    className: 'bg-[oklch(0.52_0.18_265)]',
+  },
+] as const
