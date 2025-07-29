@@ -1,5 +1,5 @@
 import type { PropsWithChildren } from 'react'
-import Label from '@/modules/ui/primitives/label'
+
 import {
   SelectContent,
   SelectGroup,
@@ -65,3 +65,4 @@ export const Select = ({
     </SelectContent>
   </SelectPrimitive>
 )
+
