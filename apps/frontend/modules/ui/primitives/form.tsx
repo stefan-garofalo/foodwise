@@ -74,16 +74,21 @@ function FormMessage({
 
 function SubmitButton({
   children,
+
   ...props
 }: React.ComponentProps<typeof Button>) {
   const { actions } = useCommonDictionary()
-  const { isSubmitting, isFormValid } = useFormContext().state
+  const {
+    handleSubmit,
+    state: { isSubmitting, isFormValid },
+  } = useFormContext()
 
   return (
     <Button
       data-slot="form-submit-button"
       disabled={!isFormValid}
       loading={isSubmitting}
+      onClick={handleSubmit}
       type="submit"
       {...props}
     >
