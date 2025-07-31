@@ -8,12 +8,10 @@ import { merge } from '@/modules/ui/utils/tailwind'
 import { CATEGORIES, COLORS } from '../../constants'
 import { useCategoryCreate } from '../../lib'
 
-const _CategoryCreateSchema = type({
+const CategoryCreateSchema = type({
   color: 'string',
   name: 'string',
-  uid: 'string',
   iconUid: 'string',
-  settingsId: 'string',
 })
 
 export type CategoryCreateFormProps = {
@@ -24,70 +22,83 @@ export default function CategoryCreateForm({
 }: CategoryCreateFormProps) {
   const {
     form: { create: formLabels },
+    constants,
   } = labels
 
-  const { mutate } = useCategoryCreate()
-  const { AppField, AppForm, FieldItem, Button } = useAppForm({
-    validators: {
-      onSubmit: _CategoryCreateSchema,
+  // const { mutate } = useCategoryCreate()
+  const { AppField, AppForm, FieldItem, Form, SubmitButton } = useAppForm({
+    defaultValues: {
+      color: COLORS[0].value,
+      iconUid: CATEGORIES[0].name,
+      name: '',
     },
-    onSubmit: ({ value }) => mutate({}),
+    validators: {
+      onSubmit: CategoryCreateSchema,
+    },
+    onSubmit: ({ value }) => {
+      console.log({ value })
+    },
   })
 
   return (
     <AppForm>
-      <div className="flex w-full items-center gap-2.5">
+      <Form>
         <AppField
           children={({ Input }) => (
             <FieldItem className="grow" label={formLabels.fields.name.label}>
-              <Input />
+              <Input name="name" />
             </FieldItem>
           )}
           name="name"
         />
-        <AppField
-          children={({ Select }) => (
-            <FieldItem
-              className="w-full shrink-0 basis-2/12"
-              label={formLabels.fields.iconUid.label}
-            >
-              <Select
-                name="iconUid"
-                options={CATEGORIES.map(({ Icon, name }) => ({
-                  value: name,
-                  icon: <Icon className="size-4" />,
-                }))}
-              />
-            </FieldItem>
-          )}
-          name="iconUid"
-        />
-        <AppField
-          children={({ Select }) => (
-            <FieldItem
-              className="w-full shrink-0 basis-[14.5%]"
-              label={formLabels.fields.color.label}
-            >
-              <Select
-                name="color"
-                options={COLORS.map(({ value, className }) => ({
-                  value,
-                  icon: (
-                    <div
-                      className={merge(
-                        'aspect-square size-4 rounded',
-                        className
-                      )}
-                    />
-                  ),
-                }))}
-              />
-            </FieldItem>
-          )}
-          name="color"
-        />
-      </div>
-      <Button />
+        <div className="flex items-start gap-2.5">
+          <AppField
+            children={({ Select }) => (
+              <FieldItem
+                className="w-full shrink-0 basis-1/2"
+                label={formLabels.fields.iconUid.label}
+              >
+                <Select
+                  name="iconUid"
+                  options={CATEGORIES.map(({ Icon, name, label }) => ({
+                    value: name,
+                    label: constants.icons[label],
+                    icon: <Icon className="size-4" />,
+                  }))}
+                />
+              </FieldItem>
+            )}
+            name="iconUid"
+          />
+          <AppField
+            children={({ Select }) => (
+              <FieldItem
+                className="w-full shrink-0 basis-1/2"
+                label={formLabels.fields.color.label}
+              >
+                <Select
+                  name="color"
+                  options={COLORS.map(({ value, className, label }) => ({
+                    value,
+                    label: constants.colors[label],
+                    icon: (
+                      <div
+                        className={merge(
+                          'aspect-square size-4 rounded',
+                          className
+                        )}
+                      />
+                    ),
+                  }))}
+                />
+              </FieldItem>
+            )}
+            name="color"
+          />
+        </div>
+
+        <SubmitButton />
+      </Form>
     </AppForm>
   )
 }

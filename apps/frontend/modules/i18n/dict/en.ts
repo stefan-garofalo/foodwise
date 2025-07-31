@@ -23,6 +23,32 @@ const dictionary = {
   },
   settings: {
     categories: {
+      constants: {
+        colors: {
+          LAVENDER: 'Lavander',
+          SKY_BLUE: 'Sky Blue',
+          CORAL_PINK: 'Coral Pink',
+          GOLDEN: 'Golden',
+          SAGE: 'Sage',
+          PLUM: 'Plum',
+          AMBER: 'Amber',
+          INDIGO: 'Indigo',
+        },
+        icons: {
+          FRUIT: 'Fruit',
+          VEGETABLES: 'Vegetables',
+          MEAT: 'Meat',
+          FISH: 'Fish',
+          CARBS: 'Carbs',
+          DAIRY: 'Dairy',
+          SWEETS: 'Sweets',
+          SNACKS: 'Snacks',
+          BEVERAGES: 'Beverages',
+          ALCOHOL: 'Alcohol',
+          PANTRY: 'Pantry',
+          CONDIMENTS: 'Condiments',
+        },
+      },
       seo: {
         title: 'Food Categories',
         description:

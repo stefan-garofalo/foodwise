@@ -23,6 +23,33 @@ const dictionary = {
   },
   settings: {
     categories: {
+      constants: {
+        colors: {
+          LAVENDER: 'Lavanda',
+          SKY_BLUE: 'Blu Cielo',
+          CORAL_PINK: 'Rosa Corallo',
+          GOLDEN: 'Dorato',
+          SAGE: 'Salvia',
+          PLUM: 'Prugna',
+          AMBER: 'Ambra',
+          INDIGO: 'Indaco',
+        },
+        icons: {
+          FRUIT: 'Frutta',
+          VEGETABLES: 'Verdura',
+          MEAT: 'Carne',
+          FISH: 'Pesce',
+          CARBS: 'Carboidrati',
+          DAIRY: 'Latticini',
+          SWEETS: 'Dolci',
+          SNACKS: 'Snack',
+          BEVERAGES: 'Bevande',
+          ALCOHOL: 'Alcolici',
+          PANTRY: 'Dispensa',
+          CONDIMENTS: 'Condimenti',
+        },
+      },
+
       seo: {
         title: 'Tag ingredienti',
         description:
