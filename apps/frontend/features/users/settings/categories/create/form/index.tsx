@@ -35,9 +35,7 @@ export default function CategoryCreateForm({
     validators: {
       onSubmit: CategoryCreateSchema,
     },
-    onSubmit: ({ value }) => {
-      console.log({ value })
-    },
+    onSubmit: ({ value }) => {},
   })
 
   return (

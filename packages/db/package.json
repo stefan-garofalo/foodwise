@@ -22,6 +22,7 @@
     }
   },
   "scripts": {
+    "dev": "drizzle-kit studio",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:studio": "drizzle-kit studio",
