@@ -2,9 +2,6 @@
   "extends": "@foodwise/tsconfig/base.json",
   "compilerOptions": {
     "baseUrl": ".",
-    "paths": {
-      "#db/*": ["./src/*"]
-    },
     "strictNullChecks": true
   }
 }

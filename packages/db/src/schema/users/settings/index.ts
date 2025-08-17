@@ -1,6 +1,6 @@
 import { relations } from 'drizzle-orm'
 import { sqliteTable } from 'drizzle-orm/sqlite-core'
-import { baseTableColumns } from '#db/utils/index.js'
+import { baseTableColumns } from '../../../utils/'
 import { userSettingsCategories } from './categories'
 
 export * from './categories'
