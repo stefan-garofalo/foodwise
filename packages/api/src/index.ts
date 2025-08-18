@@ -14,7 +14,7 @@ export const createCaller = createCallerFactory(appRouter)
 export const createCallerWithDb = (
   headers: Headers,
   session: Awaited<ReturnType<ReturnType<typeof getAuth>['api']['getSession']>>
-) =>
+): ReturnType<typeof createCaller> =>
   createCaller({
     db,
     headers,
