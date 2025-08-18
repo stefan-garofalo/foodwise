@@ -1,8 +1,8 @@
 import { router } from '#api/trpc.js'
-import { init } from './service'
+import service from './service'
 import { settingsRouter } from './settings/router'
 
 export const usersRouter = router({
-  init,
+  ...service,
   settings: settingsRouter,
 })

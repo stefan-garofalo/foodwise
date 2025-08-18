@@ -7,6 +7,7 @@ import {
   type TRPCQueryOptions,
 } from '@trpc/tanstack-react-query'
 import { headers } from 'next/headers'
+import { connection } from 'next/server'
 import { cache } from 'react'
 import { makeQueryClient } from './lib/clients'
 
@@ -33,8 +34,9 @@ export const trpc = createTRPCOptionsProxy({
 })
 export const trpcServer = appRouter.createCaller(createContext)
 
-export function HydrateClient(props: { children: React.ReactNode }) {
+export async function HydrateClient(props: { children: React.ReactNode }) {
   const queryClient = getQueryClient()
+  await connection()
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
       {props.children}

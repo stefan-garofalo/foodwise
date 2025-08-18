@@ -4,12 +4,9 @@ import { scope, type } from 'arktype'
 import { createSelectSchema } from 'drizzle-arktype'
 import { err, ok } from 'neverthrow'
 import { authedProcedure } from '#api/trpc.js'
-import type { ParserLike, TableColumns } from '../types'
+import type { ColumnFlags, ParserLike } from '../types'
 
 // All columns optional – suitable for a partial update payload
-type ColumnFlags<T extends BaseSQLiteTable> = {
-  [K in keyof TableColumns<T>]?: boolean
-}
 
 type GetInput<T extends BaseSQLiteTable> = {
   id: string

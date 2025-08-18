@@ -3,7 +3,7 @@ import { type } from 'arktype'
 import { err, ok } from 'neverthrow'
 import { authedProcedure } from '#api/trpc.js'
 
-export const init = authedProcedure
+const init = authedProcedure
   .input(type('string | undefined'))
   .mutation(async ({ input: userId, ctx: { db, user } }) => {
     try {
@@ -22,3 +22,18 @@ export const init = authedProcedure
       return err(error)
     }
   })
+
+const getSettings = authedProcedure.query(async ({ ctx: { db, user } }) => {
+  try {
+    const settings = await db.query.userSettings.findFirst({
+      where: ({ id }, { eq }) => eq(id, user.id),
+    })
+
+    if (!settings) throw new Error('settings_not_found')
+    return ok(settings)
+  } catch (error) {
+    return err(error)
+  }
+})
+
+export default { init, getSettings } as const
