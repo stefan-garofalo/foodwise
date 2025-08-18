@@ -1,5 +1,6 @@
+import { Suspense } from 'react'
 import type { GenerateMetadataProps } from '@/app/[lang]/types'
-
+import UserSettingsPrefetch from '@/features/users/prefetch/settings'
 import CategoryCreateForm from '@/features/users/settings/categories/create/form'
 import DialogForm from '@/modules/form/components/abstractions/dialog-form'
 import { getMetadata } from '@/modules/metadata'
@@ -30,7 +31,11 @@ export default async function CategoriesSettingsPage({
             trigger: dict.actions.create,
           }}
         >
-          <CategoryCreateForm labels={dict} />
+          <Suspense>
+            <UserSettingsPrefetch>
+              <CategoryCreateForm labels={dict} />
+            </UserSettingsPrefetch>
+          </Suspense>
         </DialogForm>
       </section>
     </div>

@@ -16,3 +16,7 @@ export type TableColumns<T extends BaseSQLiteTable> = {
     ? never
     : K]: T['$inferInsert'][K]
 }
+
+export type ColumnFlags<T extends BaseSQLiteTable> = {
+  [K in keyof TableColumns<T>]?: boolean
+}

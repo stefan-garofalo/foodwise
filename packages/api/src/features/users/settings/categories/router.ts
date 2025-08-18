@@ -1,16 +1,7 @@
+import { userSettingsCategories } from '@foodwise/db/schema'
+import { createBaseProcedures } from '#api/lib/crud/index.js'
 import { router } from '#api/trpc.js'
-import {
-  create,
-  get,
-  remove,
-  update,
 
-  //	get, getAll, remove, update
-} from './service'
-
-export const categoriesRouter = router({
-  create,
-  update,
-  remove,
-  get,
-})
+export const categoriesRouter = router(
+  createBaseProcedures(userSettingsCategories)
+)
