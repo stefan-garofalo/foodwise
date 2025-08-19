@@ -1,6 +1,7 @@
 {
   "name": "@apps/backend",
-	"type": "module",
+  "type": "module",
+
   "scripts": {
     "dev": "bun run --hot src/index.ts",
     "build": "tsc",
