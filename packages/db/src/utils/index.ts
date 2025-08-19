@@ -1,10 +1,11 @@
 import { integer, sqliteTable, text } from 'drizzle-orm/sqlite-core'
+import { v7 } from 'uuid'
 import type { Tables } from './types'
 
 export const baseTableColumns = {
   id: text('id')
     .primaryKey()
-    .$defaultFn(() => Bun.randomUUIDv7()),
+    .$defaultFn(() => v7()),
   createdAt: integer('created_at', { mode: 'timestamp' })
     .notNull()
     .$defaultFn(() => new Date()),
