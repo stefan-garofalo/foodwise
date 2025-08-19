@@ -1,23 +1,10 @@
-import { initTRPC, TRPCError } from '@trpc/server'
+import { initTRPC } from '@trpc/server'
 import type { Context } from '.'
+import { authedMiddleware } from './middleware/auth'
 
-const t = initTRPC.context<Context>().create()
-
-const isAuthed = t.middleware(({ next, ctx }) => {
-  if (!ctx.session?.user) {
-    throw new TRPCError({ code: 'UNAUTHORIZED' })
-  }
-
-  return next({
-    ctx: {
-      session: ctx.session,
-      user: ctx.session.user,
-      db: ctx.db,
-    },
-  })
-})
+export const t = initTRPC.context<Context>().create()
 
 export const router = t.router
 export const publicProcedure = t.procedure
-export const authedProcedure = t.procedure.use(isAuthed)
+export const authedProcedure = t.procedure.use(authedMiddleware)
 export const createCallerFactory = t.createCallerFactory

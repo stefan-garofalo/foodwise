@@ -1,13 +1,15 @@
 import { userProfiles, userSettings } from '@foodwise/db/schema'
 import { type } from 'arktype'
 import { err, ok } from 'neverthrow'
+import { v7 } from 'uuid'
 import { authedProcedure } from '#api/trpc.js'
+import { usersRepository } from './repository'
 
 const init = authedProcedure
   .input(type('string | undefined'))
   .mutation(async ({ input: userId, ctx: { db, user } }) => {
     try {
-      const settingsId = Bun.randomUUIDv7()
+      const settingsId = v7()
       await db.transaction(async (tx) => {
         await tx.insert(userSettings).values({
           id: settingsId,
@@ -23,17 +25,8 @@ const init = authedProcedure
     }
   })
 
-const getSettings = authedProcedure.query(async ({ ctx: { db, user } }) => {
-  try {
-    const settings = await db.query.userSettings.findFirst({
-      where: ({ id }, { eq }) => eq(id, user.id),
-    })
-
-    if (!settings) throw new Error('settings_not_found')
-    return ok(settings)
-  } catch (error) {
-    return err(error)
-  }
+const getSettings = authedProcedure.query(async ({ ctx: { user } }) => {
+  return await usersRepository.getUserSettings(user.id)
 })
 
 export default { init, getSettings } as const

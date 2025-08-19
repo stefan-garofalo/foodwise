@@ -6,7 +6,7 @@ import { useAppForm } from '@/modules/form/hooks'
 
 import { merge } from '@/modules/ui/utils/tailwind'
 import { CATEGORIES, COLORS } from '../../constants'
-import { useCategoryCreate } from '../../lib'
+import { useCategoryCreate, useUserSettings } from '../../lib'
 
 const CategoryCreateSchema = type({
   color: 'string',
@@ -26,6 +26,7 @@ export default function CategoryCreateForm({
   } = labels
 
   // const { mutate } = useCategoryCreate()
+
   const { AppField, AppForm, FieldItem, Form, SubmitButton } = useAppForm({
     defaultValues: {
       color: COLORS[0].value,
@@ -35,7 +36,7 @@ export default function CategoryCreateForm({
     validators: {
       onSubmit: CategoryCreateSchema,
     },
-    onSubmit: ({ value }) => {},
+    // onSubmit: ({ value }) => {},
   })
 
   return (

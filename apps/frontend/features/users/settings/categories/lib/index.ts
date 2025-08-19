@@ -18,3 +18,5 @@ export const useCategoryGet = (
   params: RouterInputs['users']['settings']['categories']['get']
 ) => useQuery(useTRPC().users.settings.categories.get.queryOptions(params))
 
+export const useUserSettings = () =>
+  useQuery(useTRPC().users.getSettings.queryOptions())
