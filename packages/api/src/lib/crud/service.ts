@@ -1,5 +1,5 @@
 import type { BaseSQLiteTable } from '@foodwise/db/utils/index'
-import { authedProcedure } from '#api/trpc.js'
+import { authedProcedure } from '../../trpc'
 import { getCreateMutation, getCreateSchema } from './repository/create'
 import { getRemoveMutation, getRemoveSchema } from './repository/remove'
 import { getSelectQuery, getSelectSchema } from './repository/select'

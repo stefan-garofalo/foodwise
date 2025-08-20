@@ -1,10 +1,9 @@
 import { userSettingsCategories } from '@foodwise/db/schema'
-
-import { usersRepository } from '#api/features/users/repository.js'
+import { usersRepository } from '../../../../../../features/users/repository'
 import {
   type CreateMutationData,
   getCreateMutation,
-} from '#api/lib/crud/repository/create.js'
+} from '../../../../../../lib/crud/repository/create'
 
 type CreateUserCategoryParams = {
   userId: string

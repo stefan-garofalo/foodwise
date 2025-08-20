@@ -2,7 +2,7 @@ import { userProfiles, userSettings } from '@foodwise/db/schema'
 import { type } from 'arktype'
 import { err, ok } from 'neverthrow'
 import { v7 } from 'uuid'
-import { authedProcedure } from '#api/trpc.js'
+import { authedProcedure } from '../../trpc'
 import { usersRepository } from './repository'
 
 const init = authedProcedure

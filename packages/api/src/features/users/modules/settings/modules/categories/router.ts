@@ -3,8 +3,8 @@ import {
   buildRemoveProcedure,
   buildSelectProcedure,
   buildUpdateProcedure,
-} from '#api/lib/crud/service.js'
-import { router } from '#api/trpc.js'
+} from '../../../../../../lib/crud/service'
+import { router } from '../../../../../../trpc'
 import service from './service'
 
 export const categoriesRouter = router({
