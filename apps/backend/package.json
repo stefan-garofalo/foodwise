@@ -3,8 +3,8 @@
 	"type": "module",
 	"scripts": {
 		"dev": "bun run --hot src/index.ts",
-		"build": "vercel build",
-		"deploy": "vercel deploy",
+		"build": "vc build",
+		"deploy": "vc deploy",
 		"start": "bun ./dist/index.js"
 	},
 	"dependencies": {
