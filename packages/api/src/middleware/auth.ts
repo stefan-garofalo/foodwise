@@ -1,5 +1,5 @@
 import { TRPCError } from '@trpc/server'
-import { t } from '#api/trpc.js'
+import { t } from '../trpc'
 
 export const authedMiddleware = t.middleware(({ next, ctx }) => {
   if (!ctx.session?.user) {

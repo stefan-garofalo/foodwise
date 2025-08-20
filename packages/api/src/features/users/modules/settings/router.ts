@@ -4,8 +4,8 @@ import {
   buildRemoveProcedure,
   buildSelectProcedure,
   buildUpdateProcedure,
-} from '#api/lib/crud/service.js'
-import { router } from '#api/trpc.js'
+} from '../../../../lib/crud/service'
+import { router } from '../../../../trpc'
 import { categoriesRouter } from './modules/categories/router'
 
 export const settingsRouter = router({

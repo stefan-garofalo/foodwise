@@ -11,9 +11,6 @@
       ]
     }
   },
-  "imports": {
-    "#api/*": "./dist/*"
-  },
   "exports": {
     ".": {
       "types": "./src/index.ts",

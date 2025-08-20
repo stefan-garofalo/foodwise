@@ -1,4 +1,4 @@
-import { router } from '#api/trpc.js'
+import { router } from '../../trpc'
 import { settingsRouter } from './modules/settings/router'
 
 import service from './service'

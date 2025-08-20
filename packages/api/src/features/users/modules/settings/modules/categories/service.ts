@@ -1,6 +1,6 @@
 import { userSettingsCategories } from '@foodwise/db/schema'
-import { getCreateSchema } from '#api/lib/crud/repository/create.js'
-import { authedProcedure } from '#api/trpc.js'
+import { getCreateSchema } from '../../../../../../lib/crud/repository/create'
+import { authedProcedure } from '../../../../../../trpc'
 import { userCategoriesRepository } from './repository'
 
 const createCategory = authedProcedure
