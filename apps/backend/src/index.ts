@@ -14,7 +14,4 @@ app.get('/health', (c) =>
 	c.json({ status: 'ok', timestamp: new Date().toISOString() })
 )
 
-export default {
-	port: 3080,
-	fetch: app.fetch
-}
+export default app
