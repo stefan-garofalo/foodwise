@@ -1,6 +1,8 @@
 {
 	"extends": "@foodwise/tsconfig/base.json",
 	"compilerOptions": {
+		"module": "ESNext",
+		"verbatimModuleSyntax": false,
 		"strict": true,
 		"jsx": "react-jsx",
 		"jsxImportSource": "hono/jsx"
