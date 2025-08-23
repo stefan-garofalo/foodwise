@@ -1,7 +1,7 @@
 {
   "name": "@foodwise/auth",
   "scripts": {
-    "build": "tsc",
+    "build": "tsup",
     "typecheck": "tsc --noEmit"
   },
   "exports": {
@@ -19,6 +19,8 @@
     "better-auth": "^1.2.8"
   },
   "devDependencies": {
-    "@foodwise/tsconfig": "workspace:*"
+    "@foodwise/tsconfig": "workspace:*",
+    "tsup": "latest",
+    "typescript": "latest"
   }
 }
