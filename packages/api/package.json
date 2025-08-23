@@ -22,7 +22,7 @@
     }
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsup",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "@foodwise/tsconfig": "workspace:*",
-    "typescript": "latest"
+    "typescript": "latest",
+    "tsup": "latest"
   }
 }
