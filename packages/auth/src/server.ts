@@ -10,7 +10,9 @@ const dialect = new LibsqlDialect({
   authToken: process.env.TURSO_AUTH_TOKEN!,
 })
 
-export const getAuth = (opt?: BetterAuthOptions) =>
+export const getAuth = (
+  opt?: BetterAuthOptions
+): ReturnType<typeof betterAuth> =>
   betterAuth({
     database: {
       dialect,
