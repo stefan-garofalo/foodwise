@@ -3,19 +3,19 @@
   "exports": {
     "./client": {
       "types": "./src/client.ts",
-      "default": "./dist/client.ts"
+      "default": "./dist/client.js"
     },
     "./utils/*": {
       "types": "./src/utils/*.ts",
-      "default": "./dist/utils/*.ts"
+      "default": "./dist/utils/*.js"
     },
     "./schema": {
       "types": "./src/schema/index.ts",
-      "default": "./dist/schema/index.ts"
+      "default": "./dist/schema/index.js"
     },
     "./schema/utils/*": {
       "types": "./src/schema/utils/*.ts",
-      "default": "./dist/schema/utils/*.ts"
+      "default": "./dist/schema/utils/*.js"
     }
   },
   "scripts": {
