@@ -10,12 +10,12 @@
   "dependencies": {
     "@hono/trpc-server": "^0.3.4",
     "hono": "^4.7.6",
-    "@foodwise/auth": "*",
-    "@foodwise/api": "*"
+    "@foodwise/auth": "workspace:*",
+    "@foodwise/api": "workspace:*"
   },
   "devDependencies": {
-    "@foodwise/tsconfig": "*",
+    "@foodwise/tsconfig": "workspace:*",
     "@types/bun": "latest",
-    "tsup": "^8.0.0"
+    "tsup": "latest"
   }
 }
