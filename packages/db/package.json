@@ -3,23 +3,24 @@
   "exports": {
     "./client": {
       "types": "./src/client.ts",
-      "default": "./src/client.ts"
+      "default": "./dist/client.ts"
     },
     "./utils/*": {
       "types": "./src/utils/*.ts",
-      "default": "./src/utils/*.ts"
+      "default": "./dist/utils/*.ts"
     },
     "./schema": {
       "types": "./src/schema/index.ts",
-      "default": "./src/schema/index.ts"
+      "default": "./dist/schema/index.ts"
     },
     "./schema/utils/*": {
       "types": "./src/schema/utils/*.ts",
-      "default": "./src/schema/utils/*.ts"
+      "default": "./dist/schema/utils/*.ts"
     }
   },
   "scripts": {
     "dev": "bun run db:studio",
+    "build": "tsc",
     "db:generate": "NODE_OPTIONS='--import tsx' drizzle-kit generate:sqlite",
     "db:migrate": "NODE_OPTIONS='--import tsx' drizzle-kit migrate",
     "db:studio": "NODE_OPTIONS='--import tsx' drizzle-kit studio --host localhost --port 8100 --verbose",
