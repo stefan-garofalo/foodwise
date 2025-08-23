@@ -1,13 +1,17 @@
 {
   "name": "@foodwise/auth",
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit"
+  },
   "exports": {
     "./server": {
       "types": "./src/server.ts",
-      "default": "./src/server.ts"
+      "default": "./dist/server.js"
     },
     "./client": {
       "types": "./src/client.ts",
-      "default": "./src/client.ts"
+      "default": "./dist/client.js"
     }
   },
   "dependencies": {
