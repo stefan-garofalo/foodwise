@@ -10,8 +10,6 @@
     "rootDir": "src",
     "baseUrl": ".",
     "declaration": true,
-    "declarationMap": true,
-    "allowImportingTsExtensions": true,
-    "emitDeclarationOnly": true
+    "declarationMap": true
   }
 }
