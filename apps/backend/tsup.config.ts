@@ -10,8 +10,7 @@ export default defineConfig({
   sourcemap: true,
   dts: true,
   minify: false,
-  external: ['hono', '@hono/trpc-server'],
-  noExternal: ['@foodwise/auth', '@foodwise/api'],
+  external: ['hono', '@hono/trpc-server', '@foodwise/auth', '@foodwise/api'],
   esbuildOptions(options) {
     options.conditions = ['module']
   },
