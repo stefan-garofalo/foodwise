@@ -10,7 +10,9 @@
         "!.next/cache/**",
         "apps/backend/dist/**",
         "apps/frontend/.next/**",
-        "packages/api/dist/**"
+        "packages/api/dist/**",
+        "packages/auth/dist/**",
+        "packages/db/dist/**"
       ],
       "env": [
         "BETTER_AUTH_SECRET",
