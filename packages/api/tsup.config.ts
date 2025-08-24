@@ -1,7 +1,9 @@
 import { defineConfig } from 'tsup'
 
 export default defineConfig({
-  entry: ['src/index.ts'],
+  entry: {
+    index: 'src/index.ts',
+  },
   format: ['esm'],
   target: 'node22',
   outDir: 'dist',
@@ -10,6 +12,9 @@ export default defineConfig({
   sourcemap: true,
   dts: false,
   minify: false,
+  outExtension: () => ({
+    js: '.js',
+  }),
   external: [
     '@trpc/server',
     'arktype',
