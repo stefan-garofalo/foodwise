@@ -10,20 +10,8 @@ export default defineConfig({
   sourcemap: true,
   dts: true,
   minify: false,
-  external: [
-    'hono', 
-    '@hono/trpc-server',
-    '@libsql/client',
-    'drizzle-orm',
-    'better-auth',
-    '@libsql/kysely-libsql',
-    '@trpc/server',
-    'arktype',
-    'drizzle-arktype',
-    'neverthrow',
-    'uuid'
-  ],
   noExternal: ['@foodwise/auth', '@foodwise/api', '@foodwise/db'],
+  outExtension: () => ({ js: '.js' }),
   esbuildOptions(options) {
     options.conditions = ['module']
   },
