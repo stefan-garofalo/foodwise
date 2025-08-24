@@ -2,6 +2,7 @@
   "name": "@apps/backend",
   "type": "module",
 
+  "packageManager": "pnpm@10.15.0",
   "scripts": {
     "dev": "bun run --hot src/index.ts",
     "build": "tsup",
