@@ -21,11 +21,9 @@ export default defineConfig({
     'arktype',
     'drizzle-arktype',
     'neverthrow',
-    'uuid',
-    '@foodwise/auth',
-    '@foodwise/api'
+    'uuid'
   ],
-  noExternal: ['@foodwise/db'],
+  noExternal: ['@foodwise/auth', '@foodwise/api', '@foodwise/db'],
   esbuildOptions(options) {
     options.conditions = ['module']
   },
