@@ -1,1 +1,1 @@
-export { default } from '../dist/index.js'
+export default require('../dist/index.js')
