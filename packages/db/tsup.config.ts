@@ -5,6 +5,7 @@ export default defineConfig({
     client: 'src/client.ts',
     'schema/index': 'src/schema/index.ts',
     'utils/index': 'src/utils/index.ts',
+    'utils/types': 'src/utils/types.ts',
   },
   format: ['esm'],
   target: 'node22',
