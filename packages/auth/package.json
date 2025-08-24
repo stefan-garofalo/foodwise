@@ -6,11 +6,11 @@
   },
   "exports": {
     "./server": {
-      "types": "./dist/server.d.mts",
+      "types": "./src/server.ts",
       "default": "./dist/server.js"
     },
     "./client": {
-      "types": "./dist/client.d.mts",
+      "types": "./src/client.ts",
       "default": "./dist/client.js"
     }
   },
