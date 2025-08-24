@@ -6,7 +6,8 @@
     "rootDir": "src",
     "baseUrl": ".",
     "declaration": true,
-    "declarationMap": true
+    "declarationMap": true,
+    "noEmit": true
   },
   "include": ["src"],
   "exclude": ["node_modules"]
