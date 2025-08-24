@@ -10,7 +10,7 @@ export default defineConfig({
   clean: true,
   splitting: false,
   sourcemap: true,
-  dts: true,
+  dts: false,
   minify: false,
   outExtension: () => ({
     js: '.js',
