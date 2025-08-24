@@ -3,6 +3,7 @@
   "compilerOptions": {
     "module": "ESNext",
     "verbatimModuleSyntax": false,
+    "noEmit": false,
     "strict": true,
     "jsx": "react-jsx",
     "jsxImportSource": "hono/jsx",
