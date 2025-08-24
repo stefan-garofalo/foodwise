@@ -2,23 +2,23 @@
   "name": "@foodwise/db",
   "exports": {
     "./client": {
-      "types": "./dist/client.d.mts",
+      "types": "./src/client.ts",
       "default": "./dist/client.js"
     },
     "./utils/*": {
-      "types": "./dist/utils/*.d.mts",
+      "types": "./src/utils/*.ts",
       "default": "./dist/utils/*.js"
     },
     "./utils/types": {
-      "types": "./dist/utils/types.d.mts",
+      "types": "./src/utils/types.ts",
       "default": "./dist/utils/types.js"
     },
     "./schema": {
-      "types": "./dist/schema/index.d.mts",
+      "types": "./src/schema/index.ts",
       "default": "./dist/schema/index.js"
     },
     "./schema/utils/*": {
-      "types": "./dist/schema/utils/*.d.mts",
+      "types": "./src/schema/utils/*.ts",
       "default": "./dist/schema/utils/*.js"
     }
   },
