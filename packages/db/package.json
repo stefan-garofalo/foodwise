@@ -32,7 +32,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@libsql/client": "^0.14.0",
+    "@libsql/client": "^0.15.12",
     "drizzle-orm": "^0.38.4",
     "uuid": "^11.1.0"
   },
@@ -40,8 +40,8 @@
     "@foodwise/tsconfig": "workspace:*",
     "@types/node": "latest",
     "drizzle-kit": "^0.31.4",
-    "tsx": "^4.20.4",
     "tsup": "latest",
+    "tsx": "^4.20.4",
     "typescript": "latest"
   }
 }

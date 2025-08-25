@@ -1,4 +1,4 @@
-import { createClient } from '@libsql/client'
+import { createClient } from '@libsql/client/web'
 import { drizzle } from 'drizzle-orm/libsql'
 // biome-ignore lint/performance/noNamespaceImport: its fine to export all schema tables
 import * as schema from './schema'
