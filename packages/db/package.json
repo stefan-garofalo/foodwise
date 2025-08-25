@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "@foodwise/tsconfig": "workspace:*",
-    "@types/bun": "latest",
+    "@types/node": "latest",
     "drizzle-kit": "^0.31.4",
     "tsx": "^4.20.4",
     "tsup": "latest",
