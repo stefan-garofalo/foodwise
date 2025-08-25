@@ -32,6 +32,9 @@ importers:
       '@foodwise/auth':
         specifier: workspace:*
         version: link:../../packages/auth
+      '@foodwise/db':
+        specifier: workspace:*
+        version: link:../../packages/db
       '@hono/trpc-server':
         specifier: ^0.3.4
         version: 0.3.4(@trpc/server@11.5.0(typescript@5.9.2))(hono@4.9.4)
