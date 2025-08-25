@@ -4,8 +4,8 @@
 
   "scripts": {
     "dev": "bun run --hot src/index.ts",
-    "build": "rspack build",
-    "start": "node ./dist/index.js"
+    "build": "rspack build && node ./scripts/postbuild.js",
+    "start": "node ./dist/index.cjs"
   },
   "dependencies": {
     "@hono/trpc-server": "^0.3.4",
