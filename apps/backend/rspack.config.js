@@ -12,18 +12,12 @@ export default defineConfig({
   mode: 'production',
   output: {
     path: resolve(__dirname, 'dist'),
-    filename: 'index.js',
-    module: true,
-    chunkFormat: 'module',
-    chunkLoading: 'import',
-    workerChunkLoading: 'import',
+    filename: 'index.cjs',
     library: {
-      type: 'modern-module',
+      type: 'commonjs2',
     },
   },
-  experiments: {
-    outputModule: true,
-  },
+  // No ESM output for backend runtime; emit CommonJS to allow require() paths
   resolve: {
     extensions: ['.ts', '.js', '.json'],
   },
