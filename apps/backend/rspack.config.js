@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/performance/useTopLevelRegex: <explanation> */
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { defineConfig } from '@rspack/cli'
@@ -40,17 +41,32 @@ export default defineConfig({
           },
         },
       },
+      {
+        test: /\.node$/,
+        type: 'asset/resource',
+      },
+      {
+        test: /node_modules\/@libsql\/.*\.(node|md)$/,
+        type: 'asset/resource',
+      },
     ],
   },
-  // externals: {
-  //   // Keep native binaries external
-  //   '@libsql/linux-x64-gnu': 'commonjs @libsql/linux-x64-gnu',
-  //   '@libsql/darwin-x64': 'commonjs @libsql/darwin-x64',
-  //   '@libsql/darwin-arm64': 'commonjs @libsql/darwin-arm64',
-  //   '@libsql/win32-x64-msvc': 'commonjs @libsql/win32-x64-msvc',
-  //   'libsql': 'commonjs libsql',
-  //   '@neon-rs/load': 'commonjs @neon-rs/load'
-  // },
+  externals: [
+    ({ request }, callback) => {
+      if (/^@libsql\//.test(request)) {
+        return callback(null, `commonjs ${request}`)
+      }
+      if (['libsql', '@neon-rs/load'].includes(request)) {
+        return callback(null, `commonjs ${request}`)
+      }
+      callback()
+    },
+  ],
+  ignoreWarnings: [
+    {
+      module: /node_modules\/@libsql\//,
+    },
+  ],
   optimization: {
     minimize: false,
   },
