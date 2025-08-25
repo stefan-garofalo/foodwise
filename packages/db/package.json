@@ -1,5 +1,6 @@
 {
   "name": "@foodwise/db",
+  "type": "module",
   "exports": {
     "./client": {
       "types": "./src/client.ts",
