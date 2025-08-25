@@ -1,23 +1,23 @@
 {
   "name": "@apps/backend",
   "type": "module",
-
   "scripts": {
     "dev": "bun run --hot src/index.ts",
     "build": "rspack build && node ./scripts/postbuild.js",
     "start": "node ./dist/index.cjs"
   },
   "dependencies": {
-    "@hono/trpc-server": "^0.3.4",
-    "hono": "^4.7.6",
-    "@foodwise/auth": "workspace:*",
     "@foodwise/api": "workspace:*",
-    "@foodwise/db": "workspace:*"
+    "@foodwise/auth": "workspace:*",
+    "@foodwise/db": "workspace:*",
+    "@hono/trpc-server": "^0.3.4",
+    "@libsql/kysely-libsql": "^0.4.1",
+    "hono": "^4.7.6"
   },
   "devDependencies": {
     "@foodwise/tsconfig": "workspace:*",
-    "@types/node": "latest",
     "@rspack/cli": "latest",
-    "@rspack/core": "latest"
+    "@rspack/core": "latest",
+    "@types/node": "latest"
   }
 }

@@ -1,4 +1,4 @@
-/** biome-ignore-all lint/suspicious/noConsole: <explanation> */
+/** biome-ignore-all lint/suspicious/noConsole: vercel */
 import { writeFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
