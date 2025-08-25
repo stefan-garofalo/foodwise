@@ -11,6 +11,7 @@
     "@foodwise/auth": "workspace:*",
     "@foodwise/db": "workspace:*",
     "@hono/trpc-server": "^0.3.4",
+    "@libsql/client": "^0.15.12",
     "@libsql/kysely-libsql": "^0.4.1",
     "hono": "^4.7.6"
   },
