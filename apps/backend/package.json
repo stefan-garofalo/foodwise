@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@foodwise/tsconfig": "workspace:*",
-    "@types/bun": "latest",
+    "@types/node": "latest",
     "tsup": "latest"
   }
 }
