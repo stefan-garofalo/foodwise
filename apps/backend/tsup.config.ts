@@ -11,9 +11,11 @@ export default defineConfig({
   dts: true,
   minify: false,
   noExternal: ['@foodwise/auth', '@foodwise/api', '@foodwise/db'],
-  external: ['libsql', '@neon-rs/load', '@libsql/kysely-libsql'],
   outExtension: () => ({ js: '.js' }),
   esbuildOptions(options) {
     options.conditions = ['module']
+    options.banner = {
+      js: `import { createRequire } from 'module'; const require = createRequire(import.meta.url);`
+    }
   },
 })
