@@ -15,14 +15,13 @@ export default defineConfig({
   outExtension: () => ({
     js: '.js',
   }),
-  external: [
+  external: ['@foodwise/auth', '@foodwise/db'],
+  noExternal: [
     '@trpc/server',
     'arktype',
     'drizzle-arktype',
     'neverthrow',
     'uuid',
-    '@foodwise/auth',
-    '@foodwise/db'
   ],
   esbuildOptions(options) {
     options.conditions = ['module']
