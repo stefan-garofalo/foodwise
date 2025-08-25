@@ -1,13 +1,14 @@
 import { getAuth } from '@foodwise/auth/server'
 import { db } from '@foodwise/db/client'
 import { usersRouter } from './features/users/router'
-import { createCallerFactory, router } from './trpc'
+import { createCallerFactory, router } from './trpc/core'
+import { createTRPCContext } from './trpc/context'
 
 export const appRouter = router({
   users: usersRouter,
 })
 export type AppRouter = typeof appRouter
-export type Context = Awaited<ReturnType<typeof createTRPCContext>>
+export type { Context } from './trpc/context'
 export type { inferRouterInputs, inferRouterOutputs } from '@trpc/server'
 
 export const createCaller = createCallerFactory(appRouter)
@@ -21,8 +22,4 @@ export const createCallerWithDb = (
     session,
   })
 
-export const createTRPCContext = async ({ headers }: { headers: Headers }) => ({
-  headers,
-  session: await getAuth().api.getSession({ headers }),
-  db,
-})
+export { createTRPCContext }

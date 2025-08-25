@@ -1,5 +1,5 @@
 import { TRPCError } from '@trpc/server'
-import { t } from '../trpc'
+import { t } from '../core'
 
 export const authedMiddleware = t.middleware(({ next, ctx }) => {
   if (!ctx.session?.user) {
@@ -8,9 +8,10 @@ export const authedMiddleware = t.middleware(({ next, ctx }) => {
 
   return next({
     ctx: {
-      session: ctx.session,
+      ...ctx,
       user: ctx.session.user,
-      db: ctx.db,
     },
   })
 })
+
+export const authedProcedure = t.procedure.use(authedMiddleware)
