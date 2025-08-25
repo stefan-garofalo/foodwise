@@ -18,6 +18,7 @@ export default defineConfig({
     library: {
       type: 'module',
     },
+    banner: 'import { createRequire } from "module"; const require = createRequire(import.meta.url);',
   },
   experiments: {
     outputModule: true,
@@ -69,8 +70,5 @@ export default defineConfig({
   ],
   optimization: {
     minimize: false,
-  },
-  banner: {
-    js: `import { createRequire } from 'module'; const require = createRequire(import.meta.url);`,
   },
 })
