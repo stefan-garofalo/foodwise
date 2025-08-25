@@ -1,5 +1,6 @@
 {
   "name": "@foodwise/auth",
+  "type": "module",
   "scripts": {
     "build": "tsup",
     "typecheck": "tsc --noEmit"
