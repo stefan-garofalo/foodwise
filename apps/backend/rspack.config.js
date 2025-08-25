@@ -15,10 +15,11 @@ export default defineConfig({
     filename: 'index.js',
     module: true,
     chunkFormat: 'module',
+    chunkLoading: 'import',
+    workerChunkLoading: 'import',
     library: {
-      type: 'module',
+      type: 'modern-module',
     },
-    banner: 'import { createRequire } from "module"; const require = createRequire(import.meta.url);',
   },
   experiments: {
     outputModule: true,
@@ -70,5 +71,7 @@ export default defineConfig({
   ],
   optimization: {
     minimize: false,
+    concatenateModules: true,
+    avoidEntryIife: true,
   },
 })
