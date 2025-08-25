@@ -1,5 +1,4 @@
 /** biome-ignore-all lint/style/noExportedImports: vercel */
-import app from '../dist/index.js'
-
-export * from '../dist/index.js'
-export default app
+// Import the CommonJS bundle from ESM context
+// Re-exporting named exports from CJS is not reliable; expose default only
+export default require('../dist/index.js')
