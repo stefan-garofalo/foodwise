@@ -4,7 +4,7 @@
 
   "scripts": {
     "dev": "bun run --hot src/index.ts",
-    "build": "tsup",
+    "build": "rspack build",
     "start": "node ./dist/index.js"
   },
   "dependencies": {
@@ -17,6 +17,7 @@
   "devDependencies": {
     "@foodwise/tsconfig": "workspace:*",
     "@types/node": "latest",
-    "tsup": "latest"
+    "@rspack/cli": "latest",
+    "@rspack/core": "latest"
   }
 }
