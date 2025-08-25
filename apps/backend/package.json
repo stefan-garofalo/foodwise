@@ -11,7 +11,8 @@
     "@hono/trpc-server": "^0.3.4",
     "hono": "^4.7.6",
     "@foodwise/auth": "workspace:*",
-    "@foodwise/api": "workspace:*"
+    "@foodwise/api": "workspace:*",
+    "@foodwise/db": "workspace:*"
   },
   "devDependencies": {
     "@foodwise/tsconfig": "workspace:*",
