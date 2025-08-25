@@ -47,17 +47,17 @@ export default defineConfig({
       },
     ],
   },
-  externals: [
-    ({ request }, callback) => {
-      if (/^@libsql\//.test(request)) {
-        return callback(null, `commonjs ${request}`)
-      }
-      if (['libsql', '@neon-rs/load'].includes(request)) {
-        return callback(null, `commonjs ${request}`)
-      }
-      callback()
-    },
-  ],
+  // externals: [
+  //   ({ request }, callback) => {
+  //     if (/^@libsql\//.test(request)) {
+  //       return callback(null, `commonjs ${request}`)
+  //     }
+  //     if (['libsql', '@neon-rs/load'].includes(request)) {
+  //       return callback(null, `commonjs ${request}`)
+  //     }
+  //     callback()
+  //   },
+  // ],
   ignoreWarnings: [
     {
       module: /node_modules\/@libsql\//,
