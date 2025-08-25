@@ -1,7 +1,7 @@
 import { Hono } from 'hono'
-import { authHandler } from './middleware/auth.js'
-import { corsMiddleware } from './middleware/cors.js'
-import { trpcMiddleware } from './middleware/trpc.js'
+import { authHandler } from './middleware/auth'
+import { corsMiddleware } from './middleware/cors'
+import { trpcMiddleware } from './middleware/trpc'
 
 const app = new Hono()
 
