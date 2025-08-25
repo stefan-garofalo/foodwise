@@ -10,7 +10,7 @@ export default defineConfig({
   sourcemap: true,
   dts: true,
   minify: false,
-  noExternal: ['@foodwise/auth', '@foodwise/api', '@foodwise/db'],
+  external: ['@foodwise/auth', '@foodwise/api', '@foodwise/db'],
   outExtension: () => ({ js: '.js' }),
   esbuildOptions(options) {
     options.conditions = ['module']
