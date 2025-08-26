@@ -53,7 +53,6 @@
 ### Integration Layers
 
 - **Server Components (RSC)**
-
   - Hydration helpers for RSC support
   - Server-side tRPC caller
   - Hydration state management
