@@ -6,13 +6,9 @@
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*", "$NODE_ENV"],
       "outputs": [
+        "dist/**",
         ".next/**",
-        "!.next/cache/**",
-        "apps/backend/dist/**",
-        "apps/frontend/.next/**",
-        "packages/api/dist/**",
-        "packages/auth/dist/**",
-        "packages/db/dist/**"
+        "!.next/cache/**"
       ],
       "env": [
         "BETTER_AUTH_SECRET",
