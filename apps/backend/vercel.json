@@ -1,4 +1,19 @@
 {
+  "functions": {
+    "api/index.js": {
+      "runtime": "nodejs22.x",
+      "externalNodeModules": [
+        "@libsql/kysely-libsql",
+        "@libsql/client",
+        "libsql",
+        "@neon-rs/load"
+      ],
+      "includeFiles": [
+        "node_modules/@libsql/**",
+        "node_modules/libsql/**"
+      ]
+    }
+  },
   "rewrites": [
     {
       "source": "/(.*)",
