@@ -40,4 +40,5 @@ export function middleware(request: NextRequest) {
  */
 export const config = {
   matcher: ['/((?!api|trpc|_next|favicon.ico).*)'],
+  runtime: 'nodejs',
 }
