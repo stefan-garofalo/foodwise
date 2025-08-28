@@ -1,7 +1,8 @@
 import 'server-only'
 
-import { appRouter, createTRPCContext } from '@foodwise/api'
+import { type AppRouter, appRouter, createTRPCContext } from '@foodwise/api'
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
+
 import {
   createTRPCOptionsProxy,
   type TRPCQueryOptions,
@@ -27,7 +28,7 @@ const createContext = async () => {
 // will return the same client during the same request.
 const getQueryClient = cache(makeQueryClient)
 
-export const trpc = createTRPCOptionsProxy({
+export const trpc = createTRPCOptionsProxy<AppRouter>({
   ctx: createContext,
   router: appRouter,
   queryClient: getQueryClient,
