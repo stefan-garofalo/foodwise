@@ -6,7 +6,10 @@ import type {
   inferRouterOutputs,
 } from '@foodwise/api'
 import { type QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { createTRPCContext } from '@trpc/tanstack-react-query'
+import {
+  createTRPCContext,
+  type TRPCOptionsProxy,
+} from '@trpc/tanstack-react-query'
 import { useState } from 'react'
 import { makeQueryClient, makeTrpcClient } from './lib/clients'
 
@@ -19,7 +22,14 @@ const getQueryClient = () => {
   return (clientQueryClientSingleton ??= makeQueryClient())
 }
 
-const { TRPCProvider, useTRPC, useTRPCClient } = createTRPCContext<AppRouter>()
+const {
+  TRPCProvider,
+  useTRPC: useTRPCUntyped,
+  useTRPCClient: useTRPCClientUntyped,
+} = createTRPCContext<AppRouter>()
+
+export const useTRPC: () => TRPCOptionsProxy<AppRouter> = useTRPCUntyped
+export const useTRPCClient: typeof useTRPCClientUntyped = useTRPCClientUntyped
 
 /**
  * Inference helper for inputs.
@@ -35,7 +45,6 @@ export type RouterInputs = inferRouterInputs<AppRouter>
  */
 export type RouterOutputs = inferRouterOutputs<AppRouter>
 
-export { useTRPC, useTRPCClient }
 export function TRPCReactProvider(props: { children: React.ReactNode }) {
   const queryClient = getQueryClient()
   const [trpcClient] = useState(makeTrpcClient)

@@ -1,6 +1,6 @@
 import type { AppRouter } from '@foodwise/api'
 import { defaultShouldDehydrateQuery, QueryClient } from '@tanstack/react-query'
-import { createTRPCClient, httpBatchStreamLink, loggerLink } from '@trpc/client'
+import { createTRPCClient, httpBatchStreamLink, loggerLink, type TRPCClient } from '@trpc/client'
 
 import { env } from '@/env'
 
@@ -20,7 +20,7 @@ export const makeQueryClient = () =>
     },
   })
 
-export const makeTrpcClient = () =>
+export const makeTrpcClient = (): TRPCClient<AppRouter> =>
   createTRPCClient<AppRouter>({
     links: [
       loggerLink({
