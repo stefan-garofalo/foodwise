@@ -53,3 +53,5 @@ export const getAuth = (
 
 export const getSessionCookie = (request: Request) =>
   getSessionCookieRaw(request, { cookiePrefix: COOKIE_PREFIX })
+
+export { nextCookies, toNextJsHandler } from 'better-auth/next-js'

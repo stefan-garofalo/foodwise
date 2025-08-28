@@ -1,3 +1,3 @@
 import 'server-only'
 
-export { getAuth } from '@foodwise/auth/server'
+export { getAuth, nextCookies, toNextJsHandler } from '@foodwise/auth/server'
